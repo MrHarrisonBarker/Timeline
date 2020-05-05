@@ -1,0 +1,86 @@
+<div class="shadow m-2 p-3">
+  <div class="form-group">
+    <label for="nameInput">Job Name</label>
+    <input id="nameInput" #jobName class="form-control" type="text">
+  </div>
+
+  <div class="form-group">
+    <label for="DescriptionInput">Job Description</label>
+    <textarea  id="DescriptionInput" #jobDescription class="form-control" type="text" rows="3"></textarea>
+  </div>
+
+  <div class="form-group">
+    <label for="DeadlineInput">Deadline</label>
+    <input id="DeadlineInput"
+           #deadline
+           type="text"
+           placeholder="Datepicker"
+           class="form-control"
+           bsDatepicker
+           [(ngModel)]="deadlinePicker"
+           [bsConfig]="{ isAnimated: true , dateInputFormat: 'DD-MM-YYYY' }">
+    <timepicker [(ngModel)]="deadlineTime" [showMeridian]="false"></timepicker>
+  </div>
+
+  <div class="form-group">
+    <label for="WorkersInput">Workers</label>
+    <div class="">
+      <input id="WorkersInput" [(ngModel)]="selectedUser"
+             [typeahead]="filterUsers(Team.Affiliations)"
+             typeaheadOptionField="displayName"
+             class="form-control" (keyup.enter)="addUser()" autocomplete="off">
+
+      <button class="btn btn-success form-control" (click)="addUser()"> +</button>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="mb-3 d-inline-block">
+      <user-avatar *ngFor="let user of selectedUsers" [user]="user"></user-avatar>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="jobStatusInput">Job Status</label>
+    <select id="jobStatusInput" class="form-control" #jobStatus [value]="InitialStatus">
+      <option value="0">Backlog</option>
+      <option value="1">ToDo</option>
+      <option value="2">InProgress</option>
+      <option value="3">Verify</option>
+      <option value="4">Completed</option>
+    </select>
+  </div>
+
+  <div class="form-group">
+    <label for="jobTypeInput">Job Type</label>
+    <select id="jobTypeInput" class="form-control" #jobType>
+      <option value="0">Bug</option>
+      <option value="1">Feature</option>
+      <option value="2">Generic</option>
+    </select>
+  </div>
+
+  <div class="form-group">
+    <label for="jobPriorityInput">Job Priority</label>
+    <select id="jobPriorityInput" class="form-control" #jobPriority>
+      <option value="0">DEFCON5</option>
+      <option value="1">DEFCON4</option>
+      <option value="2">DEFCON3</option>
+      <option value="3">DEFCON2</option>
+      <option value="4">DEFCON1</option>
+    </select>
+  </div>
+
+  <div class="form-group">
+    <label for="urlInput">Associated Url</label>
+    <input id="urlInput" #url class="form-control" type="text">
+
+    <label for="commitInput">Commit</label>
+    <input id="commitInput" #commit class="form-control" type="text">
+    <small>eg: https://github.com/MrHarrisonBarker/ng-time-from-pipe/commit/68598ea6e561c7e4de938429c38866347db837dc</small>
+  </div>
+
+  <button class="btn btn-success" type="submit" (click)="newJob(jobName.value,jobDescription.value,deadline.value,jobStatus.value,jobType.value,jobPriority.value,url.value,commit.value)">
+    New Job
+  </button>
+</div>

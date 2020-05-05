@@ -1,0 +1,14 @@
+<div class="row h-100" *ngIf="auth.User">
+  <div class="col h-100 overflow-auto bar" id="sideBar" style="max-width: fit-content;">
+    <app-side-bar [Teams]="auth.User.Affiliations"></app-side-bar>
+  </div>
+  <div class="col h-100 overflow-auto bar m-0 p-0" id="configBar" style="max-width: fit-content;">
+    <app-config-bar></app-config-bar>
+  </div>
+
+  <div class="col h-100">
+    <app-team *ngIf="show == 'Team'" [teamId]="currentTeamId"></app-team>
+    <app-timeline *ngIf="show == 'Timeline'"></app-timeline>
+    <app-user *ngIf="show == 'User'"></app-user>
+  </div>
+</div>

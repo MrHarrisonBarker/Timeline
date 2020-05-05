@@ -1,0 +1,8 @@
+#sideBar {
+  max-width: fit-content;
+}
+
+.bar {
+  background-color: #f4f4f4;
+  box-shadow: inset 0 0 2px 0px #878787;
+}

@@ -1,0 +1,12 @@
+<div class="justify-content-center">
+
+  <div class="my-2" style="width: 400px;"><alert type="danger" *ngIf="error"><strong>Oh snap!</strong> Change a few things up and try submitting again.</alert></div>
+
+<!--  <div class="p text-center">Login</div>-->
+<!--  <label for="username"></label>-->
+  <input #username placeholder="email" id="username" style="width: 400px;" class="form-control my-2" type="text" (keyup.enter)="login(username.value,password.value)">
+<!--  <label for="password"></label>-->
+  <input #password placeholder="password" id="password" class="form-control my-2" type="password" (keyup.enter)="login(username.value,password.value)">
+  <button class="btn btn-secondary mx-auto my-2 mb-1 d-flex text-right" (click)="login(username.value,password.value)" style="width: 100%"><span class="float-right ml-auto">Login</span></button>
+  <button class="btn btn-secondary mx-auto my-2 d-flex text-right" (click)="create()" style="width: 100%"><span class="float-right ml-auto">Create</span></button>
+</div>

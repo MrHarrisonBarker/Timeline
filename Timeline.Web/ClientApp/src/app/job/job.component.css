@@ -1,0 +1,14 @@
+
+
+#jobName {
+  font-size: 1.5rem;
+}
+
+.job {
+  cursor: pointer;
+  background-color: #fff;
+}
+
+.job:hover {
+  background-color: #f7f7f7;
+}

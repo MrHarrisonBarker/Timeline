@@ -1,0 +1,81 @@
+<div *ngIf="Job">
+  <div class="modal-header">
+    <input #jobName class="modal-title pull-left h4 form-control" [value]="Job.name"
+           (focusout)="updateName(Job.jobId,jobName.value)">
+    <button type="button" class="close pull-right" aria-label="Close" (click)="bsModalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="clearfix">
+      <div class="d-inline-block">
+        <div class="status"
+             [style.background-color]="jobService.getStatusBackGround(Job)">{{jobService.JobToStatus(Job)}}</div>
+        <div class="status"
+             [style.background-color]="jobService.getTypeBackGround(Job)">{{jobService.JobToType(Job)}}</div>
+        <div class="status"
+             [style.background-color]="jobService.getPriorityBackGround(Job)">{{jobService.JobToPriority(Job)}}</div>
+      </div>
+      <input class="form-check-input m-auto" type="checkbox" #archived [checked]="Job.archived" (click)="updateArchived(archived.checked)">
+      <div class="btn-group float-right">
+        <!--        <button class="btn btn-secondary" (click)="toggleFlag()"><span octicon="flag" color="grey"></span> Flag</button>-->
+        <button class="btn btn-secondary" (click)="removeJob()"><span octicon="trashcan" color="white"></span> delete
+        </button>
+      </div>
+      <div class="form-group float-right mr-3">
+        <select id="jobPriorityInput" class="form-control" #jobPriority [value]="Job.priority"
+                (change)="changePriority(jobPriority.value)">
+          <option value="0">DEFCON5</option>
+          <option value="1">DEFCON4</option>
+          <option value="2">DEFCON3</option>
+          <option value="3">DEFCON2</option>
+          <option value="4">DEFCON1</option>
+        </select>
+      </div>
+    </div>
+
+    <!--  <hr>-->
+    <div class="row">
+    <textarea #jobDescription class="col m-2" id="description" [value]="Job.description"
+              (focusout)="updateDescription(Job.jobId,jobDescription.value)">
+    </textarea>
+      <div class="col">
+        <div class="text-muted"><span octicon="history" color="grey"></span> Start Date</div>
+        <div>{{Job.startDate | date:'medium'}}</div>
+        <div class="text-muted"><span octicon="clock" color="grey"></span> Deadline</div>
+        <div>{{Job.deadline | date:'medium'}}</div>
+        <div class="text-muted"><span octicon="calendar" color="grey"></span> Finish Date</div>
+        <div>{{Job.endDate | date:'medium'}}</div>
+        <div>{{Job.pings}}</div>
+        <!--      <div class="text-muted"><span octicon="browser" color="grey"></span> Url</div>-->
+        <div>{{Job.associatedUrl}}</div>
+        <div class="text-muted"><span octicon="git-commit" color="grey"></span> Commit</div>
+        <a [href]="Job.commit" [innerHTML]="GetCommit()"></a>
+        <div class="text-muted"><span octicon="report" color="grey"></span> Flagged</div>
+        <div>{{Job.flagged}}</div>
+        <div>Created by</div>
+        <user-avatar *ngIf="Job.createdBy" [user]="Job.createdBy" class="d-flex"></user-avatar>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="WorkersInput">Workers</label>
+      <div class="input-group">
+        <input id="WorkersInput" [(ngModel)]="selectedUser"
+               [typeahead]="filterUsers(this.teamService.team.Affiliations)"
+               typeaheadOptionField="displayName" type="text"
+               class="form-control" (keyup.enter)="addUser()" autocomplete="off">
+        <div class="input-group-append">
+          <button class="btn btn-success" (click)="addUser()"> +</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="d-flex">
+      <user-avatar *ngFor="let user of Job.AssociatedUsers" [user]="user"></user-avatar>
+    </div>
+  </div>
+  <!--<div class="modal-footer">-->
+  <!--  <button type="button" class="btn btn-default" (click)="bsModalRef.hide()">button</button>-->
+  <!--</div>-->
+</div>

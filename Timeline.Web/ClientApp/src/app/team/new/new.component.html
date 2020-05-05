@@ -1,0 +1,7 @@
+<div class="p-3">
+  <label for="name">Name</label>
+  <input #name id="name" class="form-control">
+  <label for="avatar">Avatar url</label>
+  <input #avatar id="avatar" class="form-control">
+  <button class="btn btn-secondary my-3 float-right" (click)="newTeam(name.value,avatar.value)">new</button>
+</div>

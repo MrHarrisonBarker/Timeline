@@ -1,0 +1,7 @@
+<!--<div class="display-4">Timeline</div>-->
+<div class="row h-100 p-3" *ngIf="auth.User">
+  <div class="col type overflow-auto h-100 mx-1 well" *ngFor="let deadline of deadlines" >
+    <div class="p p-3" style="font-size: larger;">{{deadline.Deadline| date:'medium'}}</div>
+    <app-job *ngFor="let job of deadline.Jobs" [Job]="job"></app-job>
+  </div>
+</div>

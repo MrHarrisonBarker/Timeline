@@ -1,0 +1,97 @@
+<div class="clearfix mb-1">
+    <div class="d-flex float-left">
+      <badge [status]="0"></badge>
+      <badge [status]="1"></badge>
+      <badge [status]="2"></badge>
+      <badge [status]="3"></badge>
+      <badge [status]="4"></badge>
+      <badge [type]="0"></badge>
+      <badge [type]="1"></badge>
+      <badge [type]="2"></badge>
+      <badge [priority]="0"></badge>
+      <badge [priority]="1"></badge>
+      <badge [priority]="2"></badge>
+      <badge [priority]="3"></badge>
+      <badge [priority]="4"></badge>
+    </div>
+  <a id="leave" class="float-right btn-link" (click)="leave()">leave</a>
+</div>
+
+<div class="row" style="height: 90%;" *ngIf="Jobs">
+  <div class="col type overflow-auto h-100 mx-1 well">
+    <div class="clearfix mt-1" style="max-height: 3rem;height: 100%;">
+      <div class="listTitle float-left">Backlog</div>
+      <button class="btn btn-custom absolute-btn float-right" (click)="newJob(0)"><span octicon="plus"
+                                                                                        class="align-middle"></span>
+      </button>
+    </div>
+    <progressbar class="progress mt-3" [value]="progressBarTypeComp[0]" [max]="100" [animate]="true"></progressbar>
+    <progressbar class="progress mt-1 mb-3" [value]="progressBarPriorityComp[0]" [max]="100"
+                 [animate]="true"></progressbar>
+    <div cdkDropList (cdkDropListDropped)="drop($event,0)" #backlogList="cdkDropList"
+         [cdkDropListConnectedTo]="[todoList,progressList,verifyList,completeList]">
+      <app-job *ngFor="let job of Jobs[0]" [Job]="job" cdkDrag></app-job>
+    </div>
+  </div>
+  <div class="col type overflow-auto h-100 mx-1 well">
+    <div class="clearfix mt-1" style="max-height: 3rem;height: 100%;">
+      <div class="listTitle float-left">Todo</div>
+      <button class="btn btn-custom absolute-btn float-right" (click)="newJob(1)"><span octicon="plus"
+                                                                                        class="align-middle"></span>
+      </button>
+    </div>
+    <progressbar class="progress mt-3" [value]="progressBarTypeComp[1]" [max]="100" [animate]="true"></progressbar>
+    <progressbar class="progress mt-1 mb-3" [value]="progressBarPriorityComp[1]" [max]="100"
+                 [animate]="true"></progressbar>
+    <div cdkDropList (cdkDropListDropped)="drop($event,1)" #todoList="cdkDropList"
+         [cdkDropListConnectedTo]="[backlogList,progressList,verifyList,completeList]">
+      <app-job *ngFor="let job of Jobs[1]" [Job]="job" cdkDrag></app-job>
+    </div>
+  </div>
+  <div class="col type overflow-auto h-100 mx-1 well">
+    <div class="clearfix mt-1" style="max-height: 3rem;height: 100%;">
+      <div class="listTitle float-left">InProgress</div>
+      <button class="btn btn-custom absolute-btn float-right" (click)="newJob(2)"><span octicon="plus"
+                                                                                        class="align-middle"></span>
+      </button>
+    </div>
+    <progressbar class="progress mt-3" [value]="progressBarTypeComp[2]" [max]="100" [animate]="true"></progressbar>
+    <progressbar class="progress mt-1 mb-3" [value]="progressBarPriorityComp[2]" [max]="100"
+                 [animate]="true"></progressbar>
+    <div cdkDropList (cdkDropListDropped)="drop($event,2)" #progressList="cdkDropList"
+         [cdkDropListConnectedTo]="[backlogList,todoList,verifyList,completeList]">
+      <app-job *ngFor="let job of Jobs[2]" [Job]="job" cdkDrag></app-job>
+    </div>
+  </div>
+  <div class="col type overflow-auto h-100 mx-1 well">
+    <div class="clearfix mt-1" style="max-height: 3rem;height: 100%;">
+      <div class="listTitle float-left">Verify</div>
+      <button class="btn btn-custom absolute-btn float-right" (click)="newJob(3)"><span octicon="plus"
+                                                                                        class="align-middle"></span>
+      </button>
+    </div>
+    <progressbar class="progress mt-3" [value]="progressBarTypeComp[3]" [max]="100" [animate]="true"></progressbar>
+    <progressbar class="progress mt-1 mb-3" [value]="progressBarPriorityComp[3]" [max]="100"
+                 [animate]="true"></progressbar>
+    <div cdkDropList (cdkDropListDropped)="drop($event,3)" #verifyList="cdkDropList"
+         [cdkDropListConnectedTo]="[backlogList,progressList,todoList,completeList]">
+      <app-job *ngFor="let job of Jobs[3]" [Job]="job" cdkDrag></app-job>
+    </div>
+  </div>
+  <div class="col type overflow-auto h-100 mx-1 well">
+    <div class="clearfix mt-1" style="max-height: 3rem;height: 100%;">
+      <div class="listTitle float-left">Completed</div>
+      <button class="btn btn-custom absolute-btn float-right" (click)="newJob(4)"><span octicon="plus"
+                                                                                        class="align-middle"></span>
+      </button>
+    </div>
+    <progressbar class="progress mt-3" [value]="progressBarTypeComp[4]" [max]="100" [animate]="true"
+                 [striped]="true"></progressbar>
+    <progressbar class="progress mt-1 mb-3" [value]="progressBarPriorityComp[4]" [max]="100"
+                 [animate]="true"></progressbar>
+    <div cdkDropList (cdkDropListDropped)="drop($event,4)" #completeList="cdkDropList"
+         [cdkDropListConnectedTo]="[backlogList,progressList,todoList,verifyList]">
+      <app-job *ngFor="let job of Jobs[4]" [Job]="job" cdkDrag></app-job>
+    </div>
+  </div>
+</div>

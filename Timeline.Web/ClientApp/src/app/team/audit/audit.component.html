@@ -1,0 +1,5 @@
+<ul>
+  <li *ngFor="let audit of audits">
+    <div>{{audit.timeStamp | date:'medium'}} {{audit.log}}</div>
+  </li>
+</ul>

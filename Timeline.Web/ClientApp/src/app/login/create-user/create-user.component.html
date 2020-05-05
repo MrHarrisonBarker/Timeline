@@ -1,0 +1,10 @@
+<div class="p-3">
+  <input #username placeholder="email" id="username" class="form-control my-2" type="text">
+  <input #firstname placeholder="firstname" id="firstname" class="form-control my-2" type="text">
+  <input #lastname placeholder="lastname" id="lastname" class="form-control my-2" type="text">
+  <input #displayname placeholder="displayname" id="displayname" class="form-control my-2" type="text">
+  <input #avatar placeholder="avatar url" id="avatar" class="form-control my-2" type="url">
+  <input #password placeholder="password" id="password" class="form-control my-2" type="password">
+
+  <button class="btn btn-secondary" (click)="create(username.value,password.value,avatar.value,displayname.value,firstname.value,lastname.value)">Create</button>
+</div>
