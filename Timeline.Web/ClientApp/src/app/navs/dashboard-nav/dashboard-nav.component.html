@@ -1,0 +1,23 @@
+<div *ngIf="auth.User">
+  <div class="px-1" style="width: 100%; height: 10px;" [style.background]="accent"></div>
+
+  <div class="d-flex justify-content-between px-1" style="width: 100%">
+    <div class="d-flex">
+      <div class="link mr-2" [routerLink]="['/dashboard']">Dashboard</div>
+      <div class="link mr-2" [matMenuTriggerFor]="teams">Teams</div>
+      <mat-menu #teams="matMenu">
+        <button mat-menu-item *ngFor="let team of auth.User.Affiliations">{{team.name}}</button>
+      </mat-menu>
+      <div class="link mr-2">Config</div>
+    </div>
+
+    <div class="d-flex">
+      <div class="link mr-2" (click)="JoinTeam()">Join Team</div>
+      <div class="link mr-2" (click)="NewTeam()">New Team</div>
+      <div class="link mr-2" (click)="JoinBoard()">Join Board</div>
+      <div class="link mr-2" (click)="back()">Back</div>
+
+      <div class="link mr-2" *ngIf="auth.User.type == 2" [routerLink]="['/superadmin']">Super</div>
+    </div>
+  </div>
+</div>

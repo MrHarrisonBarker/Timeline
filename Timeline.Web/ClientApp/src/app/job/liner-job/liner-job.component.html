@@ -1,0 +1,15 @@
+<div class="d-flex justify-content-between align-items-center" style="width: 100%;">
+  <div class="d-flex">
+    <div class="mr-2">{{job.name}}</div>
+    <div class="mr-2" style="color: #878787;font-style: italic;">{{job.description | truncate:trunk}}</div>
+  </div>
+  <div class="d-flex align-items-center">
+    <div class="mr-2" *ngIf="isRealDate(job.deadline)">{{job.deadline | date:'short'}}</div>
+    <badge [status]="job.jobStatus"></badge>
+    <badge [type]="job.jobType"></badge>
+    <badge [priority]="job.priority"></badge>
+
+    <div class="ml-2"><button mat-stroked-button (click)="gotToJob()">Goto job</button></div>
+    <div class="ml-2"><button mat-stroked-button (click)="openJob()">Open Job</button></div>
+  </div>
+</div>

@@ -180,6 +180,7 @@
               <e p="_guards" t="Include">
                 <e p="auth.guard.spec.ts" t="Include" />
                 <e p="auth.guard.ts" t="Include" />
+                <e p="super.guard.ts" t="Include" />
                 <e p="team.guard.spec.ts" t="Include" />
                 <e p="team.guard.ts" t="Include" />
               </e>
@@ -191,6 +192,7 @@
               </e>
               <e p="_models" t="Include">
                 <e p="audit.ts" t="Include" />
+                <e p="board.ts" t="Include" />
                 <e p="job.ts" t="Include" />
                 <e p="team.ts" t="Include" />
                 <e p="user.ts" t="Include" />
@@ -200,10 +202,14 @@
                 <e p="audit.service.ts" t="Include" />
                 <e p="auth.service.spec.ts" t="Include" />
                 <e p="auth.service.ts" t="Include" />
+                <e p="board.service.spec.ts" t="Include" />
+                <e p="board.service.ts" t="Include" />
                 <e p="job.service.spec.ts" t="Include" />
                 <e p="job.service.ts" t="Include" />
                 <e p="socket.service.spec.ts" t="Include" />
                 <e p="socket.service.ts" t="Include" />
+                <e p="super.service.spec.ts" t="Include" />
+                <e p="super.service.ts" t="Include" />
                 <e p="team.service.spec.ts" t="Include" />
                 <e p="team.service.ts" t="Include" />
               </e>
@@ -237,6 +243,12 @@
                   <e p="side-bar.component.spec.ts" t="Include" />
                   <e p="side-bar.component.ts" t="Include" />
                 </e>
+                <e p="teams" t="Include">
+                  <e p="teams.component.css" t="Include" />
+                  <e p="teams.component.html" t="Include" />
+                  <e p="teams.component.spec.ts" t="Include" />
+                  <e p="teams.component.ts" t="Include" />
+                </e>
                 <e p="Timeline" t="Include">
                   <e p="timeline.component.css" t="Include" />
                   <e p="timeline.component.html" t="Include" />
@@ -263,10 +275,22 @@
                   <e p="full-job.component.spec.ts" t="Include" />
                   <e p="full-job.component.ts" t="Include" />
                 </e>
+                <e p="job-list" t="Include">
+                  <e p="job-list.component.css" t="Include" />
+                  <e p="job-list.component.html" t="Include" />
+                  <e p="job-list.component.spec.ts" t="Include" />
+                  <e p="job-list.component.ts" t="Include" />
+                </e>
                 <e p="job.component.css" t="Include" />
                 <e p="job.component.html" t="Include" />
                 <e p="job.component.spec.ts" t="Include" />
                 <e p="job.component.ts" t="Include" />
+                <e p="liner-job" t="Include">
+                  <e p="liner-job.component.css" t="Include" />
+                  <e p="liner-job.component.html" t="Include" />
+                  <e p="liner-job.component.spec.ts" t="Include" />
+                  <e p="liner-job.component.ts" t="Include" />
+                </e>
               </e>
               <e p="login" t="Include">
                 <e p="create-user" t="Include">
@@ -276,13 +300,67 @@
                   <e p="create-user.component.ts" t="Include" />
                 </e>
               </e>
+              <e p="nav" t="Include">
+                <e p="nav.component.css" t="Include" />
+                <e p="nav.component.html" t="Include" />
+                <e p="nav.component.spec.ts" t="Include" />
+                <e p="nav.component.ts" t="Include" />
+              </e>
               <e p="nav-menu" t="Include">
                 <e p="nav-menu.component.css" t="Include" />
                 <e p="nav-menu.component.html" t="Include" />
                 <e p="nav-menu.component.ts" t="Include" />
               </e>
+              <e p="navs" t="Include">
+                <e p="board-nav" t="Include">
+                  <e p="board-nav.component.css" t="Include" />
+                  <e p="board-nav.component.html" t="Include" />
+                  <e p="board-nav.component.spec.ts" t="Include" />
+                  <e p="board-nav.component.ts" t="Include" />
+                </e>
+                <e p="dashboard-nav" t="Include">
+                  <e p="dashboard-nav.component.css" t="Include" />
+                  <e p="dashboard-nav.component.html" t="Include" />
+                  <e p="dashboard-nav.component.spec.ts" t="Include" />
+                  <e p="dashboard-nav.component.ts" t="Include" />
+                </e>
+                <e p="team-nav" t="Include">
+                  <e p="team-nav.component.css" t="Include" />
+                  <e p="team-nav.component.html" t="Include" />
+                  <e p="team-nav.component.spec.ts" t="Include" />
+                  <e p="team-nav.component.ts" t="Include" />
+                </e>
+              </e>
               <e p="shared" t="Include">
                 <e p="shared.module.ts" t="Include" />
+              </e>
+              <e p="superAdmin" t="Include">
+                <e p="socket" t="Include">
+                  <e p="socket.component.css" t="Include" />
+                  <e p="socket.component.html" t="Include" />
+                  <e p="socket.component.spec.ts" t="Include" />
+                  <e p="socket.component.ts" t="Include" />
+                </e>
+                <e p="super-admin-dashboard" t="Include">
+                  <e p="super-admin-dashboard.component.css" t="Include" />
+                  <e p="super-admin-dashboard.component.html" t="Include" />
+                  <e p="super-admin-dashboard.component.spec.ts" t="Include" />
+                  <e p="super-admin-dashboard.component.ts" t="Include" />
+                </e>
+                <e p="super-admin-routing.module.ts" t="Include" />
+                <e p="super-admin.module.ts" t="Include" />
+                <e p="teams" t="Include">
+                  <e p="teams.component.css" t="Include" />
+                  <e p="teams.component.html" t="Include" />
+                  <e p="teams.component.spec.ts" t="Include" />
+                  <e p="teams.component.ts" t="Include" />
+                </e>
+                <e p="Users" t="Include">
+                  <e p="users.component.css" t="Include" />
+                  <e p="users.component.html" t="Include" />
+                  <e p="users.component.spec.ts" t="Include" />
+                  <e p="users.component.ts" t="Include" />
+                </e>
               </e>
               <e p="team" t="Include">
                 <e p="audit" t="Include">
@@ -292,10 +370,40 @@
                   <e p="audit.component.ts" t="Include" />
                 </e>
                 <e p="board" t="Include">
+                  <e p="board-config" t="Include">
+                    <e p="board-config.component.css" t="Include" />
+                    <e p="board-config.component.html" t="Include" />
+                    <e p="board-config.component.spec.ts" t="Include" />
+                    <e p="board-config.component.ts" t="Include" />
+                  </e>
+                  <e p="board-progress" t="Include">
+                    <e p="board-progress.component.css" t="Include" />
+                    <e p="board-progress.component.html" t="Include" />
+                    <e p="board-progress.component.spec.ts" t="Include" />
+                    <e p="board-progress.component.ts" t="Include" />
+                  </e>
                   <e p="board.component.css" t="Include" />
                   <e p="board.component.html" t="Include" />
                   <e p="board.component.spec.ts" t="Include" />
                   <e p="board.component.ts" t="Include" />
+                  <e p="compact-board" t="Include">
+                    <e p="compact-board.component.css" t="Include" />
+                    <e p="compact-board.component.html" t="Include" />
+                    <e p="compact-board.component.spec.ts" t="Include" />
+                    <e p="compact-board.component.ts" t="Include" />
+                  </e>
+                  <e p="list-board" t="Include">
+                    <e p="list-board.component.css" t="Include" />
+                    <e p="list-board.component.html" t="Include" />
+                    <e p="list-board.component.spec.ts" t="Include" />
+                    <e p="list-board.component.ts" t="Include" />
+                  </e>
+                  <e p="new-board" t="Include">
+                    <e p="new-board.component.css" t="Include" />
+                    <e p="new-board.component.html" t="Include" />
+                    <e p="new-board.component.spec.ts" t="Include" />
+                    <e p="new-board.component.ts" t="Include" />
+                  </e>
                 </e>
                 <e p="config" t="Include">
                   <e p="config.component.css" t="Include" />
@@ -327,6 +435,12 @@
                   <e p="new-job.component.spec.ts" t="Include" />
                   <e p="new-job.component.ts" t="Include" />
                 </e>
+                <e p="team-progress" t="Include">
+                  <e p="team-progress.component.css" t="Include" />
+                  <e p="team-progress.component.html" t="Include" />
+                  <e p="team-progress.component.spec.ts" t="Include" />
+                  <e p="team-progress.component.ts" t="Include" />
+                </e>
                 <e p="team.component.css" t="Include" />
                 <e p="team.component.html" t="Include" />
                 <e p="team.component.spec.ts" t="Include" />
@@ -344,6 +458,12 @@
                   <e p="vault.component.spec.ts" t="Include" />
                   <e p="vault.component.ts" t="Include" />
                 </e>
+              </e>
+              <e p="team-dash" t="Include">
+                <e p="team-dash.component.css" t="Include" />
+                <e p="team-dash.component.html" t="Include" />
+                <e p="team-dash.component.spec.ts" t="Include" />
+                <e p="team-dash.component.ts" t="Include" />
               </e>
               <e p="user" t="Include">
                 <e p="user.component.css" t="Include" />
@@ -384,6 +504,7 @@
         </e>
         <e p="Controllers" t="Include">
           <e p="AuditController.cs" t="Include" />
+          <e p="BoardController.cs" t="Include" />
           <e p="JobController.cs" t="Include" />
           <e p="TeamsController.cs" t="Include" />
           <e p="UserController.cs" t="Include" />
@@ -396,24 +517,10 @@
           <e p="UserHub.cs" t="Include" />
         </e>
         <e p="Migrations" t="Include">
-          <e p="20200330113350_initial.cs" t="Include" />
-          <e p="20200330113350_initial.Designer.cs" t="Include" />
-          <e p="20200330124631_authentication.cs" t="Include" />
-          <e p="20200330124631_authentication.Designer.cs" t="Include" />
-          <e p="20200330212226_job workers.cs" t="Include" />
-          <e p="20200330212226_job workers.Designer.cs" t="Include" />
-          <e p="20200403215900_more complex job class.cs" t="Include" />
-          <e p="20200403215900_more complex job class.Designer.cs" t="Include" />
-          <e p="20200404133451_team avatar url.cs" t="Include" />
-          <e p="20200404133451_team avatar url.Designer.cs" t="Include" />
-          <e p="20200406164732_team invite token.cs" t="Include" />
-          <e p="20200406164732_team invite token.Designer.cs" t="Include" />
-          <e p="20200406200244_invite to guid.cs" t="Include" />
-          <e p="20200406200244_invite to guid.Designer.cs" t="Include" />
-          <e p="20200408233904_audit table.cs" t="Include" />
-          <e p="20200408233904_audit table.Designer.cs" t="Include" />
-          <e p="20200409000203_audit team.cs" t="Include" />
-          <e p="20200409000203_audit team.Designer.cs" t="Include" />
+          <e p="20200602175621_TeamsWithJobs.cs" t="Include" />
+          <e p="20200602175621_TeamsWithJobs.Designer.cs" t="Include" />
+          <e p="20200603222001_userType.cs" t="Include" />
+          <e p="20200603222001_userType.Designer.cs" t="Include" />
           <e p="TimelineContextModelSnapshot.cs" t="Include" />
         </e>
         <e p="Models" t="Include">
@@ -421,9 +528,12 @@
           <e p="Associations.cs" t="Include" />
           <e p="Audit.cs" t="Include" />
           <e p="Authenticate.cs" t="Include" />
+          <e p="Board.cs" t="Include" />
+          <e p="BoardAffiliation.cs" t="Include" />
           <e p="Job.cs" t="Include" />
           <e p="JobWorker.cs" t="Include" />
           <e p="Team.cs" t="Include" />
+          <e p="TeamBoard.cs" t="Include" />
           <e p="User.cs" t="Include" />
         </e>
         <e p="obj" t="ExcludeRecursive">

@@ -26,7 +26,7 @@
     <label for="WorkersInput">Workers</label>
     <div class="">
       <input id="WorkersInput" [(ngModel)]="selectedUser"
-             [typeahead]="filterUsers(Team.Affiliations)"
+             [typeahead]="filterUsers(Board.BoardMembers)"
              typeaheadOptionField="displayName"
              class="form-control" (keyup.enter)="addUser()" autocomplete="off">
 

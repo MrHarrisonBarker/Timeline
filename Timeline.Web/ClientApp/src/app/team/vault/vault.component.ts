@@ -21,7 +21,7 @@ export class VaultComponent implements OnInit
 
   ngOnInit (): void
   {
-    this.archivedJobs = this.teamService.team.Associations.filter(x => x.archived);
+    this.archivedJobs = this.teamService.team.Jobs.filter(x => x.archived);
   }
 
   openFullJob (job: Job)

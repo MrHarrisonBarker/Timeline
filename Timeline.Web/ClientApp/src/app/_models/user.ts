@@ -1,6 +1,13 @@
 import {Team} from "./team";
 import {Job} from "./job";
 
+export enum UserType
+{
+  Regular,
+  Admin,
+  SuperAdmin
+}
+
 export interface User {
   id?: string;
   displayName: string;
@@ -9,9 +16,10 @@ export interface User {
   firstName: string;
   lastName: string;
   password: string;
-  token?: string
-  Affiliations?: Team[]
-  Associations?: Job[]
+  token?: string;
+  Affiliations?: Team[];
+  Associations?: Job[];
+  type: UserType;
 }
 
 export interface Authenticate {

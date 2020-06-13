@@ -1,7 +1,6 @@
 import {User} from "./user";
 
 export enum JobStatus {
-  Backlog,
   ToDo,
   InProgress,
   Verify,

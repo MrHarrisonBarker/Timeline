@@ -7,6 +7,11 @@ import {OcticonDirective} from "../_helps/octicon.directive";
 import { BadgeComponent } from '../badge/badge.component';
 import {TooltipModule} from "ngx-bootstrap/tooltip";
 import {ModalModule} from "ngx-bootstrap/modal";
+import {MatTooltipModule} from "@angular/material/tooltip";
+import {DashboardNavComponent} from "../navs/dashboard-nav/dashboard-nav.component";
+import {AppRoutingModule} from "../app-routing.module";
+import {MatMenuModule} from "@angular/material/menu";
+import {TeamNavComponent} from "../navs/team-nav/team-nav.component";
 
 
 
@@ -15,7 +20,9 @@ import {ModalModule} from "ngx-bootstrap/modal";
     UserAvatarComponent,
     OcticonDirective,
     TruncatePipe,
-    BadgeComponent
+    BadgeComponent,
+    TeamNavComponent,
+    DashboardNavComponent,
   ],
   exports: [
     UserAvatarComponent,
@@ -24,13 +31,21 @@ import {ModalModule} from "ngx-bootstrap/modal";
     OcticonDirective,
     TruncatePipe,
     ModalModule,
-    BadgeComponent
+    BadgeComponent,
+    MatTooltipModule,
+    CommonModule,
+
+    DashboardNavComponent,
+    MatMenuModule,
+    TeamNavComponent
   ],
   imports: [
     CommonModule,
     TimeFromPipeModule,
     TooltipModule.forRoot(),
     ModalModule.forRoot(),
+    MatTooltipModule,
+    MatMenuModule,
   ]
 })
 export class SharedModule { }

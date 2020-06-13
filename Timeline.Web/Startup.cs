@@ -58,6 +58,7 @@ namespace Timeline
             //                 .AllowCredentials()
             //                 .SetPreflightMaxAge(TimeSpan.FromSeconds(3600)));
             // });
+            
             services.AddCors(options =>
             {
                 options.AddPolicy("CorsPolicy",
@@ -108,6 +109,8 @@ namespace Timeline
 
             // In production, the Angular files will be served from this directory
             services.AddSpaStaticFiles(configuration => { configuration.RootPath = "ClientApp/dist"; });
+            
+            services.AddResponseCompression();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -142,6 +145,7 @@ namespace Timeline
             //
             app.UseAuthentication();
             app.UseAuthorization();
+            app.UseResponseCompression();
             
 
             app.UseEndpoints(endpoints =>

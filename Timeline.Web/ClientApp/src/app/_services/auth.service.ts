@@ -18,6 +18,7 @@ export class AuthService
   private header: HttpHeaders;
 
   public User: User;
+  public Colleagues: User[];
   public currentTeam: EventEmitter<string> = new EventEmitter<string>();
   public toggleTimeline: EventEmitter<boolean> = new EventEmitter<boolean>();
   public addTeam: EventEmitter<Team> = new EventEmitter<Team>();
@@ -83,6 +84,17 @@ export class AuthService
       console.log("Get Jobs", user);
       return user;
     }))
+  }
+
+  public getColleagues (): Observable<User[]>
+  {
+    return this.http.get<User[]>(this.baseUrl + 'api/user/colleagues', {
+      headers: this.header,
+      params: new HttpParams().set('UserId', this.User.id)
+    }).pipe(map(colleagues => {
+      this.Colleagues = colleagues;
+      return colleagues;
+    }));
   }
 
   createUser (user: User): Observable<User>

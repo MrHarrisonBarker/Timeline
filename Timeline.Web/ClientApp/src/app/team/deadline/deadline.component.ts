@@ -24,7 +24,7 @@ export class DeadlineComponent implements OnInit
 
   filterJobs ()
   {
-    this.filteredJobs = this.teamService.team.Associations.filter(x => !x.archived);
+    this.filteredJobs = this.teamService.team.Jobs.filter(x => !x.archived);
     this.filteredJobs.forEach(job =>
     {
       var index = this.deadlines.findIndex(x => x.Deadline == job.deadline);

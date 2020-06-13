@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using Newtonsoft.Json;
 
@@ -15,6 +16,7 @@ namespace Timeline.Models
         public string Description { get; set; }
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
+        [AllowNull]
         public DateTime Deadline { get; set; }
         public bool Finished { get; set; }
         public bool Archived { get; set; }
@@ -34,6 +36,12 @@ namespace Timeline.Models
         [NotMapped]
         [JsonProperty("AssociatedUsers")]
         public IList<Guid> Users => AssociatedUsers?.Select(x => x.User.Id).ToList();
+        
+        // [JsonIgnore] public IList<Associations> AssociatedBoard { get; set; }
+        //
+        // [NotMapped]
+        // [JsonProperty("AssociatedBoard")]
+        // public IList<Guid> Board => AssociatedBoard?.Select(x => x.Board.Id).ToList();
 
         // [NotMapped] public string[] T => Tags.Select(x => x).ToArray();
     }

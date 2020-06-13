@@ -1,0 +1,19 @@
+<div *ngIf="auth.User">
+  <div class="px-1" style="width: 100%; height: 10px;" [style.background]="accent"></div>
+
+  <div class="d-flex px-1" style="width: 100%">
+    <div class="link mr-1">Timeline</div>
+    <div class="link mr-1">Dashboard</div>
+    <div class="link mr-1">Boards</div>
+    <div class="link mr-1">Jobs</div>
+    <div class="link mr-1">Targets</div>
+    <div class="link mr-1">Stats</div>
+    <div class="link mr-1">Config</div>
+
+    <div style="width: 100%"></div>
+
+    <div class="link mr-1" (click)="back()">Back</div>
+  </div>
+
+
+</div>

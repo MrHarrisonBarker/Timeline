@@ -1,9 +1,9 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {BsModalRef} from "ngx-bootstrap/modal";
+import {Component, Inject, Input, OnInit} from '@angular/core';
 import {JobService} from "../../_services/job.service";
 import {Job} from "../../_models/job";
 import {User} from "../../_models/user";
-import {TeamService} from "../../_services/team.service";
+import {BoardService} from "../../_services/board.service";
+import {MAT_DIALOG_DATA} from "@angular/material/dialog";
 
 @Component({
   selector: 'app-full-job',
@@ -17,12 +17,13 @@ export class FullJobComponent implements OnInit
   public selectedUser: string;
   private selectedUsers: User[] = [];
 
-  constructor (public jobService: JobService, public bsModalRef: BsModalRef, private teamService: TeamService)
+  constructor (public jobService: JobService, private boardService: BoardService, @Inject(MAT_DIALOG_DATA) public data: any)
   {
   }
 
   ngOnInit ()
   {
+    this.Job = this.data.job;
   }
 
 
@@ -86,16 +87,17 @@ export class FullJobComponent implements OnInit
 
   addUser ()
   {
-    console.log(this.teamService.team.Affiliations);
+    console.log(this.boardService.board.BoardMembers);
     // @ts-ignore
     if (this.Job.AssociatedUsers.find(x => x.displayName == this.selectedUser))
     {
       console.log('user already in list');
       return;
     }
-    console.log('associated',this.Job.AssociatedUsers);
-    let user = this.teamService.team.Affiliations.find(x => x.displayName == this.selectedUser);
-    this.jobService.addWorker(user.id,this.Job.jobId).subscribe(() => {
+    console.log('associated', this.Job.AssociatedUsers);
+    let user = this.boardService.board.BoardMembers.find(x => x.displayName == this.selectedUser);
+    this.jobService.addWorker(user.id, this.Job.jobId).subscribe(() =>
+    {
       // @ts-ignore
       this.Job.AssociatedUsers.push(user);
       console.log(this.Job.AssociatedUsers);
@@ -110,14 +112,22 @@ export class FullJobComponent implements OnInit
 
   updateArchived (checked: boolean)
   {
-    if (checked != this.Job.archived)
-    {
-      this.jobService.updateArchived(checked, this.Job.jobId).subscribe(() =>
-      {
-        console.log('finished archived update');
-        this.Job.archived = checked;
-        this.bsModalRef.hide();
-      });
-    }
+    // if (checked != this.Job.archived)
+    // {
+    //   this.jobService.updateArchived(checked, this.Job.jobId).subscribe(() =>
+    //   {
+    //     console.log('finished archived update');
+    //     this.Job.archived = checked;
+    //     this.bsModalRef.hide();
+    //   });
+    // }
+  }
+
+  flagJob ()
+  {
+    this.jobService.updateFlag(this.Job.jobId).subscribe(flag => {
+      console.log('updated flag',flag);
+      this.Job.flagged = !this.Job.flagged;
+    });
   }
 }

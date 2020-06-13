@@ -49,6 +49,7 @@ export class TeamService
       {
         console.log('team created', team);
         this.authService.addTeam.emit(team);
+        return team;
       }
     }));
   }

@@ -2,6 +2,7 @@ import {Component, OnInit, ViewChild} from '@angular/core';
 import {Router} from "@angular/router";
 import {AuthService} from "../_services/auth.service";
 import {JobService} from "../_services/job.service";
+import {SocketService} from "../_services/socket.service";
 
 @Component({
   selector: 'app-dashboard',
@@ -13,7 +14,7 @@ export class DashboardComponent implements OnInit
   private show: string = 'Timeline';
   public currentTeamId: string;
 
-  constructor (public auth: AuthService, private jobService: JobService, private router: Router)
+  constructor (public auth: AuthService, private jobService: JobService, private router: Router, public socketService: SocketService)
   {
     this.auth.removeTeam.subscribe(team =>
     {
@@ -40,6 +41,10 @@ export class DashboardComponent implements OnInit
         this.auth.getTeams().subscribe(user =>
         {
           console.log("User with teams", this.auth.User);
+        });
+
+        this.auth.getColleagues().subscribe(colleagues => {
+          console.log('colleagues',colleagues);
         });
       }
     })

@@ -1,0 +1,81 @@
+<!--<div *ngIf="this.teamService.team">{{this.teamService?.team.name}}</div>-->
+<div class="d-flex flex-column" *ngIf="this.teamService.team">
+  <app-team-nav [accent]="this.teamService.team.accent" [team]="this.teamService.team"></app-team-nav>
+
+  <div class="d-flex px-1">
+    <user-avatar *ngFor="let user of this.teamService.team.TeamMembers" [user]="user" [size]="60" [onlineIndicate]="true"></user-avatar>
+  </div>
+
+
+  <div class="clearfix m-3">
+    <div class="float-left">
+      <div style="font-size: x-large;">{{this.teamService.team.name}}</div>
+      <i style="font-size: medium">{{this.teamService.team.description}}</i>
+      <div class="link" [cdkCopyToClipboard]="this.teamService.team.inviteToken">{{this.teamService.team.inviteToken}}</div>
+    </div>
+    <img class="float-right" [src]="this.teamService.team.avatarUrl" width="60px">
+  </div>
+
+
+  <div class="d-flex">
+    <mat-form-field>
+      <mat-label>Choose a date</mat-label>
+      <input matInput #datePicker [(ngModel)]="dateValue" [matDatepicker]="picker">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+
+    <button mat-button (click)="createTestJob(datePicker)">Create test job</button>
+  </div>
+
+  <div class="d-flex flex-row ml-3">
+    <div *ngFor="let type of types;let i = index" class="d-flex">
+      <div *ngFor="let n of [].constructor(type)" class="ball" [style.background-color]="jobService.getTypeBackGroundJob(i)"></div>
+    </div>
+  </div>
+
+<!--  &lt;!&ndash;  <div class="d-flex flex-row justify-content-between">&ndash;&gt;-->
+<!--  &lt;!&ndash;    <div class="ball" [style.background-color]="jobService.getStatusBackGround(job)" *ngFor="let job of Team.Jobs"></div>&ndash;&gt;-->
+<!--  &lt;!&ndash;  </div>&ndash;&gt;-->
+
+<!--  &lt;!&ndash;  <div class="d-flex flex-row justify-content-between">&ndash;&gt;-->
+<!--  &lt;!&ndash;    <div class="ball" [style.background-color]="jobService.getPriorityBackGround(job)" *ngFor="let job of Team.Jobs"></div>&ndash;&gt;-->
+<!--  &lt;!&ndash;  </div>&ndash;&gt;-->
+
+  <div class="row" style="padding: 0 1rem;">
+    <div class="col-4">
+      <div class="title">Boards</div>
+      <mat-list role="list" class="shadow-sm">
+        <mat-list-item (click)="routeToBoard(board.id)" class="boardListItem listItem" role="listitem" [style.border-left-color]="board.accent" *ngFor="let board of this.teamService.team.Boards">
+          <div class="d-flex justify-content-between align-items-center" style="width: 100%">
+            <div>{{board.name}}</div>
+            <div>
+              <button mat-stroked-button (click)="joinBoard(board.inviteToken)" *ngIf="ifBoardMember(board)">Join board
+              </button>
+            </div>
+          </div>
+        </mat-list-item>
+      </mat-list>
+    </div>
+    <div class="col-8" *ngIf="filteredJobs">
+      <div class="title">Jobs</div>
+      <mat-tab-group (focusChange)="log($event)">
+        <mat-tab label="All">
+          <app-job-list [Jobs]="filteredJobs"></app-job-list>
+        </mat-tab>
+        <mat-tab label="ToDo">
+          <app-job-list [Jobs]="toDOJobs"></app-job-list>
+        </mat-tab>
+        <mat-tab label="InProgress">
+          <app-job-list [Jobs]="inProgressJobs"></app-job-list>
+        </mat-tab>
+        <mat-tab label="Verify">
+          <app-job-list [Jobs]="verifyJobs"></app-job-list>
+        </mat-tab>
+        <mat-tab label="Completed">
+          <app-job-list [Jobs]="completedJobs"></app-job-list>
+        </mat-tab>
+      </mat-tab-group>
+    </div>
+  </div>
+</div>

@@ -5,6 +5,7 @@ import {Observable} from "rxjs";
 import {map} from "rxjs/operators";
 import {Job, JobPriority, JobStatus, JobType} from "../_models/job";
 import {User} from "../_models/user";
+import {Board} from "../_models/board";
 
 export interface NewJob
 {
@@ -19,6 +20,12 @@ export enum DEFCON
   DEFCON3 = "#ffc107",
   DEFCON2 = "#ff9800",
   DEFCON1 = "#ff5722",
+}
+
+export interface JobRoute
+{
+  teamId: string;
+  boardId: string;
 }
 
 @Injectable({
@@ -39,11 +46,11 @@ export class JobService
     this.header = new HttpHeaders({'Authorization': `Bearer ${this.authService.User.token}`})
   }
 
-  public newJob (newJob: NewJob, teamId: string): Observable<Job>
+  public newJob (newJob: NewJob, teamId: string, boardId: string): Observable<Job>
   {
     return this.http.post<Job>(this.baseUrl + 'api/job/CreateJob', newJob, {
       headers: this.header,
-      params: new HttpParams().set('UserId', this.authService.User.id).set('TeamId', teamId)
+      params: new HttpParams().set('UserId', this.authService.User.id).set('TeamId', teamId).set('BoardId', boardId)
     });
   }
 
@@ -96,6 +103,14 @@ export class JobService
     return this.http.put(this.baseUrl + 'api/job/addworker', {userId: userId, jobId: jobId}, {headers: this.header});
   }
 
+  public getRoute (jobId: string): Observable<JobRoute>
+  {
+    return this.http.get<JobRoute>(this.baseUrl + 'api/job/GoToJob', {
+      headers: this.header,
+      params: new HttpParams().set('JobId', jobId)
+    });
+  }
+
   updateArchived (checked: boolean, jobId: String): Observable<any>
   {
     return this.http.put(this.baseUrl + 'api/job/UpdateArchived', {
@@ -123,10 +138,10 @@ export class JobService
   {
     switch (job.jobStatus)
     {
-      case JobStatus.Backlog:
-      {
-        return "solid #f44336";
-      }
+      // case JobStatus.Backlog:
+      // {
+      //   return "solid #f44336";
+      // }
       case JobStatus.ToDo:
       {
         return "solid blue";
@@ -150,10 +165,10 @@ export class JobService
   {
     switch (job.jobStatus)
     {
-      case JobStatus.Backlog:
-      {
-        return "#f44336";
-      }
+      // case JobStatus.Backlog:
+      // {
+      //   return "#f44336";
+      // }
       case JobStatus.ToDo:
       {
         return "Blue";
@@ -191,6 +206,23 @@ export class JobService
     }
   }
 
+  public getPriorityBorder (job: Job): string
+  {
+    switch (job.priority)
+    {
+      case JobPriority.DEFCON5:
+        return 'solid ' + DEFCON.DEFCON5;
+      case JobPriority.DEFCON4:
+        return 'solid ' + DEFCON.DEFCON4;
+      case JobPriority.DEFCON3:
+        return 'solid ' + DEFCON.DEFCON3;
+      case JobPriority.DEFCON2:
+        return 'solid ' + DEFCON.DEFCON2;
+      case JobPriority.DEFCON1:
+        return 'solid ' + DEFCON.DEFCON1;
+    }
+  }
+
   public getTypeBackGround (job: Job): string
   {
     switch (job.jobType)
@@ -210,5 +242,31 @@ export class JobService
     }
   }
 
+  public getTypeBackGroundJob (type: JobType): string
+  {
+    switch (type)
+    {
+      case JobType.Bug :
+      {
+        return "limegreen"
+      }
+      case JobType.Feature :
+      {
+        return "purple"
+      }
+      case JobType.Generic :
+      {
+        return "grey"
+      }
+    }
+  }
 
+
+  public updateFlag (jobId: string): Observable<any>
+  {
+    return this.http.put(this.baseUrl + 'api/job/UpdateFlag', '', {
+      headers: this.header,
+      params: new HttpParams().set('JobId', jobId)
+    });
+  }
 }

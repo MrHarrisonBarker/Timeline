@@ -9,6 +9,9 @@ namespace Timeline.Models
         public Guid JobId { get; set; }
         public Job Job { get; set; }
         
+        public Guid BoardId { get; set; }
+        public Board Board { get; set; }
+        
         public Guid TeamId { get; set; }
         public Team Team { get; set; }
     }

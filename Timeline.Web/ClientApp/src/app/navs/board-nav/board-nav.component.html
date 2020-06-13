@@ -1,0 +1,19 @@
+<div *ngIf="auth.User">
+  <div class="px-1" style="width: 100%; height: 10px;" [style.background]="accent"></div>
+
+  <div class="d-flex px-1" style="width: 100%">
+    <div class="link mr-2" [routerLink]="['/team',teamService.team.id]">{{teamService.team.name}}</div>
+    <div class="link mr-2" [routerLink]="['/dashboard']">Dashboard</div>
+    <div class="link mr-2">Members</div>
+    <div class="link mr-2">Progress</div>
+<!--    <div class="link mr-2" [matMenuTriggerFor]="teams">Teams</div>-->
+<!--    <mat-menu #teams="matMenu">-->
+<!--      <button mat-menu-item *ngFor="let team of auth.User.Affiliations">{{team.name}}</button>-->
+<!--    </mat-menu>-->
+    <div class="link mr-2" (click)="config()">Config</div>
+
+    <div style="width: 100%"></div>
+
+    <div class="link mr-2" (click)="back()">Back</div>
+  </div>
+</div>

@@ -1,7 +1,18 @@
-<!--<div class="display-4">Timeline</div>-->
-<div class="row h-100 p-3" *ngIf="auth.User">
-  <div class="col type overflow-auto h-100 mx-1 well" *ngFor="let deadline of deadlines" >
-    <div class="p p-3" style="font-size: larger;">{{deadline.Deadline| date:'medium'}}</div>
-    <app-job *ngFor="let job of deadline.Jobs" [Job]="job"></app-job>
-  </div>
-</div>
+<!--<div class="row h-100 p-3" *ngIf="auth.User">-->
+<!--  <div class="col type overflow-auto h-100 mx-1 well" *ngFor="let deadline of deadlines" >-->
+<!--    <div class="p p-3" style="font-size: larger;">{{deadline.Deadline| date:'medium'}}</div>-->
+<!--    <app-job *ngFor="let job of deadline.Jobs" [Job]="job"></app-job>-->
+<!--  </div>-->
+<!--</div>-->
+<div class="title p-3">Work</div>
+<mat-tab-group *ngIf="auth.User" class="m-3" (focusChange)="log($event)">
+  <mat-tab label="Assigned To me">
+    <app-job-list [Jobs]="auth.User.Associations"></app-job-list>
+  </mat-tab>
+  <mat-tab label="Flagged" >
+    <app-job-list [Jobs]="flaggedJobs"></app-job-list>
+  </mat-tab>
+  <mat-tab label="Past Deadline">
+    <app-job-list [Jobs]="overDeadlineJobs"></app-job-list>
+  </mat-tab>
+</mat-tab-group>

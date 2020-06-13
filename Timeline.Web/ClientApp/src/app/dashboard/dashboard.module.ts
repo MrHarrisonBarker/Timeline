@@ -18,7 +18,6 @@ import {ClipboardModule} from "@angular/cdk/clipboard";
 import {ConfigComponent} from '../team/config/config.component';
 import {ConfigBarComponent} from './config-bar/config-bar.component';
 import {UsersComponent} from "../team/users/users.component";
-import {VaultComponent} from "../team/vault/vault.component";
 import {BoardComponent} from "../team/board/board.component";
 import {AuditComponent} from '../team/audit/audit.component';
 import {DeadlineComponent} from '../team/deadline/deadline.component';
@@ -30,46 +29,19 @@ import {TimepickerModule} from "ngx-bootstrap/timepicker";
 import {ProgressbarModule} from "ngx-bootstrap/progressbar";
 import {BsDropdownModule} from "ngx-bootstrap/dropdown";
 import {AlertModule} from "ngx-bootstrap/alert";
+import { TeamsComponent } from './teams/teams.component';
+import {MatTabsModule} from "@angular/material/tabs";
+import {MatListModule} from "@angular/material/list";
 
 
 @NgModule({
   declarations: [
-    DashboardComponent,
-    JobComponent,
-    FullJobComponent,
-    TimelineComponent,
-    SideBarComponent,
-    NewJobComponent,
-    TeamComponent,
-    NewComponent,
-    JoinTeamComponent,
-    ConfigComponent,
-    ConfigBarComponent,
-    UsersComponent,
-    VaultComponent,
-    AuditComponent,
-    DeadlineComponent,
-    UserComponent,
-    BoardComponent
+
   ],
   imports: [
     CommonModule,
     SharedModule,
     DashboardRoutingModule,
-    BsDatepickerModule.forRoot(),
-    TypeaheadModule.forRoot(),
-    ReactiveFormsModule,
-    TimepickerModule.forRoot(),
-    ProgressbarModule.forRoot(),
-    DragDropModule,
-    AlertModule.forRoot(),
-    FormsModule,
-    ClipboardModule,
-    BsDropdownModule.forRoot(),
-    CalendarModule.forRoot({
-      provide: DateAdapter,
-      useFactory: adapterFactory
-    })
   ],
   entryComponents: [FullJobComponent]
 })

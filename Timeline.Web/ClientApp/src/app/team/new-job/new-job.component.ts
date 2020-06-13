@@ -4,6 +4,7 @@ import {Team} from "../../_models/team";
 import {Job} from "../../_models/job";
 import {JobService} from "../../_services/job.service";
 import {BsModalRef} from "ngx-bootstrap/modal";
+import {Board} from "../../_models/board";
 
 @Component({
   selector: 'app-new-job',
@@ -13,7 +14,8 @@ import {BsModalRef} from "ngx-bootstrap/modal";
 export class NewJobComponent implements OnInit
 {
 
-  Team: Team;
+  TeamId: string;
+  Board: Board;
   InitialStatus: number;
 
   selectedUser: string;
@@ -51,9 +53,10 @@ export class NewJobComponent implements OnInit
       commit: commit
     };
     console.log('new job', job);
-    this.jobService.newJob({job: job, users: this.selectedUsers}, this.Team.id).subscribe(job =>
+    this.jobService.newJob({job: job, users: this.selectedUsers}, this.TeamId, this.Board.id).subscribe(job =>
     {
-      if (job) {
+      if (job)
+      {
         console.log(job);
         this.jobService.addEvent.emit(job);
         this.bsModalRef.hide();
@@ -69,7 +72,7 @@ export class NewJobComponent implements OnInit
       console.log('user already in list');
       return;
     }
-    this.selectedUsers.push(this.Team.Affiliations.find(x => x.displayName == this.selectedUser));
+    this.selectedUsers.push(this.Board.BoardMembers.find(x => x.displayName == this.selectedUser));
     console.log(this.selectedUsers);
   }
 

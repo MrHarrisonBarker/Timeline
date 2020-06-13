@@ -1,0 +1,21 @@
+<app-team-nav [accent]="teamService.team.accent"></app-team-nav>
+
+<div class="d-flex flex-row">
+  <div *ngFor="let week of yearInWeeks; let weekIndex = index" class="weekBlock">
+    <div class="d-flex flex-column">
+      <div *ngFor="let day of week; let dayIndex = index" class="block" [matTooltip]="jobsStartedInYear[weekIndex][dayIndex] + ' new jobs: ' + yearInWeeks[weekIndex][dayIndex]" [style.background-color]="jobsStartedBackground(jobsStartedInYear[weekIndex][dayIndex])"></div>
+    </div>
+  </div>
+</div>
+
+<div class="d-flex flex-row">
+  <div *ngFor="let week of yearInWeeks; let weekIndex = index" class="weekBlock">
+    <div class="d-flex flex-column">
+      <div *ngFor="let day of week; let dayIndex = index" class="block" [matTooltip]="jobsFinishedInYear[weekIndex][dayIndex] + ' jobs finished: ' + yearInWeeks[weekIndex][dayIndex]" [style.background-color]="jobsFinishedBackground(jobsFinishedInYear[weekIndex][dayIndex])"></div>
+    </div>
+  </div>
+</div>
+
+<div class="d-flex flex-wrap">
+  <div *ngFor="let job of jobsByProgress" class="block" [style.background-color]="jobService.getStatusBackGround(job)" [matTooltip]="job.name"></div>
+</div>

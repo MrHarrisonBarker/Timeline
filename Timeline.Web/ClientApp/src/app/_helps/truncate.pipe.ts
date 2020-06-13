@@ -6,8 +6,14 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class TruncatePipe implements PipeTransform {
 
   transform(value: string, ...args: any[]): any {
-    if (value.length > 100) {
-      return value.substr(0, 100) + '...';
+
+    if (args[0] < 1 || args[0] == '' || args[0] == undefined) {
+      args[0] = 100;
+    }
+
+    // console.log('trunk',args[0]);
+    if (value.length > args[0]) {
+      return value.substr(0, args[0]) + '...';
     } else {
       return value;
     }

@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {TeamService} from "../../_services/team.service";
 import {Team} from "../../_models/team";
 import {BsModalRef} from "ngx-bootstrap/modal";
+import {AuthService} from "../../_services/auth.service";
 
 @Component({
   selector: 'app-new',
@@ -11,7 +12,7 @@ import {BsModalRef} from "ngx-bootstrap/modal";
 export class NewComponent implements OnInit
 {
 
-  constructor (private teamService: TeamService, private bsModalRef: BsModalRef)
+  constructor (private teamService: TeamService,private auth: AuthService)
   {
   }
 
@@ -19,16 +20,20 @@ export class NewComponent implements OnInit
   {
   }
 
-  newTeam (name: string, avatar: string)
+  newTeam (name: string, avatar: string, accent: string, description: string)
   {
     let team: Team = {
       name: name,
-      avatarUrl: avatar
+      avatarUrl: avatar,
+      accent: accent,
+      description: description
     };
     console.log('new team', team);
-    this.teamService.newTeam(team).subscribe(team => {
+    this.teamService.newTeam(team).subscribe(team =>
+    {
       console.log('team on new comp', team);
-      this.bsModalRef.hide();
+      this.auth.User.Affiliations.push(team);
+      // this.bsModalRef.hide();
     });
   }
 }

@@ -13,7 +13,7 @@ using Timeline.Services;
 
 namespace Timeline.Controllers
 {
-    [Authorize]
+    // [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class UserController : ControllerBase
@@ -68,22 +68,30 @@ namespace Timeline.Controllers
         {
             return await _timelineContext.Users
                 .Include(x => x.Affiliations).ThenInclude(x => x.Team)
-                .Include(x => x.Associations).ThenInclude(x => x.Job).ToListAsync();
+                .Include(x => x.Associations).ThenInclude(x => x.Job)
+                .Include(x => x.BoardAffiliations).ThenInclude(x => x.Board).ToListAsync();
         }
 
-        // [AllowAnonymous]
+        [AllowAnonymous]
         [HttpGet("teams")]
         public async Task<ActionResult<User>> GetUserTeams(Guid userId)
         {
             Console.WriteLine($"Getting User {userId} teams");
             _log.LogInformation("Getting User {id} teams", userId);
             return await _timelineContext.Users
-                .Include(x => x.Affiliations).ThenInclude(x => x.Team)
-                .Include(x => x.Associations).ThenInclude(x => x.Job).ThenInclude(x => x.AssociatedUsers)
-                .ThenInclude(x => x.User)
+                .Include(x => x.Affiliations).ThenInclude(x => x.Team).ThenInclude(x => x.Owner)
                 .FirstOrDefaultAsync(x => x.Id == userId);
         }
 
+        [HttpGet("boards")]
+        public async Task<ActionResult<User>> GetUserBoards(Guid userId)
+        {
+            Console.WriteLine($"Getting User {userId} boards");
+            _log.LogInformation("Getting User {id} boards", userId);
+            return await _timelineContext.Users
+                .Include(x => x.BoardAffiliations).ThenInclude(x => x.Board)
+                .FirstOrDefaultAsync(x => x.Id == userId);
+        }
 
         [HttpGet("jobs")]
         public async Task<ActionResult<User>> GetUserJobs(Guid userId)
@@ -122,6 +130,33 @@ namespace Timeline.Controllers
             _log.LogInformation("Creating affiliation {userId} : {TeamId}", affiliation.UserId, affiliation.TeamId);
 
             return Ok();
+        }
+
+        [HttpGet("colleagues")]
+        public async Task<ActionResult<IList<User>>> GetUsersColleagues(Guid userId)
+        {
+            var user = await _timelineContext.Users.Where(x => x.Id == userId).Include(x => x.Affiliations)
+                .ThenInclude(x => x.Team).ThenInclude(x => x.TeamMembers).ThenInclude(x => x.User).FirstOrDefaultAsync();
+
+            if (user == null)
+            {
+                return BadRequest();
+            }
+            
+            IList<User> colleagues = new List<User>();
+
+            foreach (Affiliation userAffiliation in user.Affiliations)
+            {
+                foreach (var teamMember in userAffiliation.Team.TeamMembers)
+                {
+                    if (teamMember.UserId != userId)
+                    {
+                        colleagues.Add(teamMember.User);
+                    }
+                }
+            }
+
+            return Ok(colleagues);
         }
     }
 }

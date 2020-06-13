@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
@@ -49,7 +50,7 @@ namespace Timeline.Controllers
         }
 
         [HttpPost("CreateJob")]
-        public async Task<IActionResult> CreateJob([FromBody] NewJob newJob, Guid teamId, Guid userId)
+        public async Task<IActionResult> CreateJob([FromBody] NewJob newJob, Guid teamId, Guid userId, Guid boardId)
         {
             var team = await _timelineContext.Teams.Where(x => x.Id == teamId)
                 .Include(x => x.Associations).ThenInclude(x => x.Job).ThenInclude(x => x.AssociatedUsers)
@@ -80,7 +81,8 @@ namespace Timeline.Controllers
             Console.WriteLine($"job id {newJob.Job.JobId}");
             _log.LogInformation("New job {name} : {id} on {teamId}", newJob.Job.Name, newJob.Job.JobId, team.Id);
 
-            var association = new Associations {TeamId = teamId, UserId = userId, JobId = newJob.Job.JobId};
+            var association = new Associations
+                {TeamId = teamId, UserId = userId, JobId = newJob.Job.JobId, BoardId = boardId};
             team.Associations.Add(association);
 
 
@@ -145,7 +147,7 @@ namespace Timeline.Controllers
 
             return Ok();
         }
-        
+
         [HttpPut("UpdateArchived")]
         public async Task<IActionResult> UpdateArchived([FromBody] ArchiveUpdate archiveUpdate)
         {
@@ -160,6 +162,27 @@ namespace Timeline.Controllers
             _log.LogInformation("Updating archived {archived} : {id}", archiveUpdate.archived, job.JobId);
 
             job.Archived = archiveUpdate.archived;
+            await _timelineContext.SaveChangesAsync();
+
+            return Ok();
+        }
+
+        [HttpPut("UpdateFlag")]
+        public async Task<IActionResult> UpdateFlag(Guid jobId)
+        {
+            Console.WriteLine(jobId);
+            
+            var job = await _timelineContext.Jobs.Where(x => x.JobId == jobId).FirstOrDefaultAsync();
+
+            if (job == null)
+            {
+                return BadRequest();
+            }
+
+            Console.WriteLine($"Updating flagged for {jobId} to {!job.Flagged}");
+            _log.LogInformation("Updating flagged {archived} : {id}", !job.Flagged, job.JobId);
+
+            job.Flagged = !job.Flagged;
             await _timelineContext.SaveChangesAsync();
 
             return Ok();
@@ -221,6 +244,30 @@ namespace Timeline.Controllers
 
             return Ok(job.Deadline);
         }
+
+        [HttpGet("GoToJob")]
+        public async Task<ActionResult<JobRoute>> GoToJob(Guid jobId)
+        {
+            // var job = _timelineContext.Teams.Include(x => x.Associations)
+            //     .Where(x => x.Associations.Where(x => x.JobId == jobId) != null);
+
+            Console.WriteLine($"Getting association for {jobId}");
+
+            var association = await _timelineContext.Associations.Where(x => x.JobId == jobId).FirstOrDefaultAsync();
+
+            if (association == null)
+            {
+                return BadRequest();
+            }
+
+            return new JobRoute {boardId = association.BoardId, teamId = association.TeamId};
+        }
+    }
+
+    public class JobRoute
+    {
+        public Guid teamId { get; set; }
+        public Guid boardId { get; set; }
     }
 
     public class ArchiveUpdate

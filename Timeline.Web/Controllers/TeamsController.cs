@@ -23,19 +23,21 @@ namespace Timeline.Controllers
         private readonly IAuditService _auditService;
         readonly ILogger<TeamsController> _log;
 
-        public TeamsController(TimelineContext timelineContext, ILogger<TeamsController> log, IAuditService auditService)
+        public TeamsController(TimelineContext timelineContext, ILogger<TeamsController> log,
+            IAuditService auditService)
         {
             _timelineContext = timelineContext;
             _auditService = auditService;
             _log = log;
         }
 
+        [AllowAnonymous]
         [HttpGet]
         public async Task<ActionResult<IList<Team>>> GetTeams()
         {
             return await _timelineContext.Teams.Include(x => x.Owner)
-                .Include(x => x.Associations).ThenInclude(x => x.Job)
-                .Include(x => x.Affiliations).ThenInclude(x => x.User).ToListAsync();
+                .Include(x => x.TeamBoards).ThenInclude(x => x.Board)
+                .Include(x => x.TeamMembers).ThenInclude(x => x.User).ToListAsync();
         }
 
         [HttpPost("create")]
@@ -49,13 +51,20 @@ namespace Timeline.Controllers
                 return BadRequest();
             }
 
-            var team = new Team
-            {
-                Name = newTeam.Team.Name, AvatarUrl = newTeam.Team.AvatarUrl, Owner = user,
-                Affiliations = new List<Affiliation>()
-            };
+            // var team = new Team
+            // {
+            //     Name = newTeam.Team.Name, 
+            //     AvatarUrl = newTeam.Team.AvatarUrl,
+            //     Owner = user,
+            //     Accent = newTeam.Team.Accent;
+            //     TeamMembers = new List<Affiliation>()
+            // };
+            var team = newTeam.Team;
+            team.Owner = user;
+            team.TeamMembers = new List<Affiliation>();
+
             var affiliation = new Affiliation {UserId = user.Id, TeamId = team.Id};
-            team.Affiliations.Add(affiliation);
+            team.TeamMembers.Add(affiliation);
             team.InviteToken = Guid.NewGuid();
 
             _timelineContext.Teams.Add(team);
@@ -70,7 +79,7 @@ namespace Timeline.Controllers
         public async Task<IActionResult> JoinTeam([FromBody] JoinTeam joinTeam)
         {
             var team = await _timelineContext.Teams.Where(x => x.InviteToken == joinTeam.InviteToken)
-                .Include(x => x.Affiliations).FirstOrDefaultAsync();
+                .Include(x => x.TeamMembers).FirstOrDefaultAsync();
 
             var user = await _timelineContext.Users.Where(x => x.Id == joinTeam.UserId).FirstOrDefaultAsync();
 
@@ -80,7 +89,7 @@ namespace Timeline.Controllers
             }
 
             var affiliation = new Affiliation {UserId = joinTeam.UserId, TeamId = team.Id};
-            team.Affiliations.Add(affiliation);
+            team.TeamMembers.Add(affiliation);
 
             Audit audit = new Audit
             {
@@ -105,8 +114,8 @@ namespace Timeline.Controllers
         public async Task<IActionResult> LeaveTeam([FromBody] AffiliationPost affiliationPost)
         {
             var team = await _timelineContext.Teams.Where(x => x.Id == affiliationPost.TeamId)
-                .Include(x => x.Affiliations).FirstOrDefaultAsync();
-            
+                .Include(x => x.TeamMembers).FirstOrDefaultAsync();
+
             var user = await _timelineContext.Users.Where(x => x.Id == affiliationPost.UserId).FirstOrDefaultAsync();
 
             if (team == null)
@@ -117,7 +126,7 @@ namespace Timeline.Controllers
 
             Console.WriteLine($"Leaving team {team.Name}");
 
-            var affiliation = team.Affiliations.FirstOrDefault(x =>
+            var affiliation = team.TeamMembers.FirstOrDefault(x =>
                 x.TeamId == affiliationPost.TeamId && x.UserId == affiliationPost.UserId);
 
             if (affiliation == null)
@@ -125,7 +134,7 @@ namespace Timeline.Controllers
                 Console.WriteLine("Can't find affiliation");
                 return BadRequest();
             }
-            
+
             Audit audit = new Audit
             {
                 Action = AuditAction.UserLeftTeam,
@@ -137,7 +146,7 @@ namespace Timeline.Controllers
             };
             await _auditService.CreateAudit(audit);
 
-            team.Affiliations.Remove(affiliation);
+            team.TeamMembers.Remove(affiliation);
             await _timelineContext.SaveChangesAsync();
 
             _log.LogInformation("Leaving team {userId} : {TeamId}", affiliation.UserId, affiliation.TeamId);
@@ -181,14 +190,25 @@ namespace Timeline.Controllers
             return Ok(team.InviteToken);
         }
 
+        [HttpGet("GetTeamBoards")]
+        public async Task<ActionResult<Team>> GetTeamBoards(Guid teamId)
+        {
+            Console.WriteLine($"Getting all boards for Team {teamId}");
+            _log.LogInformation("Getting all boards for team {teamId}", teamId);
+
+            return await _timelineContext.Teams.Where(x => x.Id == teamId).Include(x => x.Boards)
+                .ThenInclude(x => x.BoardMembers).FirstOrDefaultAsync();
+        }
+
         [HttpGet("GetTeam")]
         public async Task<ActionResult<Team>> GetTeam(Guid teamId)
         {
             Console.WriteLine($"Getting Team {teamId}");
             _log.LogInformation("Getting team {teamId}", teamId);
             return await _timelineContext.Teams.Where(x => x.Id == teamId)
-                .Include(x => x.Affiliations).ThenInclude(x => x.User)
-                .Include(x => x.Associations).ThenInclude(x => x.Job).ThenInclude(x => x.AssociatedUsers)
+                .Include(x => x.TeamMembers).ThenInclude(x => x.User)
+                .Include(x => x.TeamBoards).ThenInclude(x => x.Board).ThenInclude(x => x.BoardMembers)
+                .Include(x => x.Associations).ThenInclude(x => x.Job)
                 .FirstOrDefaultAsync();
         }
     }

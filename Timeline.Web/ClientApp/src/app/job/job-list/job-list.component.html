@@ -1,0 +1,5 @@
+<mat-list role="list" class="shadow-sm" *ngIf="Jobs">
+  <mat-list-item role="listitem" class="listItem mb-1" *ngFor="let job of Jobs" [style.background-color]="job.flagged ? '#ffebee' : ''" [style.border-left]="jobService.GetBorderAccent(job)" [style.border-right]="jobService.getPriorityBorder(job)">
+    <app-liner-job [job]="job" [trunk]="20"></app-liner-job>
+  </mat-list-item>
+</mat-list>

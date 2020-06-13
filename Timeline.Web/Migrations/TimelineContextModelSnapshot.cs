@@ -40,10 +40,15 @@ namespace Timeline.Migrations
                     b.Property<Guid>("JobId")
                         .HasColumnType("char(36)");
 
+                    b.Property<Guid>("BoardId")
+                        .HasColumnType("char(36)");
+
                     b.Property<Guid>("TeamId")
                         .HasColumnType("char(36)");
 
-                    b.HasKey("UserId", "JobId", "TeamId");
+                    b.HasKey("UserId", "JobId", "BoardId", "TeamId");
+
+                    b.HasIndex("BoardId");
 
                     b.HasIndex("JobId");
 
@@ -83,6 +88,47 @@ namespace Timeline.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("Audits");
+                });
+
+            modelBuilder.Entity("Timeline.Models.Board", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("char(36)");
+
+                    b.Property<string>("Accent")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("AvatarUrl")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<Guid>("InviteToken")
+                        .HasColumnType("char(36)");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Board");
+                });
+
+            modelBuilder.Entity("Timeline.Models.BoardAffiliation", b =>
+                {
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("char(36)");
+
+                    b.Property<Guid>("BoardId")
+                        .HasColumnType("char(36)");
+
+                    b.HasKey("UserId", "BoardId");
+
+                    b.HasIndex("BoardId");
+
+                    b.ToTable("BoardAffiliation");
                 });
 
             modelBuilder.Entity("Timeline.Models.Job", b =>
@@ -164,7 +210,13 @@ namespace Timeline.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("char(36)");
 
+                    b.Property<string>("Accent")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
                     b.Property<string>("AvatarUrl")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("Description")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<Guid>("InviteToken")
@@ -181,6 +233,21 @@ namespace Timeline.Migrations
                     b.HasIndex("OwnerId");
 
                     b.ToTable("Teams");
+                });
+
+            modelBuilder.Entity("Timeline.Models.TeamBoard", b =>
+                {
+                    b.Property<Guid>("BoardId")
+                        .HasColumnType("char(36)");
+
+                    b.Property<Guid>("TeamId")
+                        .HasColumnType("char(36)");
+
+                    b.HasKey("BoardId", "TeamId");
+
+                    b.HasIndex("TeamId");
+
+                    b.ToTable("TeamBoard");
                 });
 
             modelBuilder.Entity("Timeline.Models.User", b =>
@@ -210,6 +277,9 @@ namespace Timeline.Migrations
                     b.Property<string>("Token")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
+                    b.Property<int>("Type")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
 
                     b.ToTable("Users");
@@ -218,7 +288,7 @@ namespace Timeline.Migrations
             modelBuilder.Entity("Timeline.Models.Affiliation", b =>
                 {
                     b.HasOne("Timeline.Models.Team", "Team")
-                        .WithMany("Affiliations")
+                        .WithMany("TeamMembers")
                         .HasForeignKey("TeamId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -232,6 +302,12 @@ namespace Timeline.Migrations
 
             modelBuilder.Entity("Timeline.Models.Associations", b =>
                 {
+                    b.HasOne("Timeline.Models.Board", "Board")
+                        .WithMany("Associations")
+                        .HasForeignKey("BoardId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("Timeline.Models.Job", "Job")
                         .WithMany()
                         .HasForeignKey("JobId")
@@ -262,6 +338,21 @@ namespace Timeline.Migrations
                         .HasForeignKey("UserId");
                 });
 
+            modelBuilder.Entity("Timeline.Models.BoardAffiliation", b =>
+                {
+                    b.HasOne("Timeline.Models.Board", "Board")
+                        .WithMany("BoardMembers")
+                        .HasForeignKey("BoardId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Timeline.Models.User", "User")
+                        .WithMany("BoardAffiliations")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
             modelBuilder.Entity("Timeline.Models.Job", b =>
                 {
                     b.HasOne("Timeline.Models.User", "CreatedBy")
@@ -289,6 +380,21 @@ namespace Timeline.Migrations
                     b.HasOne("Timeline.Models.User", "Owner")
                         .WithMany()
                         .HasForeignKey("OwnerId");
+                });
+
+            modelBuilder.Entity("Timeline.Models.TeamBoard", b =>
+                {
+                    b.HasOne("Timeline.Models.Board", "Board")
+                        .WithMany()
+                        .HasForeignKey("BoardId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Timeline.Models.Team", "Team")
+                        .WithMany("TeamBoards")
+                        .HasForeignKey("TeamId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

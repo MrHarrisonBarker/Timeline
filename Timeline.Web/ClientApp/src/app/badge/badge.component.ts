@@ -14,7 +14,7 @@ export class BadgeComponent implements OnInit
   @Input() priority: JobPriority = null;
 
   background: string;
-  text: string;
+  @Input()text: string;
 
   constructor ()
   {
@@ -42,10 +42,10 @@ export class BadgeComponent implements OnInit
   {
     switch (jobStatus)
     {
-      case JobStatus.Backlog:
-      {
-        return "#f44336";
-      }
+      // case JobStatus.Backlog:
+      // {
+      //   return "#f44336";
+      // }
       case JobStatus.ToDo:
       {
         return "Blue";

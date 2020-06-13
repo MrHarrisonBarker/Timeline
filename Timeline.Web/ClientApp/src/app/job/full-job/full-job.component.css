@@ -21,3 +21,8 @@
   border: #bcbcbc solid 1px;
   border-radius: 0.3rem;
 }
+
+#jobInfo {
+  background: aliceblue;
+  width: 100%;
+}

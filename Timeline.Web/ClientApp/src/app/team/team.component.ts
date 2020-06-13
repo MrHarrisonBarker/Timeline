@@ -44,7 +44,7 @@ export class TeamComponent implements OnInit
     this.jobService.removeEvent.subscribe(jobId =>
     {
       console.log('Removing job', jobId);
-      this.Team.Associations = this.Team.Associations.filter(x => x.jobId != jobId);
+      this.Team.Jobs = this.Team.Jobs.filter(x => x.jobId != jobId);
     });
 
     this.jobService.priorityChange.subscribe((change: { jobId: string, priority: JobPriority }) =>
@@ -84,7 +84,7 @@ export class TeamComponent implements OnInit
 
   private filterUsers (): void
   {
-    this.filteredUsers = this.Team.Affiliations.filter(x => x.id != this.Team.owner.id);
+    this.filteredUsers = this.Team.TeamMembers.filter(x => x.id != this.Team.owner.id);
   }
 
 

@@ -1,11 +1,13 @@
 img {
   object-fit: cover;
   border-radius: 50%;
-  box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important;
+  box-shadow: 0 .125rem .25rem rgba(0,0,0,.075);
+  transition: all ease 200ms;
 }
 
 img:hover {
-  border: solid black 2px;
+  /*border: solid black 2px;*/
+  box-shadow: 0 .5rem 1rem rgba(0,0,0,.15);
   cursor: pointer;
 }
 

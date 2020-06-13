@@ -17,12 +17,15 @@ namespace Timeline.Models
     {
         JobController,
         TeamsController,
-        UserController
+        UserController,
+        BoardController
     }
 
     public enum AuditAction
     {
         UserJoinedTeam,
         UserLeftTeam,
+        UserJoinedBoard,
+        UserLeftBoard
     }
 }

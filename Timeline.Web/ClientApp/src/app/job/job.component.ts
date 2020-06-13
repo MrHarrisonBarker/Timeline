@@ -1,9 +1,10 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {BsModalRef, BsModalService} from "ngx-bootstrap/modal";
 import {FullJobComponent} from "./full-job/full-job.component";
-import {TeamService} from "../_services/team.service";
 import {Job} from "../_models/job";
 import {JobService} from "../_services/job.service";
+import {BoardService} from "../_services/board.service";
+import {MatDialog} from "@angular/material/dialog";
 
 
 @Component({
@@ -16,18 +17,20 @@ export class JobComponent implements OnInit
 
   @Input() Job: Job;
   bsModalRef: BsModalRef;
+  nullDate: Date = new Date(null);
 
-  constructor (private jobService: JobService, private modalService: BsModalService, private teamService: TeamService)
+  constructor (private jobService: JobService, public dialog: MatDialog, private boardService: BoardService)
   {
   }
 
   ngOnInit ()
   {
-    if(this.teamService.team)
+    // console.log('null date',this.nullDate);
+    if(this.boardService.board)
     {
       // @ts-ignore
-      this.Job.AssociatedUsers = this.teamService.team.Affiliations.filter(x => this.Job.AssociatedUsers.includes(x.id));
-      console.log("Job associated to users ", this.Job.AssociatedUsers, this.Job);
+      this.Job.AssociatedUsers = this.boardService.board.BoardMembers.filter(x => this.Job.AssociatedUsers.includes(x.id));
+      // console.log("Job associated to users ", this.Job.AssociatedUsers, this.Job);
     }
   }
 
@@ -43,11 +46,12 @@ export class JobComponent implements OnInit
 
   OpenFullJob ()
   {
-    console.log('open full job');
-    const initialState = {
-      Job: this.Job
-    };
-    this.bsModalRef = this.modalService.show(FullJobComponent, {initialState, class: "modal-lg"});
+    // console.log('open full job');
+    // const initialState = {
+    //   Job: this.Job
+    // };
+    // this.bsModalRef = this.modalService.show(FullJobComponent, {initialState, class: "modal-lg"});
+    const newTeamRef = this.dialog.open(FullJobComponent, {maxWidth: '80vw', width: '100%', data: {job: this.Job}});
   }
 
   DeleteJob ()
@@ -58,5 +62,10 @@ export class JobComponent implements OnInit
   ArchiveJob ()
   {
 
+  }
+
+  printDeadline (deadline: Date)
+  {
+    console.log('deadline', deadline);
   }
 }

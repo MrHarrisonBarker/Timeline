@@ -1,11 +1,19 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Job, JobPriority, JobType} from "../../_models/job";
-import {Team} from '../../_models/team';
 import {CdkDragDrop, moveItemInArray, transferArrayItem} from "@angular/cdk/drag-drop";
 import {NewJobComponent} from "../new-job/new-job.component";
 import {BsModalRef, BsModalService} from "ngx-bootstrap/modal";
 import {JobService} from "../../_services/job.service";
 import {TeamService} from "../../_services/team.service";
+import {ActivatedRoute, Router} from "@angular/router";
+import {Board} from "../../_models/board";
+import {BoardService} from "../../_services/board.service";
+
+export enum boardMode
+{
+  regular,
+  compact
+}
 
 @Component({
   selector: 'app-board',
@@ -15,40 +23,51 @@ import {TeamService} from "../../_services/team.service";
 export class BoardComponent implements OnInit
 {
 
-  @Input()Team: Team;
-  Jobs: Job[][] = [[], [], [], [], []];
+  // @Input() Team: Team;
+  TeamId: string;
+  Board: Board;
+  Jobs: Job[][] = [[], [], [], []];
+  public currentMode: boardMode = boardMode.regular;
 
-  public progressBarTypeComp: any[][] = [[], [], [], [], []];
-  public progressBarPriorityComp: any[][] = [[], [], [], [], []];
+  public progressBarTypeComp: any[][] = [[], [], [], []];
+  public progressBarPriorityComp: any[][] = [[], [], [], []];
   private newJobRef: BsModalRef;
 
-  constructor (public jobService: JobService, public teamService: TeamService, private modalService: BsModalService)
+  constructor (public jobService: JobService, public teamService: TeamService, private modalService: BsModalService, private route: ActivatedRoute, private boardService: BoardService)
   {
     this.jobService.addEvent.subscribe(jobs =>
     {
       console.log('Added job', jobs);
-      this.Team.Associations.push(jobs);
+      this.Board.Jobs.push(jobs);
       this.filterJobs();
     });
   }
 
   ngOnInit (): void
   {
-    this.filterJobs();
+    this.TeamId = this.route.snapshot.paramMap.get('id');
+    let boardId = this.route.snapshot.paramMap.get('boardId');
+
+    this.boardService.getBoard(boardId).subscribe(board =>
+    {
+      this.Board = board;
+      this.filterJobs();
+    });
+
   }
 
   private filterJobs (): void
   {
-    this.Jobs = [[], [], [], [], []];
+    this.Jobs = [[], [], [], []];
 
-    this.Team.Associations.filter(x => !x.archived).forEach(job =>
+    this.Board.Jobs.filter(x => !x.archived).forEach(job =>
     {
       this.Jobs[job.jobStatus].push(job);
     });
 
-    this.progressBarTypeComp = [[], [], [], [], []];
+    this.progressBarTypeComp = [[], [], [], []];
 
-    for (let i = 0; i < 5; i++)
+    for (let i = 0; i < 4; i++)
     {
       if (this.Jobs[i].length > 0)
       {
@@ -158,40 +177,43 @@ export class BoardComponent implements OnInit
   }
 
 
-  public drop (event: CdkDragDrop<any>, index: number): void
+  private getListIndex (id: string): number
   {
+    switch (id)
+    {
+      case 'cdk-drop-list-0':
+        return 0;
+      case 'cdk-drop-list-1':
+        return 1;
+      case 'cdk-drop-list-2':
+        return 2;
+      case 'cdk-drop-list-3':
+        return 3;
+    }
+  }
+
+  public drop (event: CdkDragDrop<Job>, index: number): void
+  {
+    console.log(event);
     if (event.previousContainer === event.container)
     {
       moveItemInArray(this.Jobs[index], event.previousIndex, event.currentIndex);
     } else
     {
 
-      function getListIndex ()
-      {
-        switch (event.previousContainer.id)
-        {
-          case 'cdk-drop-list-0':
-            return 0;
-          case 'cdk-drop-list-1':
-            return 1;
-          case 'cdk-drop-list-2':
-            return 2;
-          case 'cdk-drop-list-3':
-            return 3;
-          case 'cdk-drop-list-4':
-            return 4;
-        }
-      }
+      let prevIndex = this.getListIndex(event.previousContainer.id);
 
-      transferArrayItem(this.Jobs[getListIndex()], this.Jobs[index], event.previousIndex, event.currentIndex);
+      console.log('prev index', prevIndex, 'new index', index);
+
+      transferArrayItem(this.Jobs[prevIndex], this.Jobs[index], event.previousIndex, event.currentIndex);
 
       this.changeJobStatus(index, event.currentIndex);
 
       this.CreateTypeProgressBar(index);
-      this.CreateTypeProgressBar(getListIndex());
+      this.CreateTypeProgressBar(prevIndex);
 
       this.CreatePriorityProgressBar(index);
-      this.CreatePriorityProgressBar(getListIndex());
+      this.CreatePriorityProgressBar(prevIndex);
 
     }
   }
@@ -208,18 +230,18 @@ export class BoardComponent implements OnInit
   public newJob (jobStatus: number): void
   {
     const initialState = {
-      Team: this.Team,
+      TeamId: this.TeamId,
+      Board: this.Board,
       InitialStatus: jobStatus
     };
 
     this.newJobRef = this.modalService.show(NewJobComponent, {initialState, class: "modal-lg"});
     this.newJobRef.content.closeBtnName = 'Close';
-
   }
 
   leave ()
   {
-    this.teamService.leaveTeam(this.Team.id).subscribe(left =>
+    this.teamService.leaveTeam(this.TeamId).subscribe(left =>
     {
       if (left)
       {
@@ -228,4 +250,46 @@ export class BoardComponent implements OnInit
     });
   }
 
+  filterByStatus (number: number)
+  {
+
+  }
+
+  filterByType (type: number)
+  {
+    this.Jobs = [[], [], [], []];
+    this.Board.Jobs.filter(x => !x.archived).forEach(job =>
+    {
+      if (job.jobType == type)
+      {
+        this.Jobs[job.jobStatus].push(job);
+      }
+    });
+  }
+
+  filterByPriority (priority: number)
+  {
+    this.Jobs = [[], [], [], []];
+    this.Board.Jobs.filter(x => !x.archived).forEach(job =>
+    {
+      if (job.priority == priority)
+      {
+        this.Jobs[job.jobStatus].push(job);
+      }
+    });
+  }
+
+  resetFilter ()
+  {
+    this.filterJobs();
+  }
+
+  toggleMode ()
+  {
+    if (this.currentMode == boardMode.regular) {
+      this.currentMode = boardMode.compact;
+    } else {
+      this.currentMode = boardMode.regular;
+    }
+  }
 }

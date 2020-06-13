@@ -3,8 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
-    "open": "ng serve --host 192.168.1.121",
+    "start": "echo Starting... && ng serve",
     "build": "ng build",
     "build:ssr": "ng run Timeline:server:dev",
     "test": "ng test",

@@ -13,17 +13,29 @@ namespace Timeline.Models
         public User Owner { get; set; }
         public string AvatarUrl { get; set; }
         public Guid InviteToken { get; set; }
-        
-        [JsonIgnore] public IList<Affiliation> Affiliations { get; set; }
+        public string Description { get; set; }
+        public string Accent { get; set; }
+
+        [JsonIgnore] public IList<Affiliation> TeamMembers { get; set; }
 
         [NotMapped]
-        [JsonProperty("Affiliations")]
-        public IList<User> Users => Affiliations?.Select(x => x.User).ToList();
+        [JsonProperty("TeamMembers")]
+        public IList<User> Users => TeamMembers?.Select(x => x.User).ToList();
+
+        [JsonIgnore] public IList<TeamBoard> TeamBoards { get; set; }
+
+        [NotMapped] [JsonProperty("Boards")] 
+        public IList<Board> Boards => TeamBoards?.Select(x => x.Board).ToList();
         
         [JsonIgnore] public IList<Associations> Associations { get; set; }
 
-        [NotMapped]
-        [JsonProperty("Associations")]
+        [NotMapped] [JsonProperty("Jobs")] 
         public IList<Job> Jobs => Associations?.Select(x => x.Job).ToList();
+
+        // [JsonIgnore] public IList<Associations> Associations { get; set; }
+        //
+        // [NotMapped]
+        // [JsonProperty("Associations")]
+        // public IList<Job> Jobs => Associations?.Select(x => x.Job).ToList();
     }
 }

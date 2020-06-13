@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {TeamService} from "../../_services/team.service";
 import {BsModalRef} from "ngx-bootstrap/modal";
+import {MatDialogRef} from "@angular/material/dialog";
+import {AuthService} from "../../_services/auth.service";
 
 @Component({
   selector: 'app-join-team',
@@ -10,7 +12,7 @@ import {BsModalRef} from "ngx-bootstrap/modal";
 export class JoinTeamComponent implements OnInit
 {
 
-  constructor (private teamService: TeamService,public bsModalRef: BsModalRef)
+  constructor (private teamService: TeamService, public dialogRef: MatDialogRef<JoinTeamComponent>,private auth:AuthService)
   {
   }
 
@@ -20,10 +22,14 @@ export class JoinTeamComponent implements OnInit
 
   join (inviteToken: string)
   {
-    this.teamService.joinTeam(inviteToken).subscribe(out =>
+    console.log(inviteToken);
+    if (inviteToken != null && inviteToken != '')
     {
-      console.log(out);
-      this.bsModalRef.hide();
-    });
+      this.teamService.joinTeam(inviteToken).subscribe(team =>
+      {
+        this.auth.User.Affiliations.push(team);
+        this.dialogRef.close();
+      });
+    }
   }
 }

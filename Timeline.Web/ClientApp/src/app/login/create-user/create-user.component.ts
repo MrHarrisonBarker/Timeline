@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {AuthService} from "../../_services/auth.service";
-import {User} from "../../_models/user";
+import {User, UserType} from "../../_models/user";
 import {Router} from "@angular/router";
 import {BsModalRef} from "ngx-bootstrap/modal";
 
@@ -30,7 +30,8 @@ export class CreateUserComponent implements OnInit
       avatarUrl: avatar,
       firstName: firstName,
       lastName: lastName,
-      displayName: displayName
+      displayName: displayName,
+      type: UserType.Regular
     };
 
     this.authService.createUser(user).subscribe(user =>

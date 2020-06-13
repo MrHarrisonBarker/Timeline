@@ -11,6 +11,7 @@ export class UserAvatarComponent implements OnInit
 {
 
   @Input() onlineIndicate: boolean;
+  @Input() hasTooltip: boolean = true;
   @Input() user: User;
   @Input() size: number = 40;
   public Online: boolean;

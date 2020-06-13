@@ -1,0 +1,21 @@
+.link {
+  color: deepskyblue;
+}
+
+.boardListItem {
+  border-left: solid white;
+}
+
+.listItem {
+  transition: all ease 200ms;
+}
+
+.listItem:hover{
+  box-shadow: 0 .5rem 1rem rgba(0,0,0,.15);
+}
+
+.ball {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
