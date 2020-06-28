@@ -1,0 +1,17 @@
+config:
+  target: 'http://192.168.1.124:5000/api'
+  phases:
+    - duration: 60
+      arrivalRate: 20
+  defaults:
+    # headers:
+    #   x-my-service-auth: '987401838271002188298567'
+  payload:
+      # path is relative to the location of the test script
+      path: "teams.csv"
+      fields:
+        - "team"
+scenarios:
+  - flow:
+    - get:
+        url: "/team/GetTeam?teamId={{ team }}"

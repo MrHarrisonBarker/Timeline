@@ -1,0 +1,19 @@
+<div class="shadow-sm mb-1 py-1 px-2 job d-flex flex-row justify-content-between" *ngIf="Job" [style.border-left]="jobService.GetBorderAccent(Job)" (click)="OpenFullJob()">
+  <div class="d-flex flex-column">
+    <div class="p" id="jobName">{{Job.name}}</div>
+    <div>
+<!--      <div class="p small"><span octicon="history" color="grey"></span><i style="color: grey"> {{Job.startDate | timeFrom}}</i></div>-->
+      <div class="p" *ngIf="Job.deadline.toString() != '0001-01-01T00:00:00'"><span octicon="clock" color="grey"></span> {{Job.deadline | date:'short'}}</div>
+    </div>
+    <div class="p">{{Job.description | truncate}}</div>
+    <div class="d-flex">
+      <user-avatar *ngFor="let user of Job.assignedMembers" [user]="getUserFromWarehouse(user.id)" [onlineIndicate]="false"></user-avatar>
+    </div>
+  </div>
+
+  <div class="d-flex flex-column badgeList">
+    <badge [status]="Job.jobStatus" [type]="null" [priority]="null"></badge>
+    <badge [type]="Job.jobType" [status]="null" [priority]="null"></badge>
+    <badge [priority]="Job.priority" [type]="null" [status]="null"></badge>
+  </div>
+</div>

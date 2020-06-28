@@ -129,7 +129,7 @@ registerLocaleData(en);
     AppRoutingModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    // RouterModule
+    // RouterModule,
   ],
   providers: [{provide: LOCALE_ID, useValue: "en-GB"}],
   bootstrap: [AppComponent],

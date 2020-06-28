@@ -1,0 +1,26 @@
+<!--<ul class="list-group my-3">-->
+<!--  <li class="list-group-item" *ngFor="let job of filteredJobs">-->
+<!--    <div class="clearfix">-->
+<!--      <div class="float-left">{{job.name}}</div>-->
+<!--      <div class="float-right d-flex">-->
+<!--        <badge [status]="job.jobStatus"></badge>-->
+<!--        <badge [type]="job.jobType"></badge>-->
+<!--        <badge [priority]="job.priority"></badge>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </li>-->
+<!--</ul>-->
+
+<ul class="list-group my-3" *ngFor="let deadline of deadlines">
+  {{deadline.Deadline | date:'medium'}}
+  <li class="list-group-item" *ngFor="let job of deadline.Jobs">
+    <div class="clearfix">
+      <div class="float-left">{{job.name}}</div>
+      <div class="float-right d-flex">
+        <badge [status]="job.jobStatus"></badge>
+        <badge [type]="job.jobType"></badge>
+        <badge [priority]="job.priority"></badge>
+      </div>
+    </div>
+  </li>
+</ul>

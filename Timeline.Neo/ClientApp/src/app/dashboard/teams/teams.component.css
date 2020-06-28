@@ -1,0 +1,10 @@
+.team {
+  border-left: solid lightgrey;
+  max-width: 400px;
+  box-shadow: 0 .125rem .25rem rgba(0,0,0,.075);
+  transition: all ease 200ms;
+}
+
+.team:hover {
+  box-shadow: 0 .5rem 1rem rgba(0,0,0,.15);
+}

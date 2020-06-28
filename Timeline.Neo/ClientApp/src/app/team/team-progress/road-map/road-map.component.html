@@ -1,0 +1,11 @@
+<div class="w-100 roadMap">
+  <div *ngFor="let day of Road" class="d-flex flex-column">
+    <div class="day"></div>
+    <div *ngIf="!day.isAllNull">
+      <div *ngFor="let board of day.Boards">
+        <div *ngIf="!board.Board" class="board my-1"></div>
+        <div *ngIf="board.Board" [style.background]="board.Board?.accent" class="board my-1" [tooltip]="board.Board.name + ' ' + day.Date"></div>
+      </div>
+    </div>
+  </div>
+</div>

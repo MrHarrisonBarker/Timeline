@@ -1,0 +1,31 @@
+<div *ngIf="auth.User">
+  <div class="px-1" style="width: 100%; height: 10px;" [style.background]="accent"></div>
+
+  <div class="d-flex px-1 justify-content-between align-items-center" style="width: 100%">
+    <div class="d-flex">
+      <div class="link mr-2" (click)="dashboard()">Dashboard</div>
+      <div class="link mr-2" (click)="users()">Members</div>
+      <div class="link mr-2" (click)="backlog()">Blacklog</div>
+      <div class="link mr-2" (click)="progress()">Progress</div>
+      <div class="link mr-2">Stratagy</div>
+
+
+      <div class="link mr-2" (click)="this.teamService.sideNavOpened = !this.teamService.sideNavOpened">Boards</div>
+<!--      <div *ngIf="team">-->
+<!--      <div class="link mr-2" [matMenuTriggerFor]="boards">Boards</div>-->
+<!--      <mat-menu #boards="matMenu">-->
+<!--        <button mat-menu-item *ngFor="let board of team.boards" (click)="goToBord(board.id)">{{board.name}}</button>-->
+<!--      </mat-menu>-->
+<!--      </div>-->
+
+      <div class="link mr-2" (click)="vault()">Vault</div>
+      <div class="link mr-2" (click)="audit()">Audit</div>
+      <div class="link mr-2" (click)="config()">Config</div>
+    </div>
+
+    <div class="d-flex">
+      <div class="link mr-2" (click)="newBoard()">New Board</div>
+      <div class="link mr-2" (click)="back()">Back</div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,29 @@
+<h2 mat-dialog-title>New Board</h2>
+<mat-dialog-content class="mat-typography">
+
+  <mat-form-field style="width: 100%">
+    <mat-label>Name</mat-label>
+    <input matInput #name placeholder="name"/>
+  </mat-form-field>
+
+  <mat-form-field style="width: 100%">
+    <mat-label>Avatar url</mat-label>
+    <input matInput #avatarUrl placeholder="avatar url"/>
+  </mat-form-field>
+
+  <mat-form-field style="width: 100%">
+    <mat-label>Accent colour</mat-label>
+    <input matInput #accent placeholder="accent colour"/>
+  </mat-form-field>
+
+  <mat-form-field style="width: 100%">
+    <mat-label>Description</mat-label>
+    <input matInput #description placeholder="description"/>
+  </mat-form-field>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Cancel</button>
+  <button mat-button [mat-dialog-close]="true" cdkFocusInitial
+          (click)="newBoard(name.value,avatarUrl.value,accent.value,description.value)">New
+  </button>
+</mat-dialog-actions>

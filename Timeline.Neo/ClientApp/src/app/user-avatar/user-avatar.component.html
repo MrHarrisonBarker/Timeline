@@ -1,0 +1,5 @@
+<div class="container-img">
+  <img class="p-1" [height]="size" [width]="size" [src]="user.avatar" [alt]="user.displayName" [tooltip]="user.displayName" *ngIf="hasTooltip"/>
+  <img class="p-1" [height]="size" [width]="size" [src]="user.avatar" [alt]="user.displayName" *ngIf="!hasTooltip"/>
+  <div class="onlineIndicate" *ngIf="Online && onlineIndicate"></div>
+</div>

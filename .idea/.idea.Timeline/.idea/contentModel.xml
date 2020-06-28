@@ -5,12 +5,14 @@
     <e p="C:\Users\Harrison\.Rider2019.3\system\resharper-host\local\Transient\ReSharperHost\v193\SolutionCaches\_Timeline.-2061272049.00" t="ExcludeRecursive" />
     <e p="C:\Users\Harrison\Desktop\Timeline" t="IncludeFlat">
       <e p="packages" t="ExcludeRecursive" />
-      <e p="Timeline.sln" t="IncludeFlat" />
-      <e p="Timeline.Web" t="IncludeRecursive">
-        <e p=".gitignore" t="Include" />
+      <e p="Timeline.Mongo" t="IncludeRecursive">
+        <e p="Timeline.Mongo.csproj" t="IncludeRecursive" />
+      </e>
+      <e p="Timeline.Neo" t="IncludeRecursive">
         <e p="appsettings.Development.json" t="Include" />
         <e p="appsettings.json" t="Include" />
         <e p="bin" t="ExcludeRecursive" />
+        <e p="CachingTeamResolver.cs" t="Include" />
         <e p="ClientApp" t="Include">
           <e p=".editorconfig" t="Include" />
           <e p=".gitignore" t="Include" />
@@ -44,12 +46,20 @@
           <e p="node_modules\@angular-devkit\build-webpack" t="IncludeRecursive" />
           <e p="node_modules\@angular-devkit\core" t="IncludeRecursive" />
           <e p="node_modules\@angular-devkit\schematics" t="IncludeRecursive" />
+          <e p="node_modules\@angular-material-components\color-picker" t="IncludeRecursive" />
+          <e p="node_modules\@fortawesome\angular-fontawesome" t="IncludeRecursive" />
+          <e p="node_modules\@fortawesome\fontawesome-common-types" t="IncludeRecursive" />
+          <e p="node_modules\@fortawesome\fontawesome-svg-core" t="IncludeRecursive" />
+          <e p="node_modules\@fortawesome\free-brands-svg-icons" t="IncludeRecursive" />
+          <e p="node_modules\@fortawesome\free-regular-svg-icons" t="IncludeRecursive" />
+          <e p="node_modules\@fortawesome\free-solid-svg-icons" t="IncludeRecursive" />
           <e p="node_modules\@jsdevtools\coverage-istanbul-loader" t="IncludeRecursive" />
           <e p="node_modules\@microsoft\signalr" t="IncludeRecursive" />
           <e p="node_modules\@ngtools\webpack" t="IncludeRecursive" />
           <e p="node_modules\@nguniversal\module-map-ngfactory-loader" t="IncludeRecursive" />
           <e p="node_modules\@ngx-loading-bar\core" t="IncludeRecursive" />
           <e p="node_modules\@ngx-loading-bar\http-client" t="IncludeRecursive" />
+          <e p="node_modules\@swimlane\ngx-charts" t="IncludeRecursive" />
           <e p="node_modules\@types" t="IncludeRecursive">
             <e p="events" t="IncludeRecursive" />
             <e p="jasmine" t="IncludeRecursive" />
@@ -178,10 +188,8 @@
           <e p="src" t="Include">
             <e p="app" t="Include">
               <e p="_guards" t="Include">
-                <e p="auth.guard.spec.ts" t="Include" />
                 <e p="auth.guard.ts" t="Include" />
                 <e p="super.guard.ts" t="Include" />
-                <e p="team.guard.spec.ts" t="Include" />
                 <e p="team.guard.ts" t="Include" />
               </e>
               <e p="_helps" t="Include">
@@ -197,52 +205,55 @@
                 <e p="team.ts" t="Include" />
                 <e p="user.ts" t="Include" />
               </e>
+              <e p="_resolvers" t="Include">
+                <e p="board-resolver.service.spec.ts" t="Include" />
+                <e p="board-resolver.service.ts" t="Include" />
+                <e p="team-resolver.service.ts" t="Include" />
+                <e p="user-resolver.service.spec.ts" t="Include" />
+                <e p="user-resolver.service.ts" t="Include" />
+              </e>
               <e p="_services" t="Include">
-                <e p="audit.service.spec.ts" t="Include" />
-                <e p="audit.service.ts" t="Include" />
-                <e p="auth.service.spec.ts" t="Include" />
                 <e p="auth.service.ts" t="Include" />
-                <e p="board.service.spec.ts" t="Include" />
                 <e p="board.service.ts" t="Include" />
-                <e p="job.service.spec.ts" t="Include" />
                 <e p="job.service.ts" t="Include" />
-                <e p="socket.service.spec.ts" t="Include" />
                 <e p="socket.service.ts" t="Include" />
-                <e p="super.service.spec.ts" t="Include" />
                 <e p="super.service.ts" t="Include" />
-                <e p="team.service.spec.ts" t="Include" />
                 <e p="team.service.ts" t="Include" />
+                <e p="warehouse.service.ts" t="Include" />
               </e>
               <e p="app-routing.module.ts" t="Include" />
+              <e p="app.component.css" t="Include" />
               <e p="app.component.html" t="Include" />
               <e p="app.component.ts" t="Include" />
               <e p="app.module.ts" t="Include" />
               <e p="app.server.module.ts" t="Include" />
+              <e p="backlog" t="Include">
+                <e p="new-backlog-board" t="Include">
+                  <e p="new-backlog-board.component.css" t="Include" />
+                  <e p="new-backlog-board.component.html" t="Include" />
+                  <e p="new-backlog-board.component.spec.ts" t="Include" />
+                  <e p="new-backlog-board.component.ts" t="Include" />
+                </e>
+              </e>
               <e p="badge" t="Include">
                 <e p="badge.component.css" t="Include" />
                 <e p="badge.component.html" t="Include" />
                 <e p="badge.component.spec.ts" t="Include" />
                 <e p="badge.component.ts" t="Include" />
               </e>
-              <e p="dashboard" t="Include">
-                <e p="config-bar" t="Include">
-                  <e p="config-bar.component.css" t="Include" />
-                  <e p="config-bar.component.html" t="Include" />
-                  <e p="config-bar.component.spec.ts" t="Include" />
-                  <e p="config-bar.component.ts" t="Include" />
+              <e p="board" t="Include">
+                <e p="delete-board-dialog" t="Include">
+                  <e p="delete-board-dialog.component.css" t="Include" />
+                  <e p="delete-board-dialog.component.html" t="Include" />
+                  <e p="delete-board-dialog.component.spec.ts" t="Include" />
+                  <e p="delete-board-dialog.component.ts" t="Include" />
                 </e>
-                <e p="dashboard-routing.module.ts" t="Include" />
+              </e>
+              <e p="dashboard" t="Include">
                 <e p="dashboard.component.css" t="Include" />
                 <e p="dashboard.component.html" t="Include" />
                 <e p="dashboard.component.spec.ts" t="Include" />
                 <e p="dashboard.component.ts" t="Include" />
-                <e p="dashboard.module.ts" t="Include" />
-                <e p="side-bar" t="Include">
-                  <e p="side-bar.component.css" t="Include" />
-                  <e p="side-bar.component.html" t="Include" />
-                  <e p="side-bar.component.spec.ts" t="Include" />
-                  <e p="side-bar.component.ts" t="Include" />
-                </e>
                 <e p="teams" t="Include">
                   <e p="teams.component.css" t="Include" />
                   <e p="teams.component.html" t="Include" />
@@ -256,23 +267,10 @@
                   <e p="timeline.component.ts" t="Include" />
                 </e>
               </e>
-              <e p="home" t="Include">
-                <e p="home-routing.module.ts" t="Include" />
-                <e p="home.component.html" t="Include" />
-                <e p="home.component.ts" t="Include" />
-                <e p="home.module.ts" t="Include" />
-                <e p="login" t="Include">
-                  <e p="login.component.css" t="Include" />
-                  <e p="login.component.html" t="Include" />
-                  <e p="login.component.spec.ts" t="Include" />
-                  <e p="login.component.ts" t="Include" />
-                </e>
-              </e>
               <e p="job" t="Include">
                 <e p="full-job" t="Include">
                   <e p="full-job.component.css" t="Include" />
                   <e p="full-job.component.html" t="Include" />
-                  <e p="full-job.component.spec.ts" t="Include" />
                   <e p="full-job.component.ts" t="Include" />
                 </e>
                 <e p="job-list" t="Include">
@@ -283,13 +281,18 @@
                 </e>
                 <e p="job.component.css" t="Include" />
                 <e p="job.component.html" t="Include" />
-                <e p="job.component.spec.ts" t="Include" />
                 <e p="job.component.ts" t="Include" />
                 <e p="liner-job" t="Include">
                   <e p="liner-job.component.css" t="Include" />
                   <e p="liner-job.component.html" t="Include" />
                   <e p="liner-job.component.spec.ts" t="Include" />
                   <e p="liner-job.component.ts" t="Include" />
+                </e>
+                <e p="new-job" t="Include">
+                  <e p="new-job.component.css" t="Include" />
+                  <e p="new-job.component.html" t="Include" />
+                  <e p="new-job.component.spec.ts" t="Include" />
+                  <e p="new-job.component.ts" t="Include" />
                 </e>
               </e>
               <e p="login" t="Include">
@@ -299,23 +302,15 @@
                   <e p="create-user.component.spec.ts" t="Include" />
                   <e p="create-user.component.ts" t="Include" />
                 </e>
-              </e>
-              <e p="nav" t="Include">
-                <e p="nav.component.css" t="Include" />
-                <e p="nav.component.html" t="Include" />
-                <e p="nav.component.spec.ts" t="Include" />
-                <e p="nav.component.ts" t="Include" />
-              </e>
-              <e p="nav-menu" t="Include">
-                <e p="nav-menu.component.css" t="Include" />
-                <e p="nav-menu.component.html" t="Include" />
-                <e p="nav-menu.component.ts" t="Include" />
+                <e p="login.component.css" t="Include" />
+                <e p="login.component.html" t="Include" />
+                <e p="login.component.spec.ts" t="Include" />
+                <e p="login.component.ts" t="Include" />
               </e>
               <e p="navs" t="Include">
                 <e p="board-nav" t="Include">
                   <e p="board-nav.component.css" t="Include" />
                   <e p="board-nav.component.html" t="Include" />
-                  <e p="board-nav.component.spec.ts" t="Include" />
                   <e p="board-nav.component.ts" t="Include" />
                 </e>
                 <e p="dashboard-nav" t="Include">
@@ -327,47 +322,14 @@
                 <e p="team-nav" t="Include">
                   <e p="team-nav.component.css" t="Include" />
                   <e p="team-nav.component.html" t="Include" />
-                  <e p="team-nav.component.spec.ts" t="Include" />
                   <e p="team-nav.component.ts" t="Include" />
                 </e>
               </e>
-              <e p="shared" t="Include">
-                <e p="shared.module.ts" t="Include" />
-              </e>
-              <e p="superAdmin" t="Include">
-                <e p="socket" t="Include">
-                  <e p="socket.component.css" t="Include" />
-                  <e p="socket.component.html" t="Include" />
-                  <e p="socket.component.spec.ts" t="Include" />
-                  <e p="socket.component.ts" t="Include" />
-                </e>
-                <e p="super-admin-dashboard" t="Include">
-                  <e p="super-admin-dashboard.component.css" t="Include" />
-                  <e p="super-admin-dashboard.component.html" t="Include" />
-                  <e p="super-admin-dashboard.component.spec.ts" t="Include" />
-                  <e p="super-admin-dashboard.component.ts" t="Include" />
-                </e>
-                <e p="super-admin-routing.module.ts" t="Include" />
-                <e p="super-admin.module.ts" t="Include" />
-                <e p="teams" t="Include">
-                  <e p="teams.component.css" t="Include" />
-                  <e p="teams.component.html" t="Include" />
-                  <e p="teams.component.spec.ts" t="Include" />
-                  <e p="teams.component.ts" t="Include" />
-                </e>
-                <e p="Users" t="Include">
-                  <e p="users.component.css" t="Include" />
-                  <e p="users.component.html" t="Include" />
-                  <e p="users.component.spec.ts" t="Include" />
-                  <e p="users.component.ts" t="Include" />
-                </e>
-              </e>
               <e p="team" t="Include">
-                <e p="audit" t="Include">
-                  <e p="audit.component.css" t="Include" />
-                  <e p="audit.component.html" t="Include" />
-                  <e p="audit.component.spec.ts" t="Include" />
-                  <e p="audit.component.ts" t="Include" />
+                <e p="backlog" t="Include">
+                  <e p="backlog.component.css" t="Include" />
+                  <e p="backlog.component.html" t="Include" />
+                  <e p="backlog.component.ts" t="Include" />
                 </e>
                 <e p="board" t="Include">
                   <e p="board-config" t="Include">
@@ -379,12 +341,10 @@
                   <e p="board-progress" t="Include">
                     <e p="board-progress.component.css" t="Include" />
                     <e p="board-progress.component.html" t="Include" />
-                    <e p="board-progress.component.spec.ts" t="Include" />
                     <e p="board-progress.component.ts" t="Include" />
                   </e>
                   <e p="board.component.css" t="Include" />
                   <e p="board.component.html" t="Include" />
-                  <e p="board.component.spec.ts" t="Include" />
                   <e p="board.component.ts" t="Include" />
                   <e p="compact-board" t="Include">
                     <e p="compact-board.component.css" t="Include" />
@@ -403,6 +363,12 @@
                     <e p="new-board.component.html" t="Include" />
                     <e p="new-board.component.spec.ts" t="Include" />
                     <e p="new-board.component.ts" t="Include" />
+                  </e>
+                  <e p="quick-job" t="Include">
+                    <e p="quick-job.component.css" t="Include" />
+                    <e p="quick-job.component.html" t="Include" />
+                    <e p="quick-job.component.spec.ts" t="Include" />
+                    <e p="quick-job.component.ts" t="Include" />
                   </e>
                 </e>
                 <e p="config" t="Include">
@@ -429,23 +395,19 @@
                   <e p="new.component.spec.ts" t="Include" />
                   <e p="new.component.ts" t="Include" />
                 </e>
-                <e p="new-job" t="Include">
-                  <e p="new-job.component.css" t="Include" />
-                  <e p="new-job.component.html" t="Include" />
-                  <e p="new-job.component.spec.ts" t="Include" />
-                  <e p="new-job.component.ts" t="Include" />
-                </e>
                 <e p="team-progress" t="Include">
+                  <e p="road-map" t="Include">
+                    <e p="road-map.component.css" t="Include" />
+                    <e p="road-map.component.html" t="Include" />
+                    <e p="road-map.component.ts" t="Include" />
+                  </e>
                   <e p="team-progress.component.css" t="Include" />
                   <e p="team-progress.component.html" t="Include" />
-                  <e p="team-progress.component.spec.ts" t="Include" />
                   <e p="team-progress.component.ts" t="Include" />
                 </e>
                 <e p="team.component.css" t="Include" />
                 <e p="team.component.html" t="Include" />
-                <e p="team.component.spec.ts" t="Include" />
                 <e p="team.component.ts" t="Include" />
-                <e p="team.module.ts" t="Include" />
                 <e p="Users" t="Include">
                   <e p="users.component.css" t="Include" />
                   <e p="users.component.html" t="Include" />
@@ -462,7 +424,6 @@
               <e p="team-dash" t="Include">
                 <e p="team-dash.component.css" t="Include" />
                 <e p="team-dash.component.html" t="Include" />
-                <e p="team-dash.component.spec.ts" t="Include" />
                 <e p="team-dash.component.ts" t="Include" />
               </e>
               <e p="user" t="Include">
@@ -485,6 +446,7 @@
               <e p="environment.prod.ts" t="Include" />
               <e p="environment.ts" t="Include" />
             </e>
+            <e p="favicon.ico" t="Include" />
             <e p="index.html" t="Include" />
             <e p="karma.conf.js" t="Include" />
             <e p="main.ts" t="Include" />
@@ -496,73 +458,168 @@
             <e p="tsconfig.spec.json" t="Include" />
             <e p="tslint.json" t="Include" />
           </e>
+          <e p="tsconfig.app.json" t="Include" />
           <e p="tsconfig.json" t="Include" />
+          <e p="tsconfig.spec.json" t="Include" />
           <e p="tslint.json" t="Include" />
         </e>
         <e p="Contexts" t="Include">
           <e p="TimelineContext.cs" t="Include" />
         </e>
         <e p="Controllers" t="Include">
-          <e p="AuditController.cs" t="Include" />
           <e p="BoardController.cs" t="Include" />
           <e p="JobController.cs" t="Include" />
-          <e p="TeamsController.cs" t="Include" />
+          <e p="TeamController.cs" t="Include" />
           <e p="UserController.cs" t="Include" />
         </e>
         <e p="Helpers" t="Include">
           <e p="AppSettings.cs" t="Include" />
           <e p="ExtensionMethods.cs" t="Include" />
         </e>
-        <e p="Hubs" t="Include">
-          <e p="UserHub.cs" t="Include" />
+        <e p="Mapping" t="Include">
+          <e p="AutoMapping.cs" t="Include" />
         </e>
         <e p="Migrations" t="Include">
-          <e p="20200602175621_TeamsWithJobs.cs" t="Include" />
-          <e p="20200602175621_TeamsWithJobs.Designer.cs" t="Include" />
-          <e p="20200603222001_userType.cs" t="Include" />
-          <e p="20200603222001_userType.Designer.cs" t="Include" />
+          <e p="20200616215928_fix.cs" t="Include" />
+          <e p="20200616215928_fix.Designer.cs" t="Include" />
+          <e p="20200616235538_jobTeam.cs" t="Include" />
+          <e p="20200616235538_jobTeam.Designer.cs" t="Include" />
+          <e p="20200617163655_fluff.cs" t="Include" />
+          <e p="20200617163655_fluff.Designer.cs" t="Include" />
+          <e p="20200617202233_backlog.cs" t="Include" />
+          <e p="20200617202233_backlog.Designer.cs" t="Include" />
+          <e p="20200619184217_boardDates.cs" t="Include" />
+          <e p="20200619184217_boardDates.Designer.cs" t="Include" />
+          <e p="20200621124527_boardFinished.cs" t="Include" />
+          <e p="20200621124527_boardFinished.Designer.cs" t="Include" />
+          <e p="20200622162849_PermanentBoards.cs" t="Include" />
+          <e p="20200622162849_PermanentBoards.Designer.cs" t="Include" />
+          <e p="20200623222258_teamDomain.cs" t="Include" />
+          <e p="20200623222258_teamDomain.Designer.cs" t="Include" />
           <e p="TimelineContextModelSnapshot.cs" t="Include" />
         </e>
         <e p="Models" t="Include">
-          <e p="Affiliation.cs" t="Include" />
-          <e p="Associations.cs" t="Include" />
-          <e p="Audit.cs" t="Include" />
-          <e p="Authenticate.cs" t="Include" />
+          <e p="Assignment.cs" t="Include" />
           <e p="Board.cs" t="Include" />
-          <e p="BoardAffiliation.cs" t="Include" />
+          <e p="BoardMember.cs" t="Include" />
+          <e p="Employment.cs" t="Include" />
           <e p="Job.cs" t="Include" />
-          <e p="JobWorker.cs" t="Include" />
           <e p="Team.cs" t="Include" />
-          <e p="TeamBoard.cs" t="Include" />
           <e p="User.cs" t="Include" />
         </e>
         <e p="obj" t="ExcludeRecursive">
           <e p="Debug" t="Include">
             <e p="netcoreapp3.1" t="Include">
-              <e p="Timeline.AssemblyInfo.cs" t="Include" />
-              <e p="Timeline.RazorAssemblyInfo.cs" t="Include" />
+              <e p="Timeline.Neo.AssemblyInfo.cs" t="Include" />
             </e>
           </e>
-        </e>
-        <e p="OnlineUsers.cs" t="Include" />
-        <e p="Pages" t="Include">
-          <e p="_ViewImports.cshtml" t="Include" />
-          <e p="Error.cshtml" t="Include" />
-          <e p="Error.cshtml.cs" t="Include" />
         </e>
         <e p="Program.cs" t="Include" />
         <e p="Properties" t="Include">
           <e p="launchSettings.json" t="Include" />
         </e>
         <e p="Services" t="Include">
-          <e p="AuditService.cs" t="Include" />
           <e p="UserService.cs" t="Include" />
         </e>
         <e p="Startup.cs" t="Include" />
-        <e p="Timeline.csproj" t="IncludeRecursive" />
-        <e p="wwwroot" t="Include">
-          <e p="favicon.ico" t="Include" />
+        <e p="Timeline.Neo.csproj" t="IncludeRecursive" />
+      </e>
+      <e p="Timeline.sln" t="IncludeFlat" />
+      <e p="Timeline.Web" t="IncludeRecursive">
+        <e p="ClientApp\node_modules\@angular\animations" t="IncludeRecursive" />
+        <e p="ClientApp\node_modules\@angular\cdk" t="IncludeRecursive" />
+        <e p="ClientApp\node_modules\@angular\cli" t="IncludeRecursive" />
+        <e p="ClientApp\node_modules\@angular\common" t="IncludeRecursive" />
+        <e p="ClientApp\node_modules\@angular\compiler" t="IncludeRecursive" />
+        <e p="ClientApp\node_modules\@angular\compiler-cli" t="IncludeRecursive" />
+        <e p="ClientApp\node_modules\@angular\core" t="IncludeRecursive" />
+        <e p="ClientApp\node_modules\@angular\forms" t="IncludeRecursive" />
+        <e p="ClientApp\node_modules\@angular\material" t="IncludeRecursive" />
+        <e p="ClientApp\node_modules\@angular\platform-browser" t="IncludeRecursive" />
+        <e p="ClientApp\node_modules\@angular\platform-browser-dynamic" t="IncludeRecursive" />
+        <e p="ClientApp\node_modules\@angular\platform-server" t="IncludeRecursive" />
+        <e p="ClientApp\node_modules\@angular\router" t="IncludeRecursive" />
+        <e p="ClientApp\node_modules\@angular-devkit\architect" t="IncludeRecursive" />
+        <e p="ClientApp\node_modules\@angular-devkit\build-angular" t="IncludeRecursive" />
+        <e p="ClientApp\node_modules\@angular-devkit\build-optimizer" t="IncludeRecursive" />
+        <e p="ClientApp\node_modules\@angular-devkit\build-webpack" t="IncludeRecursive" />
+        <e p="ClientApp\node_modules\@angular-devkit\core" t="IncludeRecursive" />
+        <e p="ClientApp\node_modules\@angular-devkit\schematics" t="IncludeRecursive" />
+        <e p="ClientApp\node_modules\@jsdevtools\coverage-istanbul-loader" t="IncludeRecursive" />
+        <e p="ClientApp\node_modules\@microsoft\signalr" t="IncludeRecursive" />
+        <e p="ClientApp\node_modules\@ngtools\webpack" t="IncludeRecursive" />
+        <e p="ClientApp\node_modules\@nguniversal\module-map-ngfactory-loader" t="IncludeRecursive" />
+        <e p="ClientApp\node_modules\@ngx-loading-bar\core" t="IncludeRecursive" />
+        <e p="ClientApp\node_modules\@ngx-loading-bar\http-client" t="IncludeRecursive" />
+        <e p="ClientApp\node_modules\@types" t="IncludeRecursive">
+          <e p="events" t="IncludeRecursive" />
+          <e p="jasmine" t="IncludeRecursive" />
+          <e p="jasminewd2" t="IncludeRecursive" />
+          <e p="minimatch" t="IncludeRecursive" />
+          <e p="node" t="IncludeRecursive" />
+          <e p="source-list-map" t="IncludeRecursive" />
         </e>
+        <e p="ClientApp\node_modules\ajv" t="IncludeRecursive" />
+        <e p="ClientApp\node_modules\angular-calendar" t="IncludeRecursive" />
+        <e p="ClientApp\node_modules\angular-draggable-droppable" t="IncludeRecursive" />
+        <e p="ClientApp\node_modules\angular-resizable-element" t="IncludeRecursive" />
+        <e p="ClientApp\node_modules\arg" t="IncludeRecursive" />
+        <e p="ClientApp\node_modules\aspnet-prerendering" t="IncludeRecursive" />
+        <e p="ClientApp\node_modules\blocking-proxy" t="IncludeRecursive" />
+        <e p="ClientApp\node_modules\bootstrap" t="IncludeRecursive" />
+        <e p="ClientApp\node_modules\calendar-utils" t="IncludeRecursive" />
+        <e p="ClientApp\node_modules\canonical-path" t="IncludeRecursive" />
+        <e p="ClientApp\node_modules\chokidar" t="IncludeRecursive" />
+        <e p="ClientApp\node_modules\codelyzer" t="IncludeRecursive" />
+        <e p="ClientApp\node_modules\commander" t="IncludeRecursive" />
+        <e p="ClientApp\node_modules\core-js" t="IncludeRecursive" />
+        <e p="ClientApp\node_modules\date-fns" t="IncludeRecursive" />
+        <e p="ClientApp\node_modules\dependency-graph" t="IncludeRecursive" />
+        <e p="ClientApp\node_modules\domino" t="IncludeRecursive" />
+        <e p="ClientApp\node_modules\es6-promise" t="IncludeRecursive" />
+        <e p="ClientApp\node_modules\fast-deep-equal" t="IncludeRecursive" />
+        <e p="ClientApp\node_modules\hash.js" t="IncludeRecursive" />
+        <e p="ClientApp\node_modules\jasmine-core" t="IncludeRecursive" />
+        <e p="ClientApp\node_modules\jasmine-spec-reporter" t="IncludeRecursive" />
+        <e p="ClientApp\node_modules\jest-worker" t="IncludeRecursive" />
+        <e p="ClientApp\node_modules\jquery" t="IncludeRecursive" />
+        <e p="ClientApp\node_modules\karma" t="IncludeRecursive" />
+        <e p="ClientApp\node_modules\karma-chrome-launcher" t="IncludeRecursive" />
+        <e p="ClientApp\node_modules\karma-coverage-istanbul-reporter" t="IncludeRecursive" />
+        <e p="ClientApp\node_modules\karma-jasmine" t="IncludeRecursive" />
+        <e p="ClientApp\node_modules\karma-jasmine-html-reporter" t="IncludeRecursive" />
+        <e p="ClientApp\node_modules\license-webpack-plugin" t="IncludeRecursive" />
+        <e p="ClientApp\node_modules\magic-string" t="IncludeRecursive" />
+        <e p="ClientApp\node_modules\ng-time-from-pipe" t="IncludeRecursive" />
+        <e p="ClientApp\node_modules\ngx-bootstrap" t="IncludeRecursive" />
+        <e p="ClientApp\node_modules\ngx-clipboard" t="IncludeRecursive" />
+        <e p="ClientApp\node_modules\ngx-window-token" t="IncludeRecursive" />
+        <e p="ClientApp\node_modules\node-sass" t="IncludeRecursive" />
+        <e p="ClientApp\node_modules\octicons" t="IncludeRecursive" />
+        <e p="ClientApp\node_modules\oidc-client" t="IncludeRecursive" />
+        <e p="ClientApp\node_modules\popper.js" t="IncludeRecursive" />
+        <e p="ClientApp\node_modules\portfinder" t="IncludeRecursive" />
+        <e p="ClientApp\node_modules\positioning" t="IncludeRecursive" />
+        <e p="ClientApp\node_modules\postcss" t="IncludeRecursive" />
+        <e p="ClientApp\node_modules\protractor" t="IncludeRecursive" />
+        <e p="ClientApp\node_modules\reflect-metadata" t="IncludeRecursive" />
+        <e p="ClientApp\node_modules\rollup" t="IncludeRecursive" />
+        <e p="ClientApp\node_modules\rxjs" t="IncludeRecursive" />
+        <e p="ClientApp\node_modules\schema-utils" t="IncludeRecursive" />
+        <e p="ClientApp\node_modules\source-map" t="IncludeRecursive" />
+        <e p="ClientApp\node_modules\sourcemap-codec" t="IncludeRecursive" />
+        <e p="ClientApp\node_modules\symbol-observable" t="IncludeRecursive" />
+        <e p="ClientApp\node_modules\terser" t="IncludeRecursive" />
+        <e p="ClientApp\node_modules\tree-kill" t="IncludeRecursive" />
+        <e p="ClientApp\node_modules\ts-node" t="IncludeRecursive" />
+        <e p="ClientApp\node_modules\tslib" t="IncludeRecursive" />
+        <e p="ClientApp\node_modules\tslint" t="IncludeRecursive" />
+        <e p="ClientApp\node_modules\upath" t="IncludeRecursive" />
+        <e p="ClientApp\node_modules\uri-js" t="IncludeRecursive" />
+        <e p="ClientApp\node_modules\webdriver-js-extender" t="IncludeRecursive" />
+        <e p="ClientApp\node_modules\worker-farm" t="IncludeRecursive" />
+        <e p="ClientApp\node_modules\zone.js" t="IncludeRecursive" />
+        <e p="Timeline.csproj" t="IncludeRecursive" />
       </e>
     </e>
   </component>

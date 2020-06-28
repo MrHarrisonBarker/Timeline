@@ -1,0 +1,17 @@
+<!--<div class="p-3">-->
+<!--  <input #token placeholder="token" id="token" class="form-control my-2" type="text">-->
+<!--  <button class="btn btn-secondary" (click)="join(token.value)">Join</button>-->
+<!--</div>-->
+
+
+<h2 mat-dialog-title>Join Team</h2>
+<mat-dialog-content class="mat-typography">
+  <mat-form-field style="width: 100%">
+    <mat-label>Invite token</mat-label>
+    <input matInput #inviteToken placeholder="invite token"/>
+  </mat-form-field>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Cancel</button>
+  <button mat-button [mat-dialog-close]="true" cdkFocusInitial (click)="join(inviteToken.value)">Join</button>
+</mat-dialog-actions>

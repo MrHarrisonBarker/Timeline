@@ -1,0 +1,12 @@
+.weekBlock {
+  /*background-color: #8b978d;*/
+}
+
+.block {
+  /*width: 10px;*/
+  /*height: 10px;*/
+  background-color: #ff7075;
+  margin: 0.1rem;
+  width: 30px;
+  height: 30px;
+}

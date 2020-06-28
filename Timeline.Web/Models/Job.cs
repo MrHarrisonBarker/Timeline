@@ -35,7 +35,7 @@ namespace Timeline.Models
 
         [NotMapped]
         [JsonProperty("AssociatedUsers")]
-        public IList<Guid> Users => AssociatedUsers?.Select(x => x.User.Id).ToList();
+        public IList<Guid> JobUsers => AssociatedUsers?.Select(x => x.User.Id).ToList();
         
         // [JsonIgnore] public IList<Associations> AssociatedBoard { get; set; }
         //

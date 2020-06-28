@@ -1,0 +1,56 @@
+<!--<div class="p-3">-->
+<!--  <input #username placeholder="email" id="username" class="form-control my-2" type="text">-->
+<!--  <input #firstname placeholder="firstname" id="firstname" class="form-control my-2" type="text">-->
+<!--  <input #lastname placeholder="lastname" id="lastname" class="form-control my-2" type="text">-->
+<!--  <input #displayname placeholder="displayname" id="displayname" class="form-control my-2" type="text">-->
+<!--  <input #avatar placeholder="avatar url" id="avatar" class="form-control my-2" type="url">-->
+<!--  <input #password placeholder="password" id="password" class="form-control my-2" type="password">-->
+
+<!--  <button class="btn btn-secondary" (click)="create(username.value,password.value,avatar.value,displayname.value,firstname.value,lastname.value)">Create</button>-->
+<!--</div>-->
+
+<div class="px-4">
+
+  <div class="d-flex flex-row justify-content-between"><h2 mat-dialog-title>Sign up</h2> <img [src]="avatar.value" class="m-1" height="40px"></div>
+  <mat-dialog-content class="mat-typography overflow-hidden">
+    <form [formGroup]="userFormGroup" (ngSubmit)="create(userFormGroup.value)" class="form">
+      <mat-form-field class="form-element" appearance="outline">
+        <mat-label>Email</mat-label>
+        <input matInput placeholder="John@doe.co.uk" formControlName="Email">
+        <!--      <mat-error *ngIf="!userFormGroup.controls['email'].valid && userFormGroup.controls['email'].touched">-->
+        <!--        {{ getErrorEmail() }}-->
+        <!--      </mat-error>-->
+      </mat-form-field>
+      <br>
+      <mat-form-field class="form-element" appearance="outline">
+        <mat-label>Firstname</mat-label>
+        <input matInput placeholder="John" formControlName="FirstName">
+      </mat-form-field>
+      <br>
+      <mat-form-field class="form-element" appearance="outline">
+        <mat-label>Lastname</mat-label>
+        <input matInput placeholder="Doe" formControlName="LastName">
+      </mat-form-field>
+      <br>
+      <mat-form-field class="form-element" appearance="outline">
+        <mat-label>Displayname</mat-label>
+        <input matInput placeholder="John.Doe" formControlName="DisplayName">
+      </mat-form-field>
+      <br>
+        <mat-form-field class="form-element" appearance="outline">
+          <mat-label>Avatar</mat-label>
+          <input #avatar matInput formControlName="Avatar">
+        </mat-form-field>
+      <br>
+      <mat-form-field class="form-element" appearance="outline">
+        <mat-label>Password</mat-label>
+        <input type="password" matInput placeholder="Password123" formControlName="Password">
+      </mat-form-field>
+    </form>
+  </mat-dialog-content>
+  <mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close>Cancel</button>
+    <button mat-button (click)="create(userFormGroup.value)" cdkFocusInitial>Create
+    </button>
+  </mat-dialog-actions>
+</div>

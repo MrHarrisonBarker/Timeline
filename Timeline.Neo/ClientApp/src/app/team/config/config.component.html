@@ -1,0 +1,16 @@
+<app-team-nav [team]="teamService.team" [accent]="teamService.team.accent"></app-team-nav>
+
+<div class="row">
+  <div class="col-4 mx-auto">
+    <div class="mx-auto d-block my-3">
+      <img class="img mx-auto d-block rounded my-3" [src]="teamService.team.avatarUrl" width="150px" height="150px">
+      <input #teamName class="h4 form-control my-3" [value]="teamService.team.name" (focusout)="updateName()">
+      <div *ngIf="teamService.team.inviteToken" class="p text-center">invite token :
+        <a class="link mx-1" [cdkCopyToClipboard]="teamService.team.inviteToken">{{teamService.team.inviteToken}}</a>
+        <a class="link mx-1">generate</a>
+        <a class="link mx-1">delete</a>
+      </div>
+      <div class="mx-auto text-center my-3"><button class="btn btn-danger" [disabled]="teamService.team.owner.id != authService.User.id">Delete Team</button></div>
+    </div>
+  </div>
+</div>

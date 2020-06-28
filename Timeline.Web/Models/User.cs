@@ -23,6 +23,7 @@ namespace Timeline.Models
         [JsonIgnore] public IList<Affiliation> Affiliations { get; set; }
 
         [NotMapped]
+        
         [JsonProperty("Affiliations")]
         public IList<Team> Teams => Affiliations?.Select(x => x.Team).ToList();
         
@@ -35,6 +36,7 @@ namespace Timeline.Models
         public IList<Board> Boards => BoardAffiliations?.Select(x => x.Board).ToList();
         
         // ----------------------------------------------------
+        
         
         [JsonIgnore] public IList<Associations> Associations { get; set; }
 

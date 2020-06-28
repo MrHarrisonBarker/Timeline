@@ -5,97 +5,205 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4339abab-0437-4a5a-8e2c-60ff31a7d2f4" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Timeline.Web/ClientApp/src/app/_models/board.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Timeline.Web/ClientApp/src/app/superAdmin/super-admin-routing.module.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Timeline.Web/Models/Board.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Timeline.Web/Models/BoardAffiliation.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Timeline.Web/Models/TeamBoard.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.dockerignore" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/Timeline.Mongo/Controllers/JobsController.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Timeline.Mongo/Controllers/TeamsController.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Timeline.Mongo/Models/Job.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Timeline.Mongo/Models/Team.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Timeline.Mongo/Models/TimelineDatabaseSettings.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Timeline.Mongo/Services/JobsService.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Timeline.Mongo/Services/TeamsService.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Timeline.Neo/CachingTeamResolver.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Timeline.Neo/ClientApp/.editorconfig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Timeline.Neo/ClientApp/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Timeline.Neo/ClientApp/Dockerfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Timeline.Neo/ClientApp/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Timeline.Neo/ClientApp/angular.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Timeline.Neo/ClientApp/browserslist" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Timeline.Neo/ClientApp/e2e/protractor.conf.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Timeline.Neo/ClientApp/e2e/src/app.e2e-spec.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Timeline.Neo/ClientApp/e2e/src/app.po.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Timeline.Neo/ClientApp/e2e/tsconfig.e2e.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Timeline.Neo/ClientApp/package-lock.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Timeline.Neo/ClientApp/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Timeline.Neo/ClientApp/src/app/_guards/auth.guard.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Timeline.Neo/ClientApp/src/app/_guards/super.guard.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Timeline.Neo/ClientApp/src/app/_guards/team.guard.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Timeline.Neo/ClientApp/src/app/_helps/octicon.directive.spec.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Timeline.Neo/ClientApp/src/app/_helps/octicon.directive.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Timeline.Neo/ClientApp/src/app/_helps/truncate.pipe.spec.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Timeline.Neo/ClientApp/src/app/_helps/truncate.pipe.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Timeline.Neo/ClientApp/src/app/_models/audit.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Timeline.Neo/ClientApp/src/app/_models/board.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Timeline.Neo/ClientApp/src/app/_models/job.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Timeline.Neo/ClientApp/src/app/_models/team.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Timeline.Neo/ClientApp/src/app/_models/user.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Timeline.Neo/ClientApp/src/app/_services/auth.service.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Timeline.Neo/ClientApp/src/app/_services/board.service.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Timeline.Neo/ClientApp/src/app/_services/job.service.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Timeline.Neo/ClientApp/src/app/_services/socket.service.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Timeline.Neo/ClientApp/src/app/_services/super.service.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Timeline.Neo/ClientApp/src/app/_services/team.service.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Timeline.Neo/ClientApp/src/app/app-routing.module.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Timeline.Neo/ClientApp/src/app/app.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Timeline.Neo/ClientApp/src/app/app.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Timeline.Neo/ClientApp/src/app/app.module.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Timeline.Neo/ClientApp/src/app/app.server.module.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Timeline.Neo/ClientApp/src/app/badge/badge.component.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Timeline.Neo/ClientApp/src/app/badge/badge.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Timeline.Neo/ClientApp/src/app/badge/badge.component.spec.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Timeline.Neo/ClientApp/src/app/badge/badge.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Timeline.Neo/ClientApp/src/app/dashboard/dashboard.component.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Timeline.Neo/ClientApp/src/app/dashboard/dashboard.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Timeline.Neo/ClientApp/src/app/dashboard/dashboard.component.spec.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Timeline.Neo/ClientApp/src/app/dashboard/dashboard.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Timeline.Neo/ClientApp/src/app/dashboard/teams/teams.component.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Timeline.Neo/ClientApp/src/app/dashboard/teams/teams.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Timeline.Neo/ClientApp/src/app/dashboard/teams/teams.component.spec.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Timeline.Neo/ClientApp/src/app/dashboard/teams/teams.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Timeline.Neo/ClientApp/src/app/dashboard/timeline/timeline.component.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Timeline.Neo/ClientApp/src/app/dashboard/timeline/timeline.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Timeline.Neo/ClientApp/src/app/dashboard/timeline/timeline.component.spec.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Timeline.Neo/ClientApp/src/app/dashboard/timeline/timeline.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Timeline.Neo/ClientApp/src/app/job/full-job/full-job.component.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Timeline.Neo/ClientApp/src/app/job/full-job/full-job.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Timeline.Neo/ClientApp/src/app/job/full-job/full-job.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Timeline.Neo/ClientApp/src/app/job/job-list/job-list.component.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Timeline.Neo/ClientApp/src/app/job/job-list/job-list.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Timeline.Neo/ClientApp/src/app/job/job-list/job-list.component.spec.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Timeline.Neo/ClientApp/src/app/job/job-list/job-list.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Timeline.Neo/ClientApp/src/app/job/job.component.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Timeline.Neo/ClientApp/src/app/job/job.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Timeline.Neo/ClientApp/src/app/job/job.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Timeline.Neo/ClientApp/src/app/job/liner-job/liner-job.component.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Timeline.Neo/ClientApp/src/app/job/liner-job/liner-job.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Timeline.Neo/ClientApp/src/app/job/liner-job/liner-job.component.spec.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Timeline.Neo/ClientApp/src/app/job/liner-job/liner-job.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Timeline.Neo/ClientApp/src/app/job/new-job/new-job.component.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Timeline.Neo/ClientApp/src/app/job/new-job/new-job.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Timeline.Neo/ClientApp/src/app/job/new-job/new-job.component.spec.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Timeline.Neo/ClientApp/src/app/job/new-job/new-job.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Timeline.Neo/ClientApp/src/app/login/create-user/create-user.component.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Timeline.Neo/ClientApp/src/app/login/create-user/create-user.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Timeline.Neo/ClientApp/src/app/login/create-user/create-user.component.spec.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Timeline.Neo/ClientApp/src/app/login/create-user/create-user.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Timeline.Neo/ClientApp/src/app/login/login.component.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Timeline.Neo/ClientApp/src/app/login/login.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Timeline.Neo/ClientApp/src/app/login/login.component.spec.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Timeline.Neo/ClientApp/src/app/login/login.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Timeline.Neo/ClientApp/src/app/navs/board-nav/board-nav.component.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Timeline.Neo/ClientApp/src/app/navs/board-nav/board-nav.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Timeline.Neo/ClientApp/src/app/navs/board-nav/board-nav.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Timeline.Neo/ClientApp/src/app/navs/dashboard-nav/dashboard-nav.component.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Timeline.Neo/ClientApp/src/app/navs/dashboard-nav/dashboard-nav.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Timeline.Neo/ClientApp/src/app/navs/dashboard-nav/dashboard-nav.component.spec.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Timeline.Neo/ClientApp/src/app/navs/dashboard-nav/dashboard-nav.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Timeline.Neo/ClientApp/src/app/navs/team-nav/team-nav.component.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Timeline.Neo/ClientApp/src/app/navs/team-nav/team-nav.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Timeline.Neo/ClientApp/src/app/navs/team-nav/team-nav.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Timeline.Neo/ClientApp/src/app/team-dash/team-dash.component.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Timeline.Neo/ClientApp/src/app/team-dash/team-dash.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Timeline.Neo/ClientApp/src/app/team-dash/team-dash.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Timeline.Neo/ClientApp/src/app/team/board/board-config/board-config.component.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Timeline.Neo/ClientApp/src/app/team/board/board-config/board-config.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Timeline.Neo/ClientApp/src/app/team/board/board-config/board-config.component.spec.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Timeline.Neo/ClientApp/src/app/team/board/board-config/board-config.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Timeline.Neo/ClientApp/src/app/team/board/board-progress/board-progress.component.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Timeline.Neo/ClientApp/src/app/team/board/board-progress/board-progress.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Timeline.Neo/ClientApp/src/app/team/board/board-progress/board-progress.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Timeline.Neo/ClientApp/src/app/team/board/board.component.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Timeline.Neo/ClientApp/src/app/team/board/board.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Timeline.Neo/ClientApp/src/app/team/board/board.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Timeline.Neo/ClientApp/src/app/team/board/compact-board/compact-board.component.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Timeline.Neo/ClientApp/src/app/team/board/compact-board/compact-board.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Timeline.Neo/ClientApp/src/app/team/board/compact-board/compact-board.component.spec.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Timeline.Neo/ClientApp/src/app/team/board/compact-board/compact-board.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Timeline.Neo/ClientApp/src/app/team/board/list-board/list-board.component.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Timeline.Neo/ClientApp/src/app/team/board/list-board/list-board.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Timeline.Neo/ClientApp/src/app/team/board/list-board/list-board.component.spec.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Timeline.Neo/ClientApp/src/app/team/board/list-board/list-board.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Timeline.Neo/ClientApp/src/app/team/board/new-board/new-board.component.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Timeline.Neo/ClientApp/src/app/team/board/new-board/new-board.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Timeline.Neo/ClientApp/src/app/team/board/new-board/new-board.component.spec.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Timeline.Neo/ClientApp/src/app/team/board/new-board/new-board.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Timeline.Neo/ClientApp/src/app/team/config/config.component.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Timeline.Neo/ClientApp/src/app/team/config/config.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Timeline.Neo/ClientApp/src/app/team/config/config.component.spec.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Timeline.Neo/ClientApp/src/app/team/config/config.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Timeline.Neo/ClientApp/src/app/team/deadline/deadline.component.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Timeline.Neo/ClientApp/src/app/team/deadline/deadline.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Timeline.Neo/ClientApp/src/app/team/deadline/deadline.component.spec.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Timeline.Neo/ClientApp/src/app/team/deadline/deadline.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Timeline.Neo/ClientApp/src/app/team/join-team/join-team.component.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Timeline.Neo/ClientApp/src/app/team/join-team/join-team.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Timeline.Neo/ClientApp/src/app/team/join-team/join-team.component.spec.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Timeline.Neo/ClientApp/src/app/team/join-team/join-team.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Timeline.Neo/ClientApp/src/app/team/new/new.component.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Timeline.Neo/ClientApp/src/app/team/new/new.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Timeline.Neo/ClientApp/src/app/team/new/new.component.spec.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Timeline.Neo/ClientApp/src/app/team/new/new.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Timeline.Neo/ClientApp/src/app/team/team-progress/team-progress.component.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Timeline.Neo/ClientApp/src/app/team/team-progress/team-progress.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Timeline.Neo/ClientApp/src/app/team/team-progress/team-progress.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Timeline.Neo/ClientApp/src/app/team/team.component.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Timeline.Neo/ClientApp/src/app/team/team.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Timeline.Neo/ClientApp/src/app/team/team.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Timeline.Neo/ClientApp/src/app/team/users/users.component.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Timeline.Neo/ClientApp/src/app/team/users/users.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Timeline.Neo/ClientApp/src/app/team/users/users.component.spec.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Timeline.Neo/ClientApp/src/app/team/users/users.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Timeline.Neo/ClientApp/src/app/team/vault/vault.component.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Timeline.Neo/ClientApp/src/app/team/vault/vault.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Timeline.Neo/ClientApp/src/app/team/vault/vault.component.spec.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Timeline.Neo/ClientApp/src/app/team/vault/vault.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Timeline.Neo/ClientApp/src/app/user-avatar/user-avatar.component.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Timeline.Neo/ClientApp/src/app/user-avatar/user-avatar.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Timeline.Neo/ClientApp/src/app/user-avatar/user-avatar.component.spec.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Timeline.Neo/ClientApp/src/app/user-avatar/user-avatar.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Timeline.Neo/ClientApp/src/app/user/user.component.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Timeline.Neo/ClientApp/src/app/user/user.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Timeline.Neo/ClientApp/src/app/user/user.component.spec.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Timeline.Neo/ClientApp/src/app/user/user.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Timeline.Neo/ClientApp/src/assets/.gitkeep" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Timeline.Neo/ClientApp/src/environments/environment.prod.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Timeline.Neo/ClientApp/src/environments/environment.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Timeline.Neo/ClientApp/src/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Timeline.Neo/ClientApp/src/karma.conf.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Timeline.Neo/ClientApp/src/main.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Timeline.Neo/ClientApp/src/polyfills.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Timeline.Neo/ClientApp/src/styles.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Timeline.Neo/ClientApp/src/test.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Timeline.Neo/ClientApp/src/tsconfig.app.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Timeline.Neo/ClientApp/src/tsconfig.server.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Timeline.Neo/ClientApp/src/tsconfig.spec.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Timeline.Neo/ClientApp/src/tslint.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Timeline.Neo/ClientApp/tsconfig.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Timeline.Neo/ClientApp/tslint.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Timeline.Neo/Contexts/TimelineContext.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Timeline.Neo/Controllers/BoardController.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Timeline.Neo/Controllers/JobController.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Timeline.Neo/Controllers/TeamController.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Timeline.Neo/Controllers/UserController.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Timeline.Neo/Helpers/AppSettings.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Timeline.Neo/Helpers/ExtensionMethods.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Timeline.Neo/Mapping/AutoMapping.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Timeline.Neo/Models/Assignment.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Timeline.Neo/Models/Board.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Timeline.Neo/Models/BoardMember.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Timeline.Neo/Models/Employment.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Timeline.Neo/Models/Job.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Timeline.Neo/Models/Team.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Timeline.Neo/Models/User.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Timeline.Neo/Services/UserService.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Timeline/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Timeline/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Timeline/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Timeline/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dockerfile" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Timeline.Web/ClientApp/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/Timeline.Web/ClientApp/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Timeline.Web/ClientApp/src/app/_helps/truncate.pipe.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Timeline.Web/ClientApp/src/app/_helps/truncate.pipe.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Timeline.Web/ClientApp/src/app/_models/job.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Timeline.Web/ClientApp/src/app/_models/job.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Timeline.Web/ClientApp/src/app/_models/team.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Timeline.Web/ClientApp/src/app/_models/team.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Timeline.Web/ClientApp/src/app/_models/user.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Timeline.Web/ClientApp/src/app/_models/user.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Timeline.Web/ClientApp/src/app/_services/auth.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Timeline.Web/ClientApp/src/app/_services/auth.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Timeline.Web/ClientApp/src/app/_services/job.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Timeline.Web/ClientApp/src/app/_services/job.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Timeline.Web/ClientApp/src/app/_services/team.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Timeline.Web/ClientApp/src/app/_services/team.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Timeline.Web/ClientApp/src/app/app-routing.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Timeline.Web/ClientApp/src/app/app-routing.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Timeline.Web/ClientApp/src/app/app.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Timeline.Web/ClientApp/src/app/app.component.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Timeline.Web/ClientApp/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Timeline.Web/ClientApp/src/app/app.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Timeline.Web/ClientApp/src/app/badge/badge.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/Timeline.Web/ClientApp/src/app/badge/badge.component.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Timeline.Web/ClientApp/src/app/badge/badge.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Timeline.Web/ClientApp/src/app/badge/badge.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Timeline.Web/ClientApp/src/app/dashboard/dashboard.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/Timeline.Web/ClientApp/src/app/dashboard/dashboard.component.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Timeline.Web/ClientApp/src/app/dashboard/dashboard.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/Timeline.Web/ClientApp/src/app/dashboard/dashboard.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Timeline.Web/ClientApp/src/app/dashboard/dashboard.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Timeline.Web/ClientApp/src/app/dashboard/dashboard.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Timeline.Web/ClientApp/src/app/dashboard/dashboard.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Timeline.Web/ClientApp/src/app/dashboard/dashboard.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Timeline.Web/ClientApp/src/app/dashboard/side-bar/side-bar.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/Timeline.Web/ClientApp/src/app/dashboard/side-bar/side-bar.component.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Timeline.Web/ClientApp/src/app/dashboard/side-bar/side-bar.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/Timeline.Web/ClientApp/src/app/dashboard/side-bar/side-bar.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Timeline.Web/ClientApp/src/app/dashboard/timeline/timeline.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/Timeline.Web/ClientApp/src/app/dashboard/timeline/timeline.component.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Timeline.Web/ClientApp/src/app/dashboard/timeline/timeline.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/Timeline.Web/ClientApp/src/app/dashboard/timeline/timeline.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Timeline.Web/ClientApp/src/app/dashboard/timeline/timeline.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Timeline.Web/ClientApp/src/app/dashboard/timeline/timeline.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Timeline.Web/ClientApp/src/app/job/full-job/full-job.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/Timeline.Web/ClientApp/src/app/job/full-job/full-job.component.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Timeline.Web/ClientApp/src/app/job/full-job/full-job.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/Timeline.Web/ClientApp/src/app/job/full-job/full-job.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Timeline.Web/ClientApp/src/app/job/full-job/full-job.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Timeline.Web/ClientApp/src/app/job/full-job/full-job.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Timeline.Web/ClientApp/src/app/job/job.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/Timeline.Web/ClientApp/src/app/job/job.component.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Timeline.Web/ClientApp/src/app/job/job.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/Timeline.Web/ClientApp/src/app/job/job.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Timeline.Web/ClientApp/src/app/job/job.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Timeline.Web/ClientApp/src/app/job/job.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Timeline.Web/ClientApp/src/app/login/create-user/create-user.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Timeline.Web/ClientApp/src/app/login/create-user/create-user.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Timeline.Web/ClientApp/src/app/shared/shared.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Timeline.Web/ClientApp/src/app/shared/shared.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Timeline.Web/ClientApp/src/app/team/board/board.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/Timeline.Web/ClientApp/src/app/team/board/board.component.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Timeline.Web/ClientApp/src/app/team/board/board.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/Timeline.Web/ClientApp/src/app/team/board/board.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Timeline.Web/ClientApp/src/app/team/board/board.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Timeline.Web/ClientApp/src/app/team/board/board.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Timeline.Web/ClientApp/src/app/team/config/config.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/Timeline.Web/ClientApp/src/app/team/config/config.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Timeline.Web/ClientApp/src/app/team/deadline/deadline.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Timeline.Web/ClientApp/src/app/team/deadline/deadline.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Timeline.Web/ClientApp/src/app/team/join-team/join-team.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/Timeline.Web/ClientApp/src/app/team/join-team/join-team.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Timeline.Web/ClientApp/src/app/team/join-team/join-team.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Timeline.Web/ClientApp/src/app/team/join-team/join-team.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Timeline.Web/ClientApp/src/app/team/new-job/new-job.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/Timeline.Web/ClientApp/src/app/team/new-job/new-job.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Timeline.Web/ClientApp/src/app/team/new-job/new-job.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Timeline.Web/ClientApp/src/app/team/new-job/new-job.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Timeline.Web/ClientApp/src/app/team/new/new.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/Timeline.Web/ClientApp/src/app/team/new/new.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Timeline.Web/ClientApp/src/app/team/new/new.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Timeline.Web/ClientApp/src/app/team/new/new.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Timeline.Web/ClientApp/src/app/team/team.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Timeline.Web/ClientApp/src/app/team/team.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Timeline.Web/ClientApp/src/app/team/team.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Timeline.Web/ClientApp/src/app/team/team.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Timeline.Web/ClientApp/src/app/team/users/users.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/Timeline.Web/ClientApp/src/app/team/users/users.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Timeline.Web/ClientApp/src/app/team/vault/vault.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Timeline.Web/ClientApp/src/app/team/vault/vault.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Timeline.Web/ClientApp/src/app/user-avatar/user-avatar.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/Timeline.Web/ClientApp/src/app/user-avatar/user-avatar.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Timeline.Web/ClientApp/src/app/user-avatar/user-avatar.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Timeline.Web/ClientApp/src/app/user-avatar/user-avatar.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Timeline.Web/ClientApp/src/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/Timeline.Web/ClientApp/src/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Timeline.Web/ClientApp/src/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/Timeline.Web/ClientApp/src/styles.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Timeline.Web/Contexts/TimelineContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Timeline.Web/Contexts/TimelineContext.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Timeline.Web/Controllers/JobController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Timeline.Web/Controllers/JobController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Timeline.Web/Controllers/TeamsController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Timeline.Web/Controllers/TeamsController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Timeline.Web/Controllers/UserController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Timeline.Web/Controllers/UserController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Timeline.Web/Migrations/20200330113350_initial.Designer.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Timeline.Web/Migrations/20200330113350_initial.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Timeline.Web/Migrations/20200330124631_authentication.Designer.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Timeline.Web/Migrations/20200330124631_authentication.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Timeline.Web/Migrations/20200330212226_job workers.Designer.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Timeline.Web/Migrations/20200330212226_job workers.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Timeline.Web/Migrations/20200403215900_more complex job class.Designer.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Timeline.Web/Migrations/20200403215900_more complex job class.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Timeline.Web/Migrations/20200404133451_team avatar url.Designer.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Timeline.Web/Migrations/20200404133451_team avatar url.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Timeline.Web/Migrations/20200406164732_team invite token.Designer.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Timeline.Web/Migrations/20200406164732_team invite token.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Timeline.Web/Migrations/20200406200244_invite to guid.Designer.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Timeline.Web/Migrations/20200406200244_invite to guid.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Timeline.Web/Migrations/20200408233904_audit table.Designer.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Timeline.Web/Migrations/20200408233904_audit table.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Timeline.Web/Migrations/20200409000203_audit team.Designer.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Timeline.Web/Migrations/20200409000203_audit team.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Timeline.Web/Migrations/TimelineContextModelSnapshot.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Timeline.Web/Models/Associations.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Timeline.Web/Models/Associations.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Timeline.Web/Models/Audit.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Timeline.Web/Models/Audit.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Timeline.Web/Helpers/ExtensionMethods.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Timeline.Web/Helpers/ExtensionMethods.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Timeline.Web/Models/Job.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Timeline.Web/Models/Job.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Timeline.Web/Models/Team.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Timeline.Web/Models/Team.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Timeline.Web/Models/User.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Timeline.Web/Models/User.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Timeline.Web/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Timeline.Web/Program.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Timeline.Web/Startup.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Timeline.Web/Startup.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Timeline.Web/Timeline.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Timeline.Web/Timeline.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Timeline.Web/appsettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/Timeline.Web/appsettings.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Timeline.sln" beforeDir="false" afterPath="$PROJECT_DIR$/Timeline.sln" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -128,16 +236,20 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Timeline.Web/Services/UserService.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Timeline.Neo/Controllers/UserController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Timeline.Web/ClientApp/tsconfig.json" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Timeline.Web/OnlineUsers.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Timeline.Web/Controllers/AuditController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Timeline.Neo/appsettings.json" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Timeline.Neo/Controllers/BoardController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Timeline.Neo/Controllers/TeamController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Timeline.Neo/Controllers/JobController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Timeline.Web/Services/AuditService.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/A3DBE483-6645-4FDB-B51D-FEEB0B5C4997/12/DbSet.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Timeline.Web/Helpers/ExtensionMethods.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Timeline.Web/Models/Board.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/C33AFD71-6EE0-4892-B8AD-69B81D88AE1C/3DC/List.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Timeline.Web/Models/TeamBoard.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Timeline.Web/Contexts/TimelineContext.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Timeline.Web/Controllers/BoardController.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Timeline.Web/Controllers/TeamsController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Timeline.Web/Controllers/TeamsController.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Timeline.Web/Models/Associations.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Timeline.Web/Models/Team.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Timeline.Web/Controllers/JobController.cs" root0="FORCE_HIGHLIGHTING" />
@@ -148,81 +260,127 @@
     <setting file="file://$PROJECT_DIR$/Timeline.Web/Models/User.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Timeline.Web/Models/Affiliation.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Timeline.Web/Models/Job.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/9F523E28-BFDA-4C15-A48C-B28C834F3CEC/21/WebHostBuilderExtensions.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/A23772AA-EB85-48F3-A61E-56299CE07A81/13/IPAddress.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Timeline.Web/Migrations/20200602175621_TeamsWithJobs.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Timeline.Web/Program.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Timeline.Web/appsettings.Development.json" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Timeline.Web/Startup.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Timeline.Web/ClientApp/src/tsconfig.spec.json" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/FEE5448D-C7B4-48FD-B49C-A6BEA263F986/24/LambdaExpression.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/951C7635-DE12-43B1-BC8B-C6A47A9933D5/7b/72ba98d0/IMongoCollectionExtensions.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/9076E6C6-266E-4E4D-A7B9-D75D59D5D135/E/PasswordHasher.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Timeline.Mongo/Models/Team.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/13DA8DF4-F4FB-4394-A581-F44A587913F7/8/ControllerEndpointRouteBuilderExtensions.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Timeline.Neo/Migrations/20200617202233_backlog.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/FBA8F38A-D5A7-4D4A-8C12-4740F6E3D6C8/4b/50607c4e/ObjectId.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Timeline.Neo/CachingTeamResolver.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Timeline.Neo/Migrations/20200617163655_fluff.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Timeline.Neo/Migrations/20200623222258_teamDomain.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Timeline.Neo/Migrations/20200616215928_fix.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Timeline.Mongo/Services/TeamsService.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Timeline.Neo/Migrations/20200616235538_jobTeam.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Timeline.Mongo/Controllers/TeamsController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Timeline.Neo/Migrations/TimelineContextModelSnapshot.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Timeline.Web/Migrations/20200603222001_userType.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Timeline.Web/ClientApp/src/tsconfig.app.json" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/C1EF98EA-974E-41F1-A5E9-22CC2279E229/64/f60798f2/PushSubscription.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Timeline.Web/Models/Audit.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Timeline.Web/ClientApp/src/tsconfig.server.json" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Timeline.Web/Models/BoardAffiliation.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/C33AFD71-6EE0-4892-B8AD-69B81D88AE1C/178/ValueTask.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/97E4139A-6B77-457C-A168-AEE4F6135380/9/ClientProxyExtensions.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/97E4139A-6B77-457C-A168-AEE4F6135380/87/b716d66c/HubCallerContext.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Timeline.Web/OnlineUsers.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Timeline.Web/Controllers/AuditController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/A3DBE483-6645-4FDB-B51D-FEEB0B5C4997/12/DbSet.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Timeline.Neo/ClientApp/tsconfig.app.json" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/13DA8DF4-F4FB-4394-A581-F44A587913F7/84/f91fb249/ControllerBase.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/9F523E28-BFDA-4C15-A48C-B28C834F3CEC/21/WebHostBuilderExtensions.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/A23772AA-EB85-48F3-A61E-56299CE07A81/13/IPAddress.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Timeline.Neo/Mapping/AutoMapping.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Timeline.Web/Migrations/20200602175621_TeamsWithJobs.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Timeline.Neo/Contexts/TimelineContext.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Timeline.Web/Program.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Timeline.Mongo/Services/JobsService.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Timeline.Neo/Models/Assignment.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Timeline.Neo/Models/Employment.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Timeline.Mongo/Controllers/JobsController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Timeline.Neo/ClientApp/angular.json" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Timeline.Mongo/Models/TimelineDatabaseSettings.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Timeline.Mongo/appsettings.json" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Timeline.Neo/Models/BoardMember.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Timeline.Neo/Models/Team.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Timeline.Web/appsettings.Development.json" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Timeline.Mongo/Startup.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Timeline.Neo/Models/Board.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Timeline.Neo/Migrations/20200621124527_boardFinished.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Timeline.Web/Startup.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Timeline.Neo/Models/Job.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Timeline.Neo/ClientApp/.editorconfig" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Timeline.Mongo/Models/Job.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Timeline.Mongo/Program.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Timeline.Web/ClientApp/src/tsconfig.spec.json" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Timeline.Neo/Models/User.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Timeline.Web/ClientApp/src/tsconfig.app.json" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Timeline.Neo/ClientApp/package.json" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Timeline.Web/ClientApp/src/tslint.json" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Timeline.Web/ClientApp/src/tsconfig.server.json" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Timeline.Web/Models/BoardAffiliation.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Timeline.Neo/Helpers/ExtensionMethods.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Timeline.Neo/Services/UserService.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Timeline.Web/Hubs/UserHub.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Timeline.Web/ClientApp/angular.json" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Timeline.Web/ClientApp/tslint.json" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/97E4139A-6B77-457C-A168-AEE4F6135380/87/b716d66c/HubCallerContext.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Timeline.Neo/Helpers/AppSettings.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Timeline.Neo/Program.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Timeline.Web/ClientApp/package.json" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Timeline.Neo/Startup.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Timeline.Web/ClientApp/src/app/badge/badge.component.ts" />
-        <option value="$PROJECT_DIR$/Timeline.Web/ClientApp/src/app/badge/badge.component.css" />
-        <option value="$PROJECT_DIR$/Timeline.Web/Models/User.cs" />
-        <option value="$PROJECT_DIR$/Timeline.Web/ClientApp/src/app/_guard/super-guard.guard.ts" />
-        <option value="$PROJECT_DIR$/Timeline.Web/ClientApp/src/app/superAdmin/dashboard/dashboard.component.ts" />
-        <option value="$PROJECT_DIR$/Timeline.Web/Timeline.csproj" />
-        <option value="$PROJECT_DIR$/Timeline.Web/ClientApp/src/app/superAdmin/super-admin-routing.module.ts" />
-        <option value="$PROJECT_DIR$/Timeline.Web/ClientApp/src/app/navs/dashboard-nav/dashboard-nav.component.ts" />
-        <option value="$PROJECT_DIR$/Timeline.Web/ClientApp/src/app/_models/user.ts" />
-        <option value="$PROJECT_DIR$/Timeline.Web/ClientApp/src/app/_guards/super.guard.ts" />
-        <option value="$PROJECT_DIR$/Timeline.Web/ClientApp/src/app/navs/dashboard-nav/dashboard-nav.component.html" />
-        <option value="$PROJECT_DIR$/Timeline.Web/ClientApp/src/app/_services/super.service.ts" />
-        <option value="$PROJECT_DIR$/Timeline.Web/ClientApp/src/app/login/create-user/create-user.component.ts" />
-        <option value="$PROJECT_DIR$/Timeline.Web/ClientApp/src/app/superAdmin/users/users.component.ts" />
-        <option value="$PROJECT_DIR$/Timeline.Web/ClientApp/src/app/superAdmin/users/users.component.html" />
-        <option value="$PROJECT_DIR$/Timeline.Web/ClientApp/src/app/superAdmin/teams/teams.component.ts" />
-        <option value="$PROJECT_DIR$/Timeline.Web/ClientApp/src/app/superAdmin/teams/teams.component.css" />
-        <option value="$PROJECT_DIR$/Timeline.Web/ClientApp/src/app/superAdmin/teams/teams.component.html" />
-        <option value="$PROJECT_DIR$/Timeline.Web/ClientApp/src/app/superAdmin/super-admin.module.ts" />
-        <option value="$PROJECT_DIR$/Timeline.Web/ClientApp/src/app/superAdmin/super-admin-dashboard/super-admin-dashboard.component.html" />
-        <option value="$PROJECT_DIR$/Timeline.Web/ClientApp/src/app/dashboard/dashboard.module.ts" />
-        <option value="$PROJECT_DIR$/Timeline.Web/ClientApp/src/app/team/users/users.component.html" />
-        <option value="$PROJECT_DIR$/Timeline.Web/ClientApp/src/app/team/board/board.component.ts" />
-        <option value="$PROJECT_DIR$/Timeline.Web/ClientApp/src/app/team/board/board.component.html" />
-        <option value="$PROJECT_DIR$/Timeline.Web/ClientApp/src/app/team/board/board.component.css" />
-        <option value="$PROJECT_DIR$/Timeline.Web/ClientApp/src/app/job/full-job/full-job.component.css" />
-        <option value="$PROJECT_DIR$/Timeline.Web/ClientApp/src/app/job/job.component.ts" />
-        <option value="$PROJECT_DIR$/Timeline.Web/ClientApp/src/app/job/full-job/full-job.component.ts" />
-        <option value="$PROJECT_DIR$/Timeline.Web/Controllers/JobController.cs" />
-        <option value="$PROJECT_DIR$/Timeline.Web/ClientApp/src/app/_services/job.service.ts" />
-        <option value="$PROJECT_DIR$/Timeline.Web/ClientApp/src/app/job/full-job/full-job.component.html" />
-        <option value="$PROJECT_DIR$/Timeline.Web/ClientApp/src/app/dashboard/timeline/timeline.component.html" />
-        <option value="$PROJECT_DIR$/Timeline.Web/ClientApp/src/app/dashboard/timeline/timeline.component.ts" />
-        <option value="$PROJECT_DIR$/Timeline.Web/ClientApp/src/app/job/liner-job/liner-job.component.html" />
-        <option value="$PROJECT_DIR$/Timeline.Web/ClientApp/src/app/job/liner-job/liner-job.component.ts" />
-        <option value="$PROJECT_DIR$/Timeline.Web/ClientApp/src/app/dashboard/dashboard.component.html" />
-        <option value="$PROJECT_DIR$/Timeline.Web/ClientApp/src/app/team/team.module.ts" />
-        <option value="$PROJECT_DIR$/Timeline.Web/ClientApp/src/app/shared/shared.module.ts" />
-        <option value="$PROJECT_DIR$/Timeline.Web/ClientApp/src/app/dashboard/dashboard-routing.module.ts" />
-        <option value="$PROJECT_DIR$/Timeline.Web/ClientApp/src/app/app-routing.module.ts" />
-        <option value="$PROJECT_DIR$/Timeline.Web/ClientApp/src/app/team/team-progress/team-progress.component.css" />
-        <option value="$PROJECT_DIR$/Timeline.Web/ClientApp/src/app/navs/team-nav/team-nav.component.ts" />
-        <option value="$PROJECT_DIR$/Timeline.Web/Startup.cs" />
-        <option value="$PROJECT_DIR$/Timeline.Web/ClientApp/src/app/team/team-progress/team-progress.component.ts" />
-        <option value="$PROJECT_DIR$/Timeline.Web/ClientApp/src/app/navs/team-nav/team-nav.component.html" />
-        <option value="$PROJECT_DIR$/Timeline.Web/ClientApp/src/app/app.module.ts" />
-        <option value="$PROJECT_DIR$/Timeline.Web/ClientApp/src/app/team/team-progress/team-progress.component.html" />
-        <option value="$PROJECT_DIR$/Timeline.Web/Program.cs" />
-        <option value="$PROJECT_DIR$/Timeline.Web/ClientApp/src/app/team-dash/team-dash.component.html" />
-        <option value="$PROJECT_DIR$/Timeline.Web/ClientApp/src/app/job/job-list/job-list.component.html" />
-        <option value="$PROJECT_DIR$/Timeline.Web/ClientApp/src/app/team-dash/team-dash.component.ts" />
+        <option value="$PROJECT_DIR$/Timeline.Neo/ClientApp/src/app/badge/badge.component.ts" />
+        <option value="$PROJECT_DIR$/Timeline.Neo/ClientApp/src/app/team/board/quick-job/quick-job.component.ts" />
+        <option value="$PROJECT_DIR$/Timeline.Neo/ClientApp/src/app/job/liner-job/liner-job.component.ts" />
+        <option value="$PROJECT_DIR$/Timeline.Neo/ClientApp/src/app/job/full-job/full-job.component.css" />
+        <option value="$PROJECT_DIR$/Timeline.Neo/ClientApp/src/app/job/full-job/full-job.component.html" />
+        <option value="$PROJECT_DIR$/Timeline.Neo/ClientApp/src/app/team-dash/team-dash.component.css" />
+        <option value="$PROJECT_DIR$/Timeline.Neo/ClientApp/src/app/job/liner-job/liner-job.component.html" />
+        <option value="$PROJECT_DIR$/Timeline.Neo/ClientApp/src/app/board/delete-board-dialog/delete-board-dialog.component.html" />
+        <option value="$PROJECT_DIR$/Timeline.Neo/ClientApp/src/app/team/board/board.component.html" />
+        <option value="$PROJECT_DIR$/Timeline.Neo/ClientApp/src/app/_services/board.service.ts" />
+        <option value="$PROJECT_DIR$/Timeline.Neo/ClientApp/src/app/team/backlog/backlog.component.ts" />
+        <option value="$PROJECT_DIR$/Timeline.Neo/ClientApp/src/app/navs/board-nav/board-nav.component.html" />
+        <option value="$PROJECT_DIR$/Timeline.Neo/ClientApp/src/app/navs/board-nav/board-nav.component.ts" />
+        <option value="$PROJECT_DIR$/Timeline.Neo/ClientApp/src/app/_services/warehouse.service.ts" />
+        <option value="$PROJECT_DIR$/Timeline.Neo/ClientApp/src/app/job/job.component.html" />
+        <option value="$PROJECT_DIR$/Timeline.Neo/ClientApp/src/app/_services/job.service.ts" />
+        <option value="$PROJECT_DIR$/Timeline.Neo/ClientApp/src/app/team/board/board-progress/board-progress.component.ts" />
+        <option value="$PROJECT_DIR$/Timeline.Neo/ClientApp/src/app/team/board/board-progress/board-progress.component.html" />
+        <option value="$PROJECT_DIR$/Timeline.Neo/ClientApp/src/app/team/team-progress/team-progress.component.html" />
+        <option value="$PROJECT_DIR$/Timeline.Neo/ClientApp/src/app/team/team-progress/road-map/road-map.component.html" />
+        <option value="$PROJECT_DIR$/Timeline.Neo/ClientApp/src/app/team/team-progress/road-map/road-map.component.ts" />
+        <option value="$PROJECT_DIR$/Timeline.Neo/Models/Board.cs" />
+        <option value="$PROJECT_DIR$/Timeline.Neo/Controllers/BoardController.cs" />
+        <option value="$PROJECT_DIR$/Timeline.Neo/ClientApp/src/app/team/board/new-board/new-board.component.ts" />
+        <option value="$PROJECT_DIR$/Timeline.Neo/ClientApp/src/app/_models/board.ts" />
+        <option value="$PROJECT_DIR$/Timeline.Neo/ClientApp/src/app/backlog/new-backlog-board/new-backlog-board.component.ts" />
+        <option value="$PROJECT_DIR$/Timeline.Neo/ClientApp/src/app/backlog/new-backlog-board/new-backlog-board.component.html" />
+        <option value="$PROJECT_DIR$/Timeline.Neo/ClientApp/src/app/app.module.ts" />
+        <option value="$PROJECT_DIR$/Timeline.Neo/ClientApp/src/app/login/login.component.ts" />
+        <option value="$PROJECT_DIR$/Timeline.Neo/ClientApp/src/app/_models/user.ts" />
+        <option value="$PROJECT_DIR$/Timeline.Neo/ClientApp/src/app/login/create-user/create-user.component.html" />
+        <option value="$PROJECT_DIR$/Timeline.Neo/ClientApp/src/app/login/create-user/create-user.component.ts" />
+        <option value="$PROJECT_DIR$/Timeline.Neo/ClientApp/src/app/team/join-team/join-team.component.ts" />
+        <option value="$PROJECT_DIR$/Timeline.Neo/Controllers/TeamController.cs" />
+        <option value="$PROJECT_DIR$/Timeline.Neo/ClientApp/src/app/_services/team.service.ts" />
+        <option value="$PROJECT_DIR$/Timeline.Neo/Models/Team.cs" />
+        <option value="$PROJECT_DIR$/Timeline.Neo/CachingTeamResolver.cs" />
+        <option value="$PROJECT_DIR$/Timeline.Neo/Startup.cs" />
+        <option value="$PROJECT_DIR$/Timeline.Neo/ClientApp/src/app/_resolvers/team-resolver.service.ts" />
+        <option value="$PROJECT_DIR$/Timeline.Neo/ClientApp/src/app/team-dash/team-dash.component.ts" />
+        <option value="$PROJECT_DIR$/Timeline.Neo/ClientApp/src/app/_resolvers/user-resolver.service.ts" />
+        <option value="$PROJECT_DIR$/Timeline.Neo/ClientApp/src/app/_resolvers/board-resolver.service.ts" />
+        <option value="$PROJECT_DIR$/Timeline.Neo/ClientApp/src/app/app-routing.module.ts" />
+        <option value="$PROJECT_DIR$/Timeline.Neo/ClientApp/src/app/team/board/board.component.ts" />
+        <option value="$PROJECT_DIR$/Timeline.Neo/Models/User.cs" />
+        <option value="$PROJECT_DIR$/Timeline.Neo/Controllers/UserController.cs" />
+        <option value="$PROJECT_DIR$/Timeline.Neo/ClientApp/src/app/_services/auth.service.ts" />
+        <option value="$PROJECT_DIR$/Timeline.Neo/ClientApp/src/app/_guards/auth.guard.ts" />
+        <option value="$PROJECT_DIR$/Timeline.Neo/ClientApp/src/app/login/login.component.html" />
+        <option value="$PROJECT_DIR$/Timeline.Neo/ClientApp/src/app/team-dash/team-dash.component.html" />
+        <option value="$PROJECT_DIR$/Timeline.Neo/Timeline.Neo.csproj" />
       </list>
     </option>
   </component>
@@ -231,6 +389,9 @@
     <exe-path />
     <other-services-enabled>true</other-services-enabled>
     <auto-save>true</auto-save>
+  </component>
+  <component name="PackageJsonUpdateNotifier">
+    <dismissed value="$PROJECT_DIR$/Timeline.Neo/ClientApp/package.json" />
   </component>
   <component name="ProjectId" id="1aAfrFMBQWI3Ylc62S1dIclizXn" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -250,8 +411,9 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="preferences.updates" />
-    <property name="ts.external.directory.path" value="C:\Users\Harrison\Desktop\Timeline\Timeline.Web\ClientApp\node_modules\typescript\lib" />
+    <property name="ts.external.directory.path" value="C:\Users\Harrison\Desktop\Timeline\Timeline.Neo\ClientApp\node_modules\typescript\lib" />
   </component>
   <component name="RunManager" selected=".NET Launch Settings Profile.Timeline">
     <configuration name="Timeline" type="LaunchSettings" factoryName=".NET Launch Settings Profile">
@@ -320,6 +482,21 @@
       <workItem from="1591269715009" duration="9376000" />
       <workItem from="1591279830051" duration="30975000" />
       <workItem from="1591388693206" duration="5412000" />
+      <workItem from="1592029244691" duration="11491000" />
+      <workItem from="1592317060063" duration="1804000" />
+      <workItem from="1592319244911" duration="7647000" />
+      <workItem from="1592334807699" duration="16667000" />
+      <workItem from="1592386778155" duration="35235000" />
+      <workItem from="1592519199165" duration="3705000" />
+      <workItem from="1592568281962" duration="29146000" />
+      <workItem from="1592601304865" duration="14774000" />
+      <workItem from="1592655319517" duration="22948000" />
+      <workItem from="1592743383519" duration="36320000" />
+      <workItem from="1592832602699" duration="11688000" />
+      <workItem from="1592923462780" duration="913000" />
+      <workItem from="1592950898929" duration="1287000" />
+      <workItem from="1593016505970" duration="8732000" />
+      <workItem from="1593210423206" duration="281000" />
     </task>
     <servers />
   </component>
@@ -346,6 +523,22 @@
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="552" y="184" key="#Inspection_severity/1920.-541.1080.1890/0.0.1920.1050/-1920.0.1920.1050@0.0.1920.1050" timestamp="1586262745329" />
+    <state width="1877" height="285" key="GridCell.Tab.0.bottom" timestamp="1592924376461">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state width="1877" height="285" key="GridCell.Tab.0.bottom/1920.0.1920.1050/0.0.1920.1050/-1920.0.1920.1050@0.0.1920.1050" timestamp="1592924376461" />
+    <state width="1877" height="285" key="GridCell.Tab.0.center" timestamp="1592924376461">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state width="1877" height="285" key="GridCell.Tab.0.center/1920.0.1920.1050/0.0.1920.1050/-1920.0.1920.1050@0.0.1920.1050" timestamp="1592924376461" />
+    <state width="1877" height="285" key="GridCell.Tab.0.left" timestamp="1592924376461">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state width="1877" height="285" key="GridCell.Tab.0.left/1920.0.1920.1050/0.0.1920.1050/-1920.0.1920.1050@0.0.1920.1050" timestamp="1592924376461" />
+    <state width="1877" height="285" key="GridCell.Tab.0.right" timestamp="1592924376461">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state width="1877" height="285" key="GridCell.Tab.0.right/1920.0.1920.1050/0.0.1920.1050/-1920.0.1920.1050@0.0.1920.1050" timestamp="1592924376461" />
     <state x="783" y="226" key="RiderGenerateDialog" timestamp="1586389580690">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
@@ -367,15 +560,15 @@
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="683" y="156" key="refactoring.ChangeSignatureDialog/1920.-541.1080.1890/0.0.1920.1050/-1920.0.1920.1050@0.0.1920.1050" timestamp="1586201162348" />
-    <state x="616" y="243" width="672" height="677" key="run.anything.popup" timestamp="1591391889959">
+    <state x="616" y="243" width="672" height="677" key="run.anything.popup" timestamp="1592776376666">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="616" y="243" width="672" height="677" key="run.anything.popup/1920.-541.1080.1890/0.0.1920.1050/-1920.0.1920.1050@0.0.1920.1050" timestamp="1586389461903" />
-    <state x="616" y="243" width="672" height="677" key="run.anything.popup/1920.0.1920.1050/0.0.1920.1050/-1920.0.1920.1050@0.0.1920.1050" timestamp="1591391889959" />
-    <state x="623" y="227" width="672" height="678" key="search.everywhere.popup" timestamp="1591389530354">
+    <state x="616" y="243" width="672" height="677" key="run.anything.popup/1920.0.1920.1050/0.0.1920.1050/-1920.0.1920.1050@0.0.1920.1050" timestamp="1592776376666" />
+    <state x="623" y="227" width="672" height="678" key="search.everywhere.popup" timestamp="1593017742265">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="623" y="227" width="672" height="678" key="search.everywhere.popup/1920.-541.1080.1890/0.0.1920.1050/-1920.0.1920.1050@0.0.1920.1050" timestamp="1586437864032" />
-    <state x="623" y="227" width="672" height="678" key="search.everywhere.popup/1920.0.1920.1050/0.0.1920.1050/-1920.0.1920.1050@0.0.1920.1050" timestamp="1591389530354" />
+    <state x="623" y="227" width="672" height="678" key="search.everywhere.popup/1920.0.1920.1050/0.0.1920.1050/-1920.0.1920.1050@0.0.1920.1050" timestamp="1593017742265" />
   </component>
 </project>

@@ -1,0 +1,26 @@
+<div [ngClass]="['clickHide' + status,'shadow-sm', 'mb-1', 'py-1', 'px-2' ,'d-flex']" id="quick">
+  <div [ngClass]="['clickHide' + status,'d-flex']" *ngIf="!clicked">
+    <fa-icon [icon]="faPlus" class="mr-1" [ngClass]="['clickHide' + status]"></fa-icon>
+    Create job
+  </div>
+  <div [ngClass]="['clickHide' + status,'d-flex', 'flex-column', 'w-100']" *ngIf="clicked">
+    <input #name (keydown.enter)="createJob(name.value,type.value,priority.value)" [ngClass]="['clickHide' + status,'mx-1']" placeholder="What to do?">
+
+    <div [ngClass]="['clickHide' + status,'d-flex', 'mt-1']">
+
+      <select #type [ngClass]="['clickHide' + status,'mx-1']">
+        <option value="0">Bug</option>
+        <option value="1">Feature</option>
+        <option value="2">Generic</option>
+      </select>
+
+      <select #priority [ngClass]="['clickHide' + status,'mx-1']">
+        <option value="0">DEFCON 5</option>
+        <option value="1">DEFCON 4</option>
+        <option value="2">DEFCON 3</option>
+        <option value="3">DEFCON 2</option>
+        <option value="4">DEFCON 1</option>
+      </select>
+    </div>
+  </div>
+</div>

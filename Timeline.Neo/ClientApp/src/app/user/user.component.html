@@ -1,0 +1,23 @@
+<div *ngIf="auth.User">
+  <div class="display-4">{{auth.User.displayName}}</div>
+  <div class="p"><i>{{auth.User.email}}</i></div>
+
+  <hr>
+
+  <div class="display-3">Jobs</div>
+  <div *ngFor="let job of auth.User.Associations">
+    {{job.name}} | {{job.description}} <button class="btn" (click)="removeJob(job.jobId)">Delete</button>
+  </div>
+
+  <hr>
+
+  <div *ngFor="let team of auth.User.Affiliations">
+    <div class="display-4" (click)="goToTeam(team.id)" style="cursor: pointer">{{team.name}}</div>
+    <div class="row">
+      <app-job *ngFor="let job of team.Associations" [Job]="job" class="col-6"></app-job>
+    </div>
+    <input #jobName type="text">
+    <input #jobDescription type="text">
+    <button class="btn" (click)="newJob(jobName.value,jobDescription.value,team.id)">New</button>
+  </div>
+</div>

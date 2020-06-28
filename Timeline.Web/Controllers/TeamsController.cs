@@ -5,10 +5,12 @@ using System.Security.Cryptography.Xml;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Internal;
 using Microsoft.Extensions.Logging;
 using Timeline.Contexts;
+using Timeline.Helpers;
 using Timeline.Models;
 using Timeline.Services;
 
@@ -51,14 +53,7 @@ namespace Timeline.Controllers
                 return BadRequest();
             }
 
-            // var team = new Team
-            // {
-            //     Name = newTeam.Team.Name, 
-            //     AvatarUrl = newTeam.Team.AvatarUrl,
-            //     Owner = user,
-            //     Accent = newTeam.Team.Accent;
-            //     TeamMembers = new List<Affiliation>()
-            // };
+    
             var team = newTeam.Team;
             team.Owner = user;
             team.TeamMembers = new List<Affiliation>();
@@ -205,12 +200,41 @@ namespace Timeline.Controllers
         {
             Console.WriteLine($"Getting Team {teamId}");
             _log.LogInformation("Getting team {teamId}", teamId);
-            return await _timelineContext.Teams.Where(x => x.Id == teamId)
+            var team = _timelineContext.Teams
                 .Include(x => x.TeamMembers).ThenInclude(x => x.User)
                 .Include(x => x.TeamBoards).ThenInclude(x => x.Board).ThenInclude(x => x.BoardMembers)
                 .Include(x => x.Associations).ThenInclude(x => x.Job)
-                .FirstOrDefaultAsync();
+                .FirstOrDefaultAsync(x => x.Id == teamId);
+
+            return await team;
         }
+
+        // [AllowAnonymous]
+        // [HttpGet("GetMoreTeam")]
+        // public async Task<ActionResult<Team>> GetMoreTeam(Guid teamId)
+        // {
+        //     Console.WriteLine($"Getting Team {teamId}");
+        //
+        //     // var teamWithBoards = await _timelineContext.Teams
+        //     //     .Include(x => x.TeamBoards).ThenInclude(x => x.Board)
+        //     //     .FirstOrDefaultAsync(x => x.Id == teamId);
+        //
+        //     // var teamWithJobs = await _timelineContext.Teams
+        //     //     // .Include(x => x.Users)
+        //     //     .Include(x => x.Associations).ThenInclude(x => x.Job).ThenInclude(x => x.AssociatedUsers).ThenInclude(x => x.User)
+        //     //     
+        //     //     .FirstOrDefaultAsync(x => x.Id == teamId);
+        //
+        //     // var teamAssociations = await _timelineContext.Associations
+        //     //     .Where(x => x.TeamId == teamId)
+        //     //     .Include(x => x.Job).ThenInclude(x => x.AssociatedUsers).ThenInclude(x => x.User ).ThenInclude(x => x.Associations).ToListAsync();
+        //     //
+        //     //
+        //     //
+        //     // var teamJobs = new List<Job>();
+        //     //
+        //     // teamAssociations.ForEach(association => { teamJobs.Add(association.Job); });
+        // }
     }
 
     public class NewJob

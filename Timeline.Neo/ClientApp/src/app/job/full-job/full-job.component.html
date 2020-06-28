@@ -1,0 +1,77 @@
+<div *ngIf="Job" class="p-4">
+  <h2 mat-dialog-title>{{Job.name}}</h2>
+  <mat-dialog-content class="mat-typography">
+    <div class="d-flex flex-column">
+
+      <div class="d-flex">
+        <div class="flex JobEditButtons">
+          <mat-form-field appearance="outline">
+            <mat-label>Type</mat-label>
+            <mat-select [(value)]="Job.jobType">
+              <mat-option value="0">Bug</mat-option>
+              <mat-option value="1">Feature</mat-option>
+              <mat-option value="2">Generic</mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Priority</mat-label>
+            <mat-select [(value)]="Job.priority">
+              <mat-option value="0">DEFCON 5</mat-option>
+              <mat-option value="1">DEFCON 4</mat-option>
+              <mat-option value="2">DEFCON 3</mat-option>
+              <mat-option value="3">DEFCON 2</mat-option>
+              <mat-option value="4">DEFCON 1</mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Status</mat-label>
+            <mat-select [(value)]="Job.jobStatus">
+              <mat-option value="0">ToDo</mat-option>
+              <mat-option value="1">InProgress</mat-option>
+              <mat-option value="2">Verify</mat-option>
+              <mat-option value="3">Completed</mat-option>
+            </mat-select>
+          </mat-form-field>
+
+        </div>
+      </div>
+
+      <div class="d-flex flex-row">
+        <div class="m-3 p-3">{{Job.description}}</div>
+        <div class="flex-row m-3 p-3" id="jobInfo">
+          <div class="d-flex justify-content-between">
+            <div>Job id</div>
+            <div>{{Job.id}}</div>
+          </div>
+          <div class="d-flex justify-content-between">
+            <div>Started</div>
+            <div>{{Job.startDate|date:'long'}}</div>
+          </div>
+          <div class="d-flex justify-content-between">
+            <div>Commit</div>
+            <div>{{Job.commit}}</div>
+          </div>
+          <div class="d-flex justify-content-between">
+            <div>Pings</div>
+            <div>{{Job.pings}}</div>
+          </div>
+          <div class="d-flex justify-content-between">
+            <div>Flagged</div>
+            <div>{{Job.flagged}}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </mat-dialog-content>
+  <mat-dialog-actions align="end">
+    <button mat-button>Remove from board</button>
+    <button mat-button>Archive</button>
+    <button mat-button (click)="removeJob()" color="warn">Delete</button>
+    <button mat-button (click)="flagJob()" [color]="Job.flagged ? 'accent': 'primary'">Flag</button>
+    <button mat-button mat-dialog-close>Cancel</button>
+    <!--    <button mat-button [mat-dialog-close]="true" cdkFocusInitial (click)="join(inviteToken.value)">Join</button>-->
+  </mat-dialog-actions>
+</div>

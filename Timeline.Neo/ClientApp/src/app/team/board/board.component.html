@@ -1,0 +1,146 @@
+<div class="d-flex flex-column h-100" *ngIf="Indexes">
+  <app-board-nav [accent]="this.warehouse.Teams[this.Indexes.team].boards[Indexes.board].accent"></app-board-nav>
+
+  <div class="d-flex">
+    <user-avatar *ngFor="let user of this.warehouse.Teams[Indexes.team].boards[Indexes.board].boardMembers" [size]="40" [onlineIndicate]="true" [user]="user" [hasTooltip]="true"></user-avatar>
+  </div>
+
+  <div class="d-flex flex-row justify-content-between mb-1">
+    <div class="d-flex flex-row">
+      <badge [type]="0" (click)="filterByType(0)"></badge>
+      <badge [type]="1" (click)="filterByType(1)"></badge>
+      <badge [type]="2" (click)="filterByType(2)"></badge>
+      <badge [priority]="0" (click)="filterByPriority(0)"></badge>
+      <badge [priority]="1" (click)="filterByPriority(1)"></badge>
+      <badge [priority]="2" (click)="filterByPriority(2)"></badge>
+      <badge [priority]="3" (click)="filterByPriority(3)"></badge>
+      <badge [priority]="4" (click)="filterByPriority(4)"></badge>
+      <badge (click)="resetFilter()" [text]="'Reset'"></badge>
+    </div>
+
+    <div class="d-flex flex-row">
+      <button mat-stroked-button id="complete" (click)="complete()">Complete Board</button>
+      <button mat-stroked-button id="delete" class="ml-1" (click)="delete()">Delete</button>
+      <button mat-stroked-button id="leave" class="ml-1" color="warn" (click)="leave()">leave</button>
+      <button mat-stroked-button id="toggleMode" class="ml-1" (click)="toggleMode()">{{currentMode}}</button>
+    </div>
+  </div>
+
+  <div class="row flex-grow-1 overflow-auto mb-2" *ngIf="Jobs && currentMode == 0">
+
+    <div class="col type overflow-auto h-100 mx-1 well">
+
+      <progressbar class="progress mt-2" [value]="progressBarTypeComp[0]" [max]="100" [animate]="true"></progressbar>
+      <progressbar class="progress mt-1 mb-2" [value]="progressBarPriorityComp[0]" [max]="100" [animate]="true"></progressbar>
+
+      <div cdkDropList (cdkDropListDropped)="drop($event,0)" #todoList="cdkDropList" [cdkDropListConnectedTo]="[progressList,verifyList,completeList]">
+        <app-job *ngFor="let job of Jobs[0]" [Job]="job" cdkDrag></app-job>
+      </div>
+
+      <app-quick-job [status]="0" [boardId]="this.warehouse.Teams[Indexes.team].boards[Indexes.board].id"></app-quick-job>
+
+    </div>
+
+    <div class="col type overflow-auto h-100 mx-1 well">
+
+      <progressbar class="progress mt-2" [value]="progressBarTypeComp[1]" [max]="100" [animate]="true"></progressbar>
+      <progressbar class="progress mt-1 mb-3" [value]="progressBarPriorityComp[1]" [max]="100" [animate]="true"></progressbar>
+
+      <div cdkDropList (cdkDropListDropped)="drop($event,1)" #progressList="cdkDropList" [cdkDropListConnectedTo]="[todoList,verifyList,completeList]">
+        <app-job *ngFor="let job of Jobs[1]" [Job]="job" cdkDrag></app-job>
+      </div>
+
+      <app-quick-job [status]="1" [boardId]="this.warehouse.Teams[Indexes.team].boards[Indexes.board].id"></app-quick-job>
+
+    </div>
+
+    <div class="col type overflow-auto h-100 mx-1 well">
+
+      <progressbar class="progress mt-2" [value]="progressBarTypeComp[2]" [max]="100" [animate]="true"></progressbar>
+      <progressbar class="progress mt-1 mb-3" [value]="progressBarPriorityComp[2]" [max]="100" [animate]="true"></progressbar>
+
+      <div cdkDropList (cdkDropListDropped)="drop($event,2)" #verifyList="cdkDropList" [cdkDropListConnectedTo]="[progressList,todoList,completeList]">
+        <app-job *ngFor="let job of Jobs[2]" [Job]="job" cdkDrag></app-job>
+      </div>
+
+      <app-quick-job [status]="2" [boardId]="this.warehouse.Teams[Indexes.team].boards[Indexes.board].id"></app-quick-job>
+
+    </div>
+
+    <div class="col type overflow-auto h-100 mx-1 well">
+
+      <progressbar class="progress mt-2" [value]="progressBarTypeComp[3]" [max]="100" [animate]="true" [striped]="true"></progressbar>
+      <progressbar class="progress mt-1 mb-3" [value]="progressBarPriorityComp[3]" [max]="100" [animate]="true"></progressbar>
+
+      <div cdkDropList (cdkDropListDropped)="drop($event,3)" #completeList="cdkDropList" [cdkDropListConnectedTo]="[progressList,todoList,verifyList]">
+        <app-job *ngFor="let job of Jobs[3]" [Job]="job" cdkDrag></app-job>
+      </div>
+
+      <app-quick-job [status]="3" [boardId]="this.warehouse.Teams[Indexes.team].boards[Indexes.board].id"></app-quick-job>
+
+    </div>
+  </div>
+
+  <div class="row flex-grow-1 overflow-auto mb-2" *ngIf="Jobs && currentMode == 1">
+
+    <div class="col overflow-auto h-100 compactBoard" style="border-right:solid #f0f0f0 1px;">
+      <div *ngFor="let job of Jobs[0]" class="d-flex flex-column compactJob">
+
+        <div class="d-flex justify-content-between align-content-center compactJobTitle">
+          <div>{{job.name}}</div>
+          <div>{{job.deadline|date:'medium'}}</div>
+        </div>
+
+        <div>{{job.description| truncate:100 }}</div>
+
+        <div class="d-flex">
+          <badge [status]="job.jobStatus" [type]="null" [priority]="null"></badge>
+          <badge [type]="job.jobType" [status]="null" [priority]="null"></badge>
+          <badge [priority]="job.priority" [type]="null" [status]="null"></badge>
+        </div>
+      </div>
+    </div>
+
+    <div class="col overflow-auto h-100 compactBoard" style="border-right:solid #f0f0f0 1px;">
+      <div *ngFor="let job of Jobs[1]" class="d-flex flex-column compactJob">
+
+        <div class="d-flex justify-content-between align-content-center compactJobTitle">
+          <div>{{job.name}}</div>
+          <div>{{job.deadline|date:'medium'}}</div>
+        </div>
+
+        <div>{{job.description| truncate:100 }}</div>
+
+        <div class="d-flex">
+          <badge [status]="job.jobStatus" [type]="null" [priority]="null"></badge>
+          <badge [type]="job.jobType" [status]="null" [priority]="null"></badge>
+          <badge [priority]="job.priority" [type]="null" [status]="null"></badge>
+        </div>
+      </div>
+    </div>
+
+    <div class="col overflow-auto h-100 compactBoard" style="border-right:solid #f0f0f0 1px;">
+      <div *ngFor="let job of Jobs[2]" class="d-flex flex-column compactJob">
+        <div>{{job.name}}</div>
+        <div>{{job.deadline|date:'medium'}}</div>
+        <div class="d-flex">
+          <badge [status]="job.jobStatus" [type]="null" [priority]="null"></badge>
+          <badge [type]="job.jobType" [status]="null" [priority]="null"></badge>
+          <badge [priority]="job.priority" [type]="null" [status]="null"></badge>
+        </div>
+      </div>
+    </div>
+
+    <div class="col overflow-auto h-100 compactBoard">
+      <div *ngFor="let job of Jobs[3]" class="d-flex flex-column compactJob">
+        <div>{{job.name}}</div>
+        <div>{{job.deadline|date:'medium'}}</div>
+        <div class="d-flex">
+          <badge [status]="job.jobStatus" [type]="null" [priority]="null"></badge>
+          <badge [type]="job.jobType" [status]="null" [priority]="null"></badge>
+          <badge [priority]="job.priority" [type]="null" [status]="null"></badge>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

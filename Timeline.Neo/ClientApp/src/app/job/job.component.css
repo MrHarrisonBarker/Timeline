@@ -1,0 +1,18 @@
+
+
+#jobName {
+  font-size: large;
+}
+
+.job {
+  cursor: pointer;
+  background-color: #fff;
+  border-radius: 0.2rem;
+}
+
+.job:hover {
+  background-color: #f7f7f7;
+}
+.badgeList {
+  align-items: flex-end;
+}

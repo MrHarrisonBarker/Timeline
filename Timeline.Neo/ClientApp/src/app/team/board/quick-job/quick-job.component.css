@@ -1,0 +1,9 @@
+#quick {
+  cursor: pointer;
+  background-color: #fff;
+  border-radius: 0.2rem;
+}
+
+#quick:hover {
+  background-color: #f7f7f7;
+}

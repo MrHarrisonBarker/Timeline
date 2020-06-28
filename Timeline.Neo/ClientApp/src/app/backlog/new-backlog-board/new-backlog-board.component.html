@@ -1,0 +1,57 @@
+<div class="px-4">
+  <h2 mat-dialog-title>New Board "Sprint"</h2>
+  <mat-dialog-content class="mat-typography overflow-hidden">
+    <mat-form-field class="m-1" appearance="outline">
+      <mat-label>Name</mat-label>
+      <input matInput [(ngModel)]="data.name" #name placeholder="name"/>
+    </mat-form-field>
+    <br>
+    <mat-form-field class="m-1" appearance="outline">
+      <mat-label>Avatar</mat-label>
+      <input matInput [(ngModel)]="data.avatar" placeholder="avatar"/>
+    </mat-form-field>
+    <br>
+    <mat-slide-toggle [(ngModel)]="isPermanent">Permanent</mat-slide-toggle>
+    <br>
+    <mat-form-field class="m-1" appearance="outline">
+      <mat-label>Select "sprint" duration</mat-label>
+      <mat-select [disabled]="isPermanent" [(value)]="selected" (selectionChange)="getDate()">
+        <mat-option value="1">1 week</mat-option>
+        <mat-option value="2">2 weeks</mat-option>
+        <mat-option value="3">3 weeks</mat-option>
+        <mat-option value="4">4 weeks</mat-option>
+        <mat-option value="5">custom</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field class="m-1" appearance="outline">
+      <mat-label>Start date</mat-label>
+      <input matInput [min]="now" [(ngModel)]="startDate" [matDatepicker]="startDatepicker" [defaultValue]="now" [value]="now">
+      <mat-datepicker-toggle matSuffix [for]="startDatepicker"></mat-datepicker-toggle>
+      <mat-datepicker #startDatepicker></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field class="m-1" appearance="outline">
+      <mat-label>End date</mat-label>
+      <input matInput [min]="now" [(ngModel)]="endDate" [matDatepicker]="endDatePicker" [disabled]="selected != 5 || isPermanent">
+      <mat-datepicker-toggle matSuffix [for]="endDatePicker"></mat-datepicker-toggle>
+      <mat-datepicker #endDatePicker></mat-datepicker>
+    </mat-form-field>
+    <br>
+    <mat-form-field class="m-1" appearance="outline">
+      <input matInput [ngxMatColorPicker]="picker" #picked>
+      <ngx-mat-color-toggle matSuffix [for]="picker"></ngx-mat-color-toggle>
+      <ngx-mat-color-picker #picker></ngx-mat-color-picker>
+    </mat-form-field>
+    <br>
+    <mat-form-field class="m-1 w-100" appearance="outline">
+      <mat-label>Description</mat-label>
+      <textarea cdkTextareaAutosize [cdkAutosizeMinRows]="3" matInput [(ngModel)]="data.description" placeholder="description"></textarea>
+    </mat-form-field>
+  </mat-dialog-content>
+  <mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close>Cancel</button>
+    <button mat-button cdkFocusInitial (click)="createBoard(picked.value)">Create
+    </button>
+  </mat-dialog-actions>
+</div>

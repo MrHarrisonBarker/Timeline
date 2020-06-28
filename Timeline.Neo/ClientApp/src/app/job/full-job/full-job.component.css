@@ -1,0 +1,40 @@
+.status {
+
+  background: grey;
+  color: white;
+  margin: 0 0.1rem;
+
+  display: inline-block;
+  padding: .25em .4em;
+  font-size: 75%;
+  font-weight: 700;
+  line-height: 1;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
+  border-radius: .25rem;
+  transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+}
+
+#description {
+  background-color: #fafafa;
+  border: #bcbcbc solid 1px;
+  border-radius: 0.3rem;
+}
+
+#jobInfo {
+  background: aliceblue;
+  width: 100%;
+}
+
+.JobEditButtons {
+
+}
+
+.JobEditButtons > button {
+  margin-right: 1rem;
+}
+
+.JobEditButtons > mat-form-field {
+  margin-right: 1rem;
+}

@@ -1,0 +1,32 @@
+<div *ngIf="Team && Show == 'Board'" class="container-fluid h-100">
+
+  <!--  <div class="display-4">{{Team.name}}</div>-->
+
+  <div class="d-flex my-1">
+<!--    <user-avatar [user]="Team.owner" [size]="60" [onlineIndicate]="true"></user-avatar>-->
+    <user-avatar *ngFor="let user of Team.Affiliations" [user]="user" [size]="60" [onlineIndicate]="true"></user-avatar>
+  </div>
+
+  <app-board [Team]="Team"></app-board>
+
+</div>
+
+<div *ngIf="Team && Show == 'Deadline'" class="container-fluid h-100">
+  <app-deadline></app-deadline>
+</div>
+
+<div *ngIf="Team && Show == 'Config'" class="container-fluid h-100">
+  <app-config></app-config>
+</div>
+
+<div *ngIf="Team && Show == 'Users'" class="container-fluid h-100">
+  <app-users></app-users>
+</div>
+
+<div *ngIf="Team && Show == 'Vault'" class="container-fluid h-100">
+  <app-vault></app-vault>
+</div>
+
+<div *ngIf="Team && Show == 'Audit'" class="container-fluid h-100">
+  <app-audit></app-audit>
+</div>

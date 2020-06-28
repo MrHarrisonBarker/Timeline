@@ -1,0 +1,161 @@
+<!--<div *ngIf="this.warehouse.CurrentTeam">{{this.teamService?.team.name}}</div>-->
+<div class="d-flex flex-column h-100" *ngIf="this.warehouse.Teams[this.warehouse.CurrentTeamIndex()]">
+  <app-team-nav [accent]="this.warehouse.Teams[this.warehouse.CurrentTeamIndex()].accent" [team]="this.warehouse.Teams[this.warehouse.CurrentTeamIndex()]"></app-team-nav>
+
+  <div class="d-flex px-1">
+    <user-avatar *ngFor="let user of this.warehouse.Teams[this.warehouse.CurrentTeamIndex()].employments" [user]="user" [size]="60" [onlineIndicate]="true"></user-avatar>
+  </div>
+
+
+  <div class="clearfix m-3">
+    <div class="float-left">
+      <div style="font-size: x-large;">{{this.warehouse.Teams[this.warehouse.CurrentTeamIndex()].name}}</div>
+      <i style="font-size: medium">{{this.warehouse.Teams[this.warehouse.CurrentTeamIndex()].description}}</i>
+      <div class="link" [cdkCopyToClipboard]="this.warehouse.Teams[this.warehouse.CurrentTeamIndex()].inviteToken">{{this.warehouse.Teams[this.warehouse.CurrentTeamIndex()].inviteToken}}</div>
+    </div>
+    <img class="float-right" [src]="this.warehouse.Teams[this.warehouse.CurrentTeamIndex()].avatar" width="60px">
+  </div>
+
+  <div class="d-flex flex-row ml-3">
+    <div *ngFor="let type of types;let i = index" class="d-flex">
+      <div *ngFor="let n of [].constructor(type)" class="ball" [style.background-color]="jobService.getTypeBackGroundJob(i)"></div>
+    </div>
+  </div>
+
+  <!--  &lt;!&ndash;  <div class="d-flex flex-row justify-content-between">&ndash;&gt;-->
+  <!--  &lt;!&ndash;    <div class="ball" [style.background-color]="jobService.getStatusBackGround(job)" *ngFor="let job of Team.Jobs"></div>&ndash;&gt;-->
+  <!--  &lt;!&ndash;  </div>&ndash;&gt;-->
+
+  <!--  &lt;!&ndash;  <div class="d-flex flex-row justify-content-between">&ndash;&gt;-->
+  <!--  &lt;!&ndash;    <div class="ball" [style.background-color]="jobService.getPriorityBackGround(job)" *ngFor="let job of Team.Jobs"></div>&ndash;&gt;-->
+  <!--  &lt;!&ndash;  </div>&ndash;&gt;-->
+
+  <mat-drawer-container autosize class="sideNavContainer h-100">
+    <mat-drawer #sideNav mode="side" class="sideNav p-1" [(opened)]="this.teamService.sideNavOpened">
+      <div class="m1">
+
+        <div class="m-3">
+          <div class="mat-subheading-1 my-1 ml-1">Boards "Sprints"</div>
+
+          <div class="mat-caption my-1 ml-1">Over Deadline</div>
+          <mat-list role="list" class="shadow-sm">
+            <mat-list-item (click)="routeToBoard(board.id)" class="boardListItem listItem" role="listitem" [style.border-left-color]="board.accent" *ngFor="let board of boardsOverDeadline()" [style.background]="'hsl(0,100%,50%)'">
+              <div class="d-flex flex-column w-100">
+                <div class="d-flex justify-content-between align-items-center" style="width: 100%">
+                  <div style="color: #f5f5f5">{{board.name}}</div>
+                  <div>
+                    <user-avatar [size]="30" *ngFor="let user of board.boardMembers" [user]="user"></user-avatar>
+                    <button mat-stroked-button (click)="joinBoard(board.inviteToken)" *ngIf="ifBoardMember(board)">Join board</button>
+                  </div>
+                </div>
+              </div>
+            </mat-list-item>
+          </mat-list>
+
+
+          <div class="mat-caption my-1 ml-1">Permenent</div>
+          <mat-list role="list" class="shadow-sm">
+            <mat-list-item (click)="routeToBoard(board.id)" class="boardListItem listItem" role="listitem" [style.border-left-color]="board.accent" *ngFor="let board of permanentsBoards()" [style.background]="boardPastDeadline(board.endDate)">
+              <div class="d-flex flex-column w-100">
+                <div class="d-flex justify-content-between align-items-center" style="width: 100%">
+                  <div>{{board.name}}</div>
+                  <div>
+                    <user-avatar [size]="30" *ngFor="let user of board.boardMembers" [user]="user"></user-avatar>
+                    <button mat-stroked-button (click)="joinBoard(board.inviteToken)" *ngIf="ifBoardMember(board)">Join board</button>
+                  </div>
+                </div>
+              </div>
+            </mat-list-item>
+          </mat-list>
+          <div class="mat-caption my-1 ml-1">Running</div>
+          <mat-list role="list" class="shadow-sm">
+            <mat-list-item (click)="routeToBoard(board.id)" class="boardListItem listItem" role="listitem" [style.border-left-color]="board.accent" *ngFor="let board of currentRunningBoards()" [style.background]="boardPastDeadline(board.endDate)">
+              <div class="d-flex flex-column w-100">
+                <div class="d-flex justify-content-between align-items-center" style="width: 100%">
+                  <div>{{board.name}}</div>
+                  <div>
+                    <user-avatar [size]="30" *ngFor="let user of board.boardMembers" [user]="user"></user-avatar>
+                    <button mat-stroked-button (click)="joinBoard(board.inviteToken)" *ngIf="ifBoardMember(board)">Join board</button>
+                  </div>
+                </div>
+                <div class="mat-caption">{{board.endDate | date:'longDate'}}</div>
+              </div>
+            </mat-list-item>
+          </mat-list>
+        </div>
+
+        <div class="m-3">
+          <div class="mat-subheading-1 my-1 ml-1">Finished</div>
+
+          <mat-list role="list" class="shadow-sm">
+            <mat-list-item (click)="routeToBoard(board.id)" class="boardListItem listItem" role="listitem" [style.border-left-color]="board.accent" *ngFor="let board of finishedBoards()">
+              <div class="d-flex flex-column w-100">
+                <div class="d-flex justify-content-between align-items-center" style="width: 100%">
+                  <div>{{board.name}}</div>
+                  <div>
+                    <user-avatar [size]="30" *ngFor="let user of board.boardMembers" [user]="user"></user-avatar>
+                    <button mat-stroked-button (click)="joinBoard(board.inviteToken)" *ngIf="ifBoardMember(board)">Join board</button>
+                  </div>
+                </div>
+                <div class="mat-caption">{{board.endDate | date:'longDate'}}</div>
+              </div>
+            </mat-list-item>
+          </mat-list>
+        </div>
+      </div>
+    </mat-drawer>
+
+    <div class="m-1 p-1 sideNavContent">
+
+      <div class="m-3">
+        <div class="mat-subheading-1">Over deadline</div>
+        <app-job-list [Jobs]="jobsOverDeadline()" [quick]="false"></app-job-list>
+      </div>
+
+      <div class="m-3">
+        <div class="mat-subheading-1">Flagged</div>
+        <app-job-list [Jobs]="flaggedJobs()" [quick]="false"></app-job-list>
+      </div>
+
+      <div class="m-3">
+        <div class="mat-subheading-1">Near deadline</div>
+        <app-job-list [Jobs]="jobsNearDeadline()" [quick]="false"></app-job-list>
+      </div>
+
+      <mat-accordion>
+        <mat-expansion-panel *ngFor="let board of Tree">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              {{board.Board.name}}
+            </mat-panel-title>
+            <mat-panel-description>
+                <div *ngIf="board.Jobs.length == 1">1 Job</div>
+                <div *ngIf="board.Jobs.length > 1">{{board.Jobs.length}} Jobs</div>
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+
+          <app-job-list [Jobs]="board.Jobs" [quick]="false"></app-job-list>
+        </mat-expansion-panel>
+      </mat-accordion>
+    </div>
+    <!--      <mat-tab-group (focusChange)="log($event)">-->
+    <!--        <mat-tab label="All">-->
+    <!--          <app-job-list [Jobs]="filteredJobs"></app-job-list>-->
+    <!--        </mat-tab>-->
+    <!--        <mat-tab label="ToDo">-->
+    <!--          <app-job-list [Jobs]="toDOJobs"></app-job-list>-->
+    <!--        </mat-tab>-->
+    <!--        <mat-tab label="InProgress">-->
+    <!--          <app-job-list [Jobs]="inProgressJobs"></app-job-list>-->
+    <!--        </mat-tab>-->
+    <!--        <mat-tab label="Verify">-->
+    <!--          <app-job-list [Jobs]="verifyJobs"></app-job-list>-->
+    <!--        </mat-tab>-->
+    <!--        <mat-tab label="Completed">-->
+    <!--          <app-job-list [Jobs]="completedJobs"></app-job-list>-->
+    <!--        </mat-tab>-->
+    <!--      </mat-tab-group>-->
+    <!--      </div>-->
+    <!--    </div>-->
+  </mat-drawer-container>
+</div>

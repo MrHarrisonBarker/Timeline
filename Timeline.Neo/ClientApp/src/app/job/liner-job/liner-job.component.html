@@ -1,0 +1,35 @@
+<div class="d-flex justify-content-between align-items-center" style="width: 100%;">
+  <div class="d-flex">
+    <div class="mr-2">{{job.name}}</div>
+    <div class="mr-2" style="color: #878787;font-style: italic;">{{job.description | truncate:trunk}}</div>
+  </div>
+  <div class="d-flex align-items-center">
+    <div class="mr-2" *ngIf="isRealDate(job.deadline)">{{job.deadline | date:'short'}}</div>
+
+    <badge *ngIf="job.board" [background]="job.board?.accent" [text]="job.board?.name"></badge>
+
+    <badge [status]="job.jobStatus"></badge>
+    <badge [type]="job.jobType"></badge>
+    <badge [priority]="job.priority"></badge>
+
+    <fa-icon class="ml-2" [icon]="faWarehouse" *ngIf="job.board == null && job.team != null"></fa-icon>
+
+    <button mat-icon-button [matMenuTriggerFor]="menu">
+      <mat-icon>more_vert</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item (click)="gotToJob()">
+        <mat-icon>open_in_browser</mat-icon>
+        <span>Goto job</span>
+      </button>
+      <button mat-menu-item  (click)="openJob()">
+        <mat-icon>open_in_full</mat-icon>
+        <span>Open</span>
+      </button>
+      <button mat-menu-item (click)="flagJob()">
+        <mat-icon>flag</mat-icon>
+        <span *ngIf="!job.flagged">Flag</span><span *ngIf="job.flagged">Un-flag</span>
+      </button>
+    </mat-menu>
+  </div>
+</div>

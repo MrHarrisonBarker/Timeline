@@ -1,0 +1,32 @@
+<mat-list role="list" class="shadow-sm" *ngIf="Jobs">
+  <mat-list-item role="listitem" class="listItem mb-1" *ngFor="let job of Jobs" [style.background-color]="job.flagged ? '#ffebee' : ''" [style.border-left]="jobService.GetBorderAccent(job)" [style.border-right]="jobService.getPriorityBorder(job)">
+    <app-liner-job [job]="job" [trunk]="20"></app-liner-job>
+  </mat-list-item>
+  <mat-list-item role="listitem" class="listItem mb-1" *ngIf="warehouse.CurrentTeamId != null && quick">
+    <div class="d-flex w-100" (click)="clicked = !clicked" *ngIf="!clicked">
+      <fa-icon [icon]="faPlus" class="mr-1"></fa-icon>
+      Create job
+    </div>
+    <div class="d-flex w-100 justify-content-between" *ngIf="clicked" (focusout)="clicked = !clicked">
+
+      <input #name (keydown.enter)="createJob(name.value,type.value,priority.value)" class="w-100 mx-1" placeholder="What to do?">
+
+      <div class="d-flex">
+
+        <select #type class="mx-1">
+          <option value="0">Bug</option>
+          <option value="1">Feature</option>
+          <option value="2">Generic</option>
+        </select>
+
+        <select #priority class="mx-1">
+          <option value="0">DEFCON 5</option>
+          <option value="1">DEFCON 4</option>
+          <option value="2">DEFCON 3</option>
+          <option value="3">DEFCON 2</option>
+          <option value="4">DEFCON 1</option>
+        </select>
+      </div>
+    </div>
+  </mat-list-item>
+</mat-list>

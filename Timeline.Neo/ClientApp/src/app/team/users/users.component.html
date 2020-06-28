@@ -1,0 +1,4 @@
+<app-team-nav [accent]="teamService.team.accent"></app-team-nav>
+<div class="d-flex">
+  <user-avatar [size]="80" [onlineIndicate]="true" *ngFor="let user of teamService.team.TeamMembers" [user]="user"></user-avatar>
+</div>

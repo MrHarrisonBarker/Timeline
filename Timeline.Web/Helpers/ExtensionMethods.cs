@@ -14,5 +14,18 @@ namespace Timeline.Helpers
             user.Password = null;
             return user;
         }
+
+        public static User WithoutImages(this User user)
+        {
+            user.AvatarUrl = null;
+            return user;
+        }
+        
+        public static User WithoutLists(this User user)
+        {
+            user.Associations = null;
+            user.Affiliations = null;
+            return user;
+        }
     }
 }
